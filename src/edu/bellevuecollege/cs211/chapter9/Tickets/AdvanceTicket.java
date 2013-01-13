@@ -1,3 +1,5 @@
+package edu.bellevuecollege.cs211.chapter9.Tickets;
+
 /**
  * Satisfies the requirements for Exercise #6, page 624
  * of "Building Java Programs" second edition.

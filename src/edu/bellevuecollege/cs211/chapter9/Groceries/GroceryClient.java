@@ -1,3 +1,5 @@
+package edu.bellevuecollege.cs211.chapter9.Groceries;
+
 /**
  * Satisfies the requirements for Exercise #X, page XX
  * of "Building Java Programs" second edition.

@@ -1,3 +1,5 @@
+package edu.bellevuecollege.cs211.chapter9.Groceries;
+
 import org.junit.Test;
 
 public class DiscountBillTest {

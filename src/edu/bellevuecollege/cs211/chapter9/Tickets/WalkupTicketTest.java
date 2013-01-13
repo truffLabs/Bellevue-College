@@ -1,5 +1,10 @@
+package edu.bellevuecollege.cs211.chapter9.Tickets;
+
 import org.junit.*;
 import static org.junit.Assert.assertTrue;
+
+
+
 
 public class WalkupTicketTest {
     @Test
