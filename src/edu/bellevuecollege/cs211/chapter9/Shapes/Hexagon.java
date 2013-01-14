@@ -31,6 +31,16 @@ public class Hexagon implements Shape {
     }
 
     /**
+     * Method returns the length of a side of the Hexagon.
+     *
+     * @return returns sideLength as double
+     */
+    public double getSideLength(){
+
+        return sideLength;
+    }
+
+    /**
      * Calculates the area of a hexagon using the formula: ((3*sqrt(3))/2) * side^2
      *
      * @return area of hexagon as double value
@@ -49,6 +59,11 @@ public class Hexagon implements Shape {
 
         int numSides = 6;
         return this.sideLength * numSides;
+    }
+
+    public String toString(){
+
+        return "Shape: Hexagon ; Side length: " + sideLength + " ; Perimeter: " + getPerimeter() + " Area: " + getArea();
     }
 
 }
