@@ -61,6 +61,10 @@ public class Hexagon implements Shape {
         return this.sideLength * numSides;
     }
 
+    /**
+     * Returns shape name, sideLength, perimeter, and area
+     * @return  String object with details about hexagon
+     */
     public String toString(){
 
         return "Shape: Hexagon ; Side length: " + sideLength + " ; Perimeter: " + getPerimeter() + " ; Area: " + getArea();
