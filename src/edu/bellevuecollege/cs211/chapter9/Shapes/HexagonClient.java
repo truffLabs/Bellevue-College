@@ -15,6 +15,7 @@ public class HexagonClient {
         Shape h = new Hexagon(1.0);
         System.out.println("Perimeter: " + h.getPerimeter());
         System.out.println("Area: " + h.getArea());
+        System.out.println(h.toString());
 
     }
 

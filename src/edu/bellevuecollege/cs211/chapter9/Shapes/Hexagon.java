@@ -63,7 +63,7 @@ public class Hexagon implements Shape {
 
     public String toString(){
 
-        return "Shape: Hexagon ; Side length: " + sideLength + " ; Perimeter: " + getPerimeter() + " Area: " + getArea();
+        return "Shape: Hexagon ; Side length: " + sideLength + " ; Perimeter: " + getPerimeter() + "; Area: " + getArea();
     }
 
 }
