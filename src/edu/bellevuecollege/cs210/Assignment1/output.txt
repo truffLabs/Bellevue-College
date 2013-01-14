@@ -1,0 +1,183 @@
+\\Exercise5: first try
+
+A "quoted" String is
+'much' better if you learn
+the rules of "escape sequences."
+Also, "" represents an empty String
+Don't forget: use \" instead of " !
+'' is not the same as
+
+\\Exercise5: Add period at the end of line 4 ; Add quotation mark at teh end of line 6
+
+A "quoted" String is
+'much' better if you learn
+the rules of "escape sequences."
+Also, "" represents an empty String.
+Don't forget: use \" instead of " !
+'' is not the same as "
+
+\\Exercise 6: first try
+
+There's one thing every coder must understand:
+The System.out.println command.
+There's one thing every coder must understand:
+The System.out.println command.
+
+\\Excerise 6: added newline character to the end of message method
+
+There's one thing every coder must understand:
+The System.out.println command.
+
+There's one thing every coder must understand:
+The System.out.println command.
+
+\\Problem 3: first run (note copied and pasted most code from Problem 3 alt so its more complete)
+
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a bird,
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a cat,
+Imagine that to swallow a cat.
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a dog,
+What a hog to swallow a dog.
+She swallowed the dog to catch the cat,
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a wolf,
+That howled and growled inside her.
+She swallowed the wolf to catch the dog,
+She swallowed the dog to catch the cat,
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a horse,
+She died of course.
+
+\\Problem 3 Alt: first try with only two versus
+
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the spider to catch the fly ,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+\\Problem 3 Alt: removed extra space before comma in line 7 by editing printSwallowLines method
+
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+\\Problem 3 Alt: finished creating methods for each verse ; this is the first run with everything done
+
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a bird,
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a cat,
+Imagine that to swallow a cat.
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a dog,
+What a hog to swallow a dog.
+She swallowed the dog to catch the cat,
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a horse,
+She died of course.
+
+\\Problem3 Alt: added custom verse
+
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the fly to catch the spider,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a bird,
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a cat,
+Imagine that to swallow a cat.
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a dog,
+What a hog to swallow a dog.
+She swallowed the dog to catch the cat,
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a horse,
+She died of course.

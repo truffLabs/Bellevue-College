@@ -1,0 +1,11 @@
+Exercise 5 and 6 were straightforward. I learned what the basic syntax for a Java program was. I also switch from NetBeans to IntelliJ so I had to defamiliarize myself with the IDE.
+
+Problem 3 was interesting. I had a hard time finding a simple pattern until I pasted the lyrics into a text editor and started tagging blocks of text that followed a pattern.
+
+I have one official submission for Problem 3 and one alternate. The primary file (Problem3.java) should be easy to read. I created two static methods where I could identify patterns in the text.
+
+The unofficial submission (Problem3Alt.java) was really the first way I solved the problem. The first thing I saw were the lines "She swallowed a 'animal' to catch 'anotherAnimal'. I instantly realized that I wanted to pass some argument into a method or function that printed that line. I did notice that printing only one line from a method is bad style, but it seemed so much cleaner.
+
+The bottom line is that I'm becoming familiar with the syntax of Java. I'm definitely confused as I've done Java, perl, bash, vbscript and they're all different.
+
+**I included MakeChange.java just in case it didn't paste onto the discussion properly.**

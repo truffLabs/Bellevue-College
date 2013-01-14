@@ -1,0 +1,7 @@
+Assignment 2 made much more sense after I spent time working the questions and exercises at the end of chapter 2. 
+
+The key to figuring out how to represent these ASCII figures through nested for loops is to come up with a table. The table is useful because it helps identify the relationship between the number of times a character is drawn on a line to the line number. 
+
+The most difficult part of the assignment was determining the formula for the lower part of the top half of the space needle (the "bowl"). The header to the for loop I eventually came up was "(int j=1; j<=(((3*NEEDLE_SIZE)+1) - (2*line))".
+
+The program I created creates a space needle successfully with a constant value of 2 or greater although there were two assumptions I needed to make. The first was that there was no space in between the "||" of the needle and/or neck of the space needle. The second was that the width of the midsection (|%%||%%|) did not change as the class constant changed. As instructed, the midsection does grow as the square of the class constant.

@@ -1,0 +1,231 @@
+//Assignment 3: Testing method to return number of days in month
+//public static final int INT_MONTH_TODAY = 2;
+
+29
+
+//Assignment 3: Testing method to return number of days in month
+//public static final int INT_MONTH_TODAY = 6;
+
+30
+
+//Assignment 3: Testing method to return number of days in month
+//public static final int INT_MONTH_TODAY = 6;
+
+31
+
+//Assignment 3: Test calcAbsoluteDay method with hard coded integers
+//for birthMonth and birthDay
+//int absoluteDayOfBirthDay = calcAbsoluteDay(12, 28);
+
+363
+
+//Assignment 3: Test calcAbsoluteDay method with hard coded integers
+//for birthMonth and birthDay
+//int absoluteDayOfBirthDay = calcAbsoluteDay(2, 13);
+
+44
+
+//Assignment 3: Test calcAbsoluteDay method with hard coded integers
+//for birthMonth and birthDay
+//int absoluteDayOfBirthDay = calcAbsoluteDay(2, 13);
+
+263
+
+//Assignment 3: First run with calcDaysUntilNextBirthDay(INT_MONTH_TODAY, INT_DAY_TODAY, birthMonth, birthDay)
+//month = 1 ; day = 29 ; birthday = 10/17
+//**TEST FOR CONDITION WHERE BIRTHDAY GREATER THAN TODAY**
+
+Absolute day for birthday: 291
+Days until next birthday: 262
+
+//Assignment 3: First run with calcDaysUntilNextBirthDay(INT_MONTH_TODAY, INT_DAY_TODAY, birthMonth, birthDay)
+//month = 2 ; day = 14 ; birthday = 1/10
+//**TEST FOR CONDITION WHERE BIRTHDAY LESS THAN TODAY**
+
+Absolute day for birthday: 10
+Days until next birthday: 331
+
+//Assignment 3: First run with  percentOfYearAway(int daysUntilBirthday)
+//month = 2 ; day = 14 ; birthday = 1/10
+
+Absolute day for birthday: 10
+Days until next birthday: 331
+Percent of year away: 0.0
+
+//Assignment 3: First run with  percentOfYearAway(int daysUntilBirthday)
+//month = 2 ; day = 14 ; birthday = 1/10
+//**Was attempting to divide a float by integer. Changed integer to float (366.0) and success
+
+Absolute day for birthday: 10
+Days until next birthday: 331
+Percent of year away: 90.43715846994536
+
+//Assignment 3: First run with whichBirthdayIsSooner(262,299)
+//Used scenario where firstPerson was 262 and secondPerson was 299
+
+Person 1's birthday is sooner.
+
+//Assignment 3: whichBirthdayIsSooner(331,14)
+//Used scenario where firstPerson was 331 and secondPerson was 14
+
+Person 2's birthday is sooner.
+
+//Assignment 3: whichBirthdayIsSooner(1,1)
+//Used scenario where firstPerson was 1 and secondPerson was 1
+
+Wow, you share the same birthday!
+
+//Assignment 3: building text blocks
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 1/29/2012, day #29 of the year.
+
+
+//Assignment 3: taking input and still building text blocks ; using for loop for person blocks
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 1/29/2012, day #29 of the year.
+
+Person 1:
+What month and day were you born? 10 17
+10/17/2012 falls on day #291 of 366.
+
+Person 2:
+What month and day were you born? 11 23
+11/23/2012 falls on day #328 of 366.
+
+//Assignment 3: first one with full block
+//notice the large percent ; need to adjust
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 1/29/2012, day #29 of the year.
+
+Person 1:
+What month and day were you born? 10 17
+10/17/2012 falls on day #291 of 366.
+Your next birthday is in 262day(s).
+That is 71.58469945355192 percent of a year away.
+
+Person 2:
+What month and day were you born? 11 23
+11/23/2012 falls on day #328 of 366.
+Your next birthday is in 299day(s).
+That is 81.69398907103826 percent of a year away.
+
+Person 1's birthday is sooner
+
+//Assignment 3: added "did you know" and used math.round
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 1/29/2012, day #29 of the year.
+
+Person 1:
+What month and day were you born? 10 17
+10/17/2012 falls on day #291 of 366.
+Your next birthday is in 262day(s).
+That is 72.0 percent of a year away.
+
+Person 2:
+What month and day were you born? 11 23
+11/23/2012 falls on day #328 of 366.
+Your next birthday is in 299day(s).
+That is 82.0 percent of a year away.
+
+Person 1's birthday is sooner.
+
+Did you know? On December 28th, 1945 The US Congress officially recognized the Pledge of Allegiance to the Flag.
+
+//Assignment 3: changed calculation for percent to return 2 decimal places
+//output of func test 1/4 (straight from assignment)
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 1/29/2012, day #29 of the year.
+
+Person 1:
+What month and day were you born? 10 17
+10/17/2012 falls on day #291 of 366.
+Your next birthday is in 262 day(s).
+That is 71.6 percent of a year away.
+
+Person 2:
+What month and day were you born? 11 23
+11/23/2012 falls on day #328 of 366.
+Your next birthday is in 299 day(s).
+That is 81.7 percent of a year away.
+
+Person 1's birthday is sooner.
+
+Did you know? On December 28th, 1945 The US Congress officially recognized the Pledge of Allegiance to the Flag.
+
+//Assignment 3:
+//output of func test 2/4 (straight from assignment)
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 1/1/2012, day #1 of the year.
+
+Person 1:
+What month and day were you born? 1 1
+1/1/2012 falls on day #1 of 366.
+Happy birthday!
+
+Person 2:
+What month and day were you born? 12 31
+12/31/2012 falls on day #366 of 366.
+Your next birthday is in 365 day(s).
+That is 99.7 percent of a year away.
+
+Person 1's birthday is sooner.
+
+Did you know? On December 28th, 1945 The US Congress officially recognized the Pledge of Allegiance to the Flag.
+
+//Assignment 3:
+//output of func test 3/4 (straight from assignment)
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 2/14/2012, day #45 of the year.
+
+Person 1:
+What month and day were you born? 1 10
+1/10/2012 falls on day #10 of 366.
+Your next birthday is in 331 day(s).
+That is 90.4 percent of a year away.
+
+Person 2:
+What month and day were you born? 2 28
+2/28/2012 falls on day #59 of 366.
+Your next birthday is in 14 day(s).
+That is 3.8 percent of a year away.
+
+Person 2's birthday is sooner.
+
+Did you know? On December 28th, 1945 The US Congress officially recognized the Pledge of Allegiance to the Flag.
+
+//Assignment 3:
+//output of func test 4/4 (straight from assignment)
+
+This program compares two birthdays
+and displays which one is sooner.
+Today is 2/28/2012, day #59 of the year.
+
+Person 1:
+What month and day were you born? 2 29
+2/29/2012 falls on day #60 of 366.
+Your next birthday is in 1 day(s).
+That is 0.3 percent of a year away.
+
+Person 2:
+What month and day were you born? 2 29
+2/29/2012 falls on day #60 of 366.
+Your next birthday is in 1 day(s).
+That is 0.3 percent of a year away.
+
+Wow, you share the same birthday!
+
+Did you know? On December 28th, 1945 The US Congress officially recognized the Pledge of Allegiance to the Flag.
