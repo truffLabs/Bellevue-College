@@ -10,10 +10,6 @@ package edu.bellevuecollege.cs211.dork.items;
  */
 public class DirtyDiaper extends Item implements Openable {
 
-    private String itemName;
-    private Boolean isOpenable;
-    private Boolean isWeapon;
-
     public DirtyDiaper(String itemName, Boolean isOpenable, Boolean isWeapon)
     {
 
@@ -34,6 +30,11 @@ public class DirtyDiaper extends Item implements Openable {
    public String close(){
 
        return "Wrap it up and put it in the genie.";
+   }
+
+   public String tossInDiaperGenie(){
+
+       return "Good job, your nose will be happy.";
    }
 
 }
