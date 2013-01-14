@@ -10,9 +10,20 @@ package edu.bellevuecollege.cs211.dork.items;
  */
 public class DirtyDiaper extends Item implements Openable {
 
-   public String pickUp(){
+    private String itemName;
+    private Boolean isOpenable;
+    private Boolean isWeapon;
+
+    public DirtyDiaper(String itemName, Boolean isOpenable, Boolean isWeapon)
+    {
+
+        super(itemName, isOpenable, isWeapon);
+    }
+
+    public String pickUp(){
 
        return "Some day...there will be no diapers (READ: Potty train TODAY).";
+       //TODO: Add to list of things on person.
    }
 
    public String open(){
