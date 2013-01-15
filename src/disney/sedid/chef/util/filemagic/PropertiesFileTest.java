@@ -1,4 +1,4 @@
-package disney.sedid.chef.util;
+package disney.sedid.chef.util.filemagic;
 import org.junit.Test;
 import java.io.File;
 

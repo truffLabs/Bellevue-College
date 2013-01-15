@@ -1,4 +1,4 @@
-package disney.sedid.chef.util;
+package disney.sedid.chef.util.filemagic;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ public class PropertiesFileClient {
 
     public static void main(String Args[]){
 
-        //figure out how to read from a FileInputStream
+        //read the properties file into a HashTable
         try
         {
             //construct FileInputStream object
@@ -30,8 +30,6 @@ public class PropertiesFileClient {
         {
             System.out.println("Caught IOException: " + e.getMessage());
         }
-
-
 
     }
 
