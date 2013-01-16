@@ -46,19 +46,19 @@ public class PropertiesFile {
      * Takes key-value pairs from propertiesHash and converts to "chef-esque" attributes file, minus comments.
      *
      */
-    public void convertToChefAttributesFile()
+    public void convertToChefAttributesFile(String pathToOutput)
     {
         //TODO: ideally I'd be able to figure out the whole namespace thing
         try
         {
             //open in new file in current working directory
-            PrintStream outputFile = new PrintStream("/Users/pakaehua/Temp/convertedAttributes.txt");
+            PrintStream outputFile = new PrintStream(pathToOutput);
 
             //TODO: Understand better
             Set<String> keys = propertiesTree.keySet();
             for(String key: keys)
             {
-                outputFile.println("default['disney']['recipe']['profile']['" + key + "']=" + propertiesTree.get(key));
+                outputFile.println("default['profile']['" + key + "']=" + propertiesTree.get(key));
             }
 
 
@@ -66,10 +66,6 @@ public class PropertiesFile {
         catch (FileNotFoundException e)
         {
             System.out.println("Caught FileNotFoundException: " + e.getMessage());
-        }
-        catch (IOException e)
-        {
-            System.out.println("Caught IOException: " + e.getMessage());
         }
 
     }
