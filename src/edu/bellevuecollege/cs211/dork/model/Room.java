@@ -59,7 +59,7 @@ public class Room
      * @param dir An enum value from Direction
      * @param someRoom a Room object to assign as being adjacent to calling class
      */
-    public void setAdjacent(Direction dir, Room someRoom)
+    public void setLocation(Direction dir, Room someRoom)
     {
 
         if(dir == Direction.NORTH)
@@ -82,14 +82,15 @@ public class Room
 
     /**
      * Define the adjacency of this room to other rooms. Sets all four instance
-     * fields simultaneously based on passed in parameters.
+     * fields simultaneously based on passed in parameters. Most useful when
+     * initially setting adjacency at beginning of game.
      *
      * @param north Room object north of instance
      * @param south Room object south of instance
      * @param east Room object east of instance
      * @param west Room object west of instance
      */
-    public void setAdjacent(Room north, Room south, Room east, Room west)
+    public void setLocation(Room north, Room south, Room east, Room west)
     {
 
         this.north = north;
