@@ -34,6 +34,12 @@ public class Room
      */
     public Room(String name){
 
+        //handle error cases
+        if(name.equals("") || name.equals(null))
+        {
+            throw new IllegalArgumentException("The room name cannot be empty or null.");
+        }
+
         this.name = name;
 
         this.north = null;
@@ -127,7 +133,6 @@ public class Room
      */
     public ArrayList getItemsInRoom()
     {
-
         return this.itemsInRoom;
     }
 

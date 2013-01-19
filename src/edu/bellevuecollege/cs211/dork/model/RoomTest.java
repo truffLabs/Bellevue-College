@@ -1,5 +1,6 @@
 package edu.bellevuecollege.cs211.dork.model;
-import edu.bellevuecollege.cs211.dork.items.DirtyDiaper;
+import edu.bellevuecollege.cs211.dork.items.*;
+import edu.bellevuecollege.cs211.dork.model.Person;
 import org.junit.*;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
@@ -118,7 +119,22 @@ public class RoomTest {
         //does the diaper exist in the room?
         assertTrue(listOfItemsInRoom.contains(diaperInRoom));
         assertTrue(listOfItemsInRoom.contains(diaperInRoom2));
+    }
 
+    @Test
+    public void getPeopleInRoom() throws Exception
+    {
+        //setup
+        Room anyRoom = new Room("test");
+        Person somebody = new Person("somebody");
+        Person somebodyElse = new Person("somebodyElse");
+        anyRoom.addPerson(somebody);
+        anyRoom.addPerson(somebodyElse);
+        ArrayList listOfPeopleInRoom = anyRoom.getPeopleInRoom();
+
+        //does the people exist in the room?
+        assertTrue(anyRoom.getPeopleInRoom().contains(somebody));
+        assertTrue(anyRoom.getPeopleInRoom().contains(somebodyElse));
     }
 
     @Test
@@ -133,6 +149,22 @@ public class RoomTest {
 
         //does the diaper exist in the room?
         assertTrue(listOfItemsInRoom.contains(diaperInRoom));
+    }
+
+    @Test
+    public void addPerson() throws Exception
+    {
+        //setup
+        Room anyRoom = new Room("test");
+        Person somebody = new Person("somebody");
+        Person somebodyElse = new Person("somebodyElse");
+        anyRoom.addPerson(somebody);
+        anyRoom.addPerson(somebodyElse);
+        ArrayList listOfPeopleInRoom = anyRoom.getPeopleInRoom();
+
+        //does the people exist in the room?
+        assertTrue(anyRoom.getPeopleInRoom().contains(somebody));
+        assertTrue(anyRoom.getPeopleInRoom().contains(somebodyElse));
     }
 
     @Test
@@ -157,6 +189,28 @@ public class RoomTest {
         //does diaperInRoom2 exist in the room now?
         assertFalse(listOfItemsInRoom.contains(diaperInRoom2));
 
+    }
+
+    @Test
+    public void removePerson() throws Exception
+    {
+        //setup
+        Room anyRoom = new Room("test");
+        Person somebody = new Person("somebody");
+        Person somebodyElse = new Person("somebodyElse");
+        anyRoom.addPerson(somebody);
+        anyRoom.addPerson(somebodyElse);
+        ArrayList listOfPeopleInRoom = anyRoom.getPeopleInRoom();
+
+        //does the people exist in the room before?
+        assertTrue(anyRoom.getPeopleInRoom().contains(somebody));
+        assertTrue(anyRoom.getPeopleInRoom().contains(somebodyElse));
+
+        //remove people from room
+        anyRoom.removePerson(somebodyElse);
+
+        //is somebodyElse still in the room?
+        assertFalse(anyRoom.getPeopleInRoom().contains(somebodyElse));
     }
 
     @Test
