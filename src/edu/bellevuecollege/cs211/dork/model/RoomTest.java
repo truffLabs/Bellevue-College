@@ -217,13 +217,18 @@ public class RoomTest {
     }
 
     @Test
-    public void testEnter() throws Exception {
+    public void testEnter() throws Exception
+    {
+        Room r1 = new Room("test");
+        assertTrue("You entered the test room.".equals(r1.enter()));
 
     }
 
     @Test
-    public void testExit() throws Exception {
-
+    public void testExit() throws Exception
+    {
+        Room r1 = new Room("test");
+        assertTrue("You left the test room.".equals(r1.exit()));
     }
 
     @Test
