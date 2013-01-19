@@ -6,7 +6,6 @@ public class PersonTest {
     public void testPerson() throws Exception
     {
         Person someone = new Person("fun");
-
     }
 
     @Test
