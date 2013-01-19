@@ -8,7 +8,7 @@ public class DirtyDiaperTest {
     public void testDirtyDiaper() throws Exception
     {
 
-        Item d1 = new DirtyDiaper("dirty diaper", false, false);
+        Item d1 = new DirtyDiaper("dirty diaper");
         System.out.println(d1.toString());
 
     }
