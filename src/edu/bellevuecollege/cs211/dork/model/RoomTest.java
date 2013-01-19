@@ -109,8 +109,8 @@ public class RoomTest {
     {
         //setup
         Room getItemsInRoom = new Room("test");
-        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid", true, false);
-        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2", true, false);
+        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid");
+        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2");
         getItemsInRoom.addItem(diaperInRoom);
         getItemsInRoom.addItem(diaperInRoom2);
         ArrayList listOfItemsInRoom = getItemsInRoom.getItemsInRoom();
@@ -126,8 +126,8 @@ public class RoomTest {
     {
         //setup
         Room testAddItem = new Room("test");
-        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid", true, false);
-        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2", true, false);
+        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid");
+        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2");
         testAddItem.addItem(diaperInRoom);
         ArrayList listOfItemsInRoom = testAddItem.getItemsInRoom();
 
@@ -140,8 +140,8 @@ public class RoomTest {
     {
         //setup
         Room testRemoveItem = new Room("test");
-        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid", true, false);
-        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2", true, false);
+        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid");
+        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2");
         testRemoveItem.addItem(diaperInRoom);
         testRemoveItem.addItem(diaperInRoom2);
 
@@ -164,8 +164,8 @@ public class RoomTest {
     {
         //setup
         Room testRemoveItem = new Room("test");
-        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid", true, false);
-        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2", true, false);
+        DirtyDiaper diaperInRoom = new DirtyDiaper("somekid");
+        DirtyDiaper diaperInRoom2 = new DirtyDiaper("somekid2");
         testRemoveItem.addItem(diaperInRoom);
         testRemoveItem.addItem(diaperInRoom2);
 

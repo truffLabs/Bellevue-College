@@ -15,6 +15,8 @@ public class Controller
         //display initial prompt
 	    initialMenu();
 
+        //controller will have four rooms potentially in an array list
+
 
     }
 

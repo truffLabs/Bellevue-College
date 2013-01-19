@@ -10,10 +10,9 @@ package edu.bellevuecollege.cs211.dork.items;
  */
 public class DirtyDiaper extends Item implements Openable {
 
-    public DirtyDiaper(String itemName, Boolean isOpenable, Boolean isWeapon)
+    public DirtyDiaper(String itemName)
     {
-
-        super(itemName, isOpenable, isWeapon);
+        super(itemName);
     }
 
     public String pickUp(){

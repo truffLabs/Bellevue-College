@@ -1,14 +1,13 @@
 package edu.bellevuecollege.cs211.dork.items;
 
-import com.sun.tools.corba.se.idl.constExpr.BooleanNot;
-
+/**
+ *
+ */
 public abstract class Item
 {
     private String itemName;
-    private Boolean isOpenable;
-    private Boolean isWeapon;
 
-	public Item(String itemName, Boolean isOpenable, Boolean isWeapon)
+	public Item(String itemName)
     {
         //handle error cases
         if(itemName.equals("") || itemName.equals(null))
@@ -17,16 +16,13 @@ public abstract class Item
         }
 
         this.itemName = itemName;
-        this.isOpenable = isOpenable;
-        this.isWeapon = isWeapon;
     }
 
     public abstract String pickUp();
 
     public String toString()
     {
-
-        return "Name: " + getItemName() + "\nisOpenable: " + getIsOpenable() + "\nisWeapon: " + getIsWeapon();
+        return "Item name is: " + getItemName();
     }
 
     public String getItemName() {
@@ -35,21 +31,5 @@ public abstract class Item
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
-    }
-
-    public Boolean getIsOpenable() {
-        return isOpenable;
-    }
-
-    public void setIsOpenable(Boolean openable) {
-        isOpenable = openable;
-    }
-
-    public Boolean getIsWeapon() {
-        return isWeapon;
-    }
-
-    public void setIsWeapon(Boolean weapon) {
-        isWeapon = weapon;
     }
 }
