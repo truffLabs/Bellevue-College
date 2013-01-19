@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class Room
 {
 
-
     private String name;
 
     //intended to allow assignment of room objects
@@ -22,7 +21,10 @@ public class Room
 	protected Room west;
 
     //hold items in Room in array list
-    protected ArrayList<Item> itemsInRoom;
+    private ArrayList<Item> itemsInRoom;
+
+    //hold People objects in Room using array list
+    private ArrayList<Person> peopleInRoom;
 
 
     /**
@@ -40,6 +42,7 @@ public class Room
         this.west = null;
 
         this.itemsInRoom = new ArrayList<Item>();
+        this.peopleInRoom = new ArrayList<Person>();
 
     }
 
@@ -129,14 +132,34 @@ public class Room
     }
 
     /**
-     * Add an item to the ArrayList of Item objects in calling Room instance.
+     * Method returns an ArrayList containing Person objects contained
+     * in calling instance.
+     *
+     * @return ArrayList object containing Person objects
+     */
+    public ArrayList getPeopleInRoom()
+    {
+        return this.peopleInRoom;
+    }
+
+    /**
+     * Add an Item to the ArrayList of Item objects in calling Room instance.
      *
      * @param i represents Item object
      */
     public void addItem(Item i)
     {
-
         itemsInRoom.add(i);
+    }
+
+    /**
+     * Add a Person to the ArrayList of Person objects in calling Room instance.
+     *
+     * @param p represents Person object
+     */
+    public void addPerson(Person p)
+    {
+        peopleInRoom.add(p);
     }
 
     /**
@@ -151,6 +174,17 @@ public class Room
     }
 
     /**
+     * Removes a person from the ArrayList of Person objects.
+     *
+     * @param p represents an Item object
+     */
+    public void removePerson(Person p)
+    {
+
+        peopleInRoom.remove(p);
+    }
+
+    /**
      * Clear all items from ArrayList of Item objects.
      *
      */
@@ -158,6 +192,16 @@ public class Room
     {
 
         itemsInRoom.clear();
+    }
+
+    /**
+     * Clear all people from ArrayList of People objects.
+     *
+     */
+    public void clearPeople()
+    {
+
+        peopleInRoom.clear();
     }
 
     /**
