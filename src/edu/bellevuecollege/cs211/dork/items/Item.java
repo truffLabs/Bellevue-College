@@ -1,12 +1,18 @@
 package edu.bellevuecollege.cs211.dork.items;
 
 /**
- *
+ * Defines abstract class representing Items present in each of the rooms of the game.
+ * Items are constructed with a String itemName parameter.
  */
 public abstract class Item
 {
     private String itemName;
 
+    /**
+     * Construct Item object with String itemName
+     *
+     * @param itemName String object representing name of item
+     */
 	public Item(String itemName)
     {
         //handle error cases
@@ -18,11 +24,12 @@ public abstract class Item
         this.itemName = itemName;
     }
 
+    //abstract
     public abstract String pickUp();
 
     public String toString()
     {
-        return "Item name is: " + getItemName();
+        return "Item name is: " + this.itemName;
     }
 
     public String getItemName() {
