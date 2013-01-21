@@ -270,10 +270,10 @@ public class Room
      * Clear all items from ArrayList of Item objects.
      *
      */
-    public void clearItems()
+    public void clearItems(ArrayList listOfStuff)
     {
 
-        itemsInRoom.clear();
+        listOfStuff.clear();
     }
 
     /**
