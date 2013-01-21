@@ -38,26 +38,6 @@ public class Person
         this.weaponItems = new ArrayList<Weapon>();
     }
 
-    //a person can move to another room
-    //TODO: do I pass in a direction as parameter or a room object?
-    //TODO: trust client code to validate if room exists or good decision?
-    public void move(Room goToRoom)
-    {
-        this.currentRoom = goToRoom;
-    }
-
-    public void move(Direction dir, Room goToRoom)
-    {
-        if(goToRoom.roomExists(dir))
-        {
-            this.currentRoom = goToRoom;
-        }
-        else
-        {
-            //TODO: return some condition to calling code
-        }
-    }
-
     //TODO: try adding implementation for adding any object to list
     /**
      * Add an item to the ArrayList of item objects in calling Room instance.
@@ -108,9 +88,13 @@ public class Person
     //TODO: do this to the other clearItems methods in room
     public void clearItems(ArrayList listOfStuff)
     {
-
         listOfStuff.clear();
+    }
 
+    @Override
+    public String toString()
+    {
+        return this.personName;
     }
 
     public String getPersonsName() {
@@ -121,15 +105,44 @@ public class Person
         this.personName = personsName;
     }
 
-    public Room getCurrentRoom() {
+    public Room getCurrentRoom()
+    {
         return currentRoom;
     }
 
-    public void setCurrentRoom(Room currentRoom) {
+    public void setCurrentRoom(Room currentRoom)
+    {
         this.currentRoom = currentRoom;
     }
 
-    public ArrayList<Item> getitemsOnPerson() {
+    public ArrayList<Item> getitemsOnPerson()
+    {
         return itemsOnPerson;
+    }
+
+    public void setItemsOnPerson(ArrayList<Item> listOfItems)
+    {
+        this.itemsOnPerson = listOfItems;
+    }
+
+
+    public ArrayList<Openable> getOpenableItems()
+    {
+        return openableItems;
+    }
+
+    public void setOpenableItems(ArrayList<Openable> openableItems)
+    {
+        this.openableItems = openableItems;
+    }
+
+    public ArrayList<Weapon> getWeaponItems()
+    {
+        return weaponItems;
+    }
+
+    public void setWeaponItems(ArrayList<Weapon> weaponItems)
+    {
+        this.weaponItems = weaponItems;
     }
 }
