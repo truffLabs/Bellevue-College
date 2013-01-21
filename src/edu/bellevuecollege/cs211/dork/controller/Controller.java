@@ -1,6 +1,8 @@
 package edu.bellevuecollege.cs211.dork.controller;
 import edu.bellevuecollege.cs211.dork.items.*;
 import edu.bellevuecollege.cs211.dork.model.*;
+import sun.tools.tree.NewArrayExpression;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -226,6 +228,7 @@ public class Controller
 
         if(choice == 1)
         {
+            Scanner input = new Scanner(System.in);
 
             System.out.println();
             System.out.println("Which item would you like to pick up?");
@@ -246,7 +249,6 @@ public class Controller
             System.out.println();
             System.out.print("Choice: ");
 
-            //TODO: error handling ; create single method for this
             choice = scan.nextInt();
 
             //make sure the choice is greater than zero, but within range of array
@@ -255,7 +257,7 @@ public class Controller
                 //pickup the item
                 player1.addItems(itemsForPickup.get(choice-1));
 
-                //remove it from the room
+                //TODO:remove it from the room
 
                 //user feedback
                 System.out.println("You picked up a " + itemsForPickup.get(choice-1));
@@ -264,55 +266,25 @@ public class Controller
             {
                 System.out.println("Bad selection.");
             }
-            //EEK
 
         }
         if(choice == 2)
         {
-            //Check currentRoom.exists(Direction.EAST);
-            //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.EAST))
-            {
-                currentRoom = currentRoom.getEast();
-            }
-            else
-            {
-                System.out.println("****No room exists in the " + Direction.EAST +  " direction.****");
-            }
+
 
         }
         if(choice == 3)
         {
-            //Check currentRoom.exists(Direction.SOUTH);
-            //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.SOUTH))
-            {
-                currentRoom = currentRoom.getSouth();
-            }
-            else
-            {
-                System.out.println("****No room exists in the " + Direction.SOUTH +  " direction.****");
-            }
+
 
         }
         if(choice == 4)
         {
-            //Check currentRoom.exists(Direction.WEST);
-            //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.WEST))
-            {
-                currentRoom = currentRoom.getWest();
-            }
-            else
-            {
-                System.out.println("****No room exists in the " + Direction.WEST +  " direction.****");
-            }
+
         }
         else if(choice == 5)
         {
-            System.out.println();
-            System.out.println("May the dork be with you.");
-            gameOver = true;
+
         }
     }
 
@@ -377,15 +349,15 @@ public class Controller
         left.addItem(bat2);
 
         //add items to openable lists in room
-        top.addOpenableItem((Openable)sippyCup1);
-        right.addOpenableItem((Openable)babyWipeContainer1);
-        right.addOpenableItem((Openable)dirtyDiaper1);
-        bottom.addOpenableItem((Openable)diaperGeenie1);
+        top.addOpenableItem((Openable) sippyCup1);
+        right.addOpenableItem((Openable) babyWipeContainer1);
+        right.addOpenableItem((Openable) dirtyDiaper1);
+        bottom.addOpenableItem((Openable) diaperGeenie1);
 
         //add items to weapon lists in room
-        center.addWeaponItem((Weapon)bat1);
-        left.addWeaponItem((Weapon)snowGlobe1);
-        left.addWeaponItem((Weapon)bat2);
+        center.addWeaponItem((Weapon) bat1);
+        left.addWeaponItem((Weapon) snowGlobe1);
+        left.addWeaponItem((Weapon) bat2);
 
         //add people
         center.addPerson(zombieDad);
