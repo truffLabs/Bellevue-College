@@ -29,7 +29,7 @@ public abstract class Item
 
     public String toString()
     {
-        return "Item name is: " + this.itemName;
+        return this.itemName;
     }
 
     public String getItemName() {
