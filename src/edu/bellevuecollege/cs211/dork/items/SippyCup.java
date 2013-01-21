@@ -9,7 +9,7 @@ import edu.bellevuecollege.cs211.dork.model.Person;
  *         1/13/13
  *         10:30 PM
  */
-public class SippyCup extends Item implements Openable, Weapon{
+public class SippyCup extends Item implements Openable{
 
     public SippyCup(String itemName)
     {
@@ -30,17 +30,5 @@ public class SippyCup extends Item implements Openable, Weapon{
    public String close(){
 
        return "Keep these things moist.";
-   }
-
-   @Override
-   public String attack(Person p)
-   {
-       return null;
-   }
-
-   @Override
-   public String defend(Weapon w)
-   {
-       return null;
    }
 }
