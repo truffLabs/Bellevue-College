@@ -1,4 +1,7 @@
 package edu.bellevuecollege.cs211.dork.model;
+import edu.bellevuecollege.cs211.dork.items.Item;
+import edu.bellevuecollege.cs211.dork.items.Openable;
+import edu.bellevuecollege.cs211.dork.items.SippyCup;
 import org.junit.Test;
 
 public class PersonTest {
@@ -19,7 +22,11 @@ public class PersonTest {
     }
 
     @Test
-    public void testAddItems() throws Exception {
+    public void testAddItems() throws Exception
+    {
+        Person someone = new Person("someone");
+        SippyCup sippyCup = new SippyCup("sippyCup");
+        someone.addItems((Openable)sippyCup);
 
     }
 

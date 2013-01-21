@@ -13,12 +13,6 @@ public class Bat extends Item implements Weapon{
        return "Don't swing this around in the house.";
    }
 
-
-   public String close(){
-
-       return "Keep these things moist.";
-   }
-
    @Override
    public String attack(Person p)
    {

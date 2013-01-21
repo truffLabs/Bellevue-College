@@ -57,6 +57,8 @@ public class Room
         this.west = null;
 
         this.itemsInRoom = new ArrayList<Item>();
+        this.openableItems = new ArrayList<Openable>();
+        this.weaponItems = new ArrayList<Weapon>();
         this.peopleInRoom = new ArrayList<Person>();
 
     }

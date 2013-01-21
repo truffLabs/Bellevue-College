@@ -40,7 +40,7 @@ public class RoomTest {
     }
 
     @Test
-    public void testSetAdjacent() throws Exception
+    public void testsetLocation() throws Exception
     {
         //create room in shape of '+' with five total
         //rooms ; one in center and one at each extremity
@@ -51,10 +51,10 @@ public class RoomTest {
         Room right = new Room("test4");
 
         //call method to set north = up, etc
-        base.setAdjacent(Direction.NORTH, up);
-        base.setAdjacent(Direction.SOUTH, down);
-        base.setAdjacent(Direction.EAST, left);
-        base.setAdjacent(Direction.WEST, right);
+        base.setLocation(Direction.NORTH, up);
+        base.setLocation(Direction.SOUTH, down);
+        base.setLocation(Direction.EAST, left);
+        base.setLocation(Direction.WEST, right);
 
         //test if objects reference same memory location
         assertEquals(base.getNorth(), up);
@@ -64,7 +64,7 @@ public class RoomTest {
     }
 
     @Test
-    public void testSetAdjacent2() throws Exception
+    public void testSetLocation2() throws Exception
     {
         //create room in shape of '+' with five total
         //rooms ; one in center and one at each extremity
@@ -75,7 +75,7 @@ public class RoomTest {
         Room right = new Room("test4");
 
         //call method to set north = up, etc
-        base.setAdjacent(up, down, left, right);
+        base.setLocation(up, down, left, right);
 
         //test if objects reference same memory location
         assertEquals(base.getNorth(), up);
@@ -96,7 +96,7 @@ public class RoomTest {
         Room right = new Room("test4");
 
         //call method to set north = up, etc
-        base.setAdjacent(up, down, left, right);
+        base.setLocation(up, down, left, right);
 
         //test if objects reference same memory location
         assertEquals(base.getAdjacent(Direction.NORTH), up);
@@ -248,13 +248,13 @@ public class RoomTest {
         Room right = new Room("test4");
 
         //set base
-        base.setAdjacent(up, down, left, right);
+        base.setLocation(up, down, left, right);
 
         //set up
-        up.setAdjacent(Direction.NORTH, null);
-        up.setAdjacent(Direction.SOUTH, base);
-        up.setAdjacent(Direction.EAST, null);
-        up.setAdjacent(Direction.WEST, null);
+        up.setLocation(Direction.NORTH, null);
+        up.setLocation(Direction.SOUTH, base);
+        up.setLocation(Direction.EAST, null);
+        up.setLocation(Direction.WEST, null);
 
         //are there rooms around base?
         assertTrue(base.roomExists(Direction.NORTH));

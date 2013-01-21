@@ -1,5 +1,6 @@
 package edu.bellevuecollege.cs211.dork.model;
-import edu.bellevuecollege.cs211.dork.items.Item;
+import edu.bellevuecollege.cs211.dork.items.*;
+import edu.bellevuecollege.cs211.dork.model.*;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public class GameMap {
     private int numRooms, numItems, numPeople;
 
     //construct GameMap with rooms, items, and people
-    private GameMap(String mapName, ArrayList someRooms, ArrayList someItems, ArrayList somePeople)
+    public GameMap(String mapName, ArrayList someRooms, ArrayList someItems, ArrayList somePeople)
     {
         //construct things
         this.mapName = mapName;
