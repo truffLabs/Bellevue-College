@@ -14,6 +14,6 @@ public class Hero extends Person
 
     public String die()
     {
-        return "I'm meeelllltttiiingggg!";
+        return "This is the end.";
     }
 }
