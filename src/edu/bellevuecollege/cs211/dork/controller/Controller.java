@@ -1,8 +1,6 @@
 package edu.bellevuecollege.cs211.dork.controller;
 import edu.bellevuecollege.cs211.dork.items.*;
 import edu.bellevuecollege.cs211.dork.model.*;
-import sun.tools.tree.NewArrayExpression;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,33 +52,6 @@ public class Controller
         runScenario(currentRoom, player1);
     }
 
-    /**
-    public static GameMap initializeGame()
-    {
-        //GameMap bunchOfThingsOnMap = new GameMap();
-
-        //GameMap has Room(s) -> build rooms
-        ArrayList<Room> roomsForMap = buildRooms();
-
-        //Room(s) have Item(s) -> build items
-        ArrayList<Item> itemsForMap = buildItems();
-
-        //put items in rooms
-        //populateRoomWithItems(ArrayList bunchOfRooms, ArrayList bunchOfItems);
-
-        //Room(s) have Person(s) -> build people
-        ArrayList<Person> peopleForMap = buildPeople();
-
-        //put people in rooms
-        //populateRoomWithPeople(ArrayList bunchOfRooms, ArrayList bunchOfPeople);
-
-        //Load all things into GameMap
-        GameMap mapForDork = new GameMap("mapForDork", roomsForMap, itemsForMap, peopleForMap);
-
-        return mapForDork;
-    }
-     **/
-
     public static void runScenario(Room someRoom, Person somePerson)
     {
         Room roomForScenario = someRoom;
@@ -130,7 +101,6 @@ public class Controller
             }
             else if(choice == 5)
             {
-                //TODO: implement interact with people path
                 interactPeoplePath(roomForScenario, personForScenario);
             }
             else if(choice == 6)
@@ -228,11 +198,6 @@ public class Controller
 
     public static void manipulateItemsPath(Room someRoom, Person somePerson)
     {
-
-        ArrayList<Item>  itemsForPickup = currentRoom.getItemsInRoom();
-        ArrayList<Openable>  openableItems = currentRoom.getOpenableInRoom();
-        ArrayList<Weapon>  weaponItems = currentRoom.getWeaponInRoom();
-
         //define the Room where items will be manipulated
         Room roomForPath = someRoom;
 
@@ -254,16 +219,15 @@ public class Controller
         {
             pickUpMenu(roomForPath, personForPath);
         }
-        //Don't enter path if there aren't any openable items in the room
-        else if(choice == 2 && openableItems.isEmpty())
-        {
-            //TODO: configure openableMenu to do this error checking
-            System.out.println();
-            System.out.println("There are no openable items in this room.");
-        }
         else if(choice == 2)
         {
             openableMenu(currentRoom);
+        }
+        else if(choice == 3);
+        {
+            System.out.println();
+            System.out.println("May the dork be with you.");
+            gameOver = true;
         }
     }
 
@@ -390,47 +354,55 @@ public class Controller
     {
         Room roomForMenu = someRoom;
 
-        //what openable items are available in the room?
-        ArrayList<Openable> openableForMenu = roomForMenu.getOpenableInRoom();
-
-        //scanner object for block
-        Scanner input = new Scanner(System.in);
-
-        System.out.println();
-        System.out.println("Which item would you like to open?");
-
-        //counter for numbers in menu
-        int menuCount = 1;
-
-        //hold integer from user input
-        int choice;
-
-        for(Openable o : openableForMenu)
+        if(roomForMenu.getOpenableInRoom().isEmpty())
         {
-            System.out.println(menuCount + ". " + o);
-            menuCount++;
-        }
-
-        System.out.println(menuCount + ". Quit");
-        System.out.println();
-        System.out.print("Choice: ");
-
-        choice = input.nextInt();
-
-        //make sure the choice is greater than zero, but within range of array
-        if(choice > 0 && choice <= openableForMenu.size())
-        {
-            //open the item and print return String to screen
             System.out.println();
-            System.out.println(openableForMenu.get(choice-1).open());
-
-            //TODO:remove from list of openable items
+            System.out.println("There are no openable items in this room.");
         }
         else
         {
-            //TODO: should I do something else here?
+            //what openable items are available in the room?
+            ArrayList<Openable> openableForMenu = roomForMenu.getOpenableInRoom();
+
+            //scanner object for block
+            Scanner input = new Scanner(System.in);
+
             System.out.println();
-            System.out.println("Bad selection.");
+            System.out.println("Which item would you like to open?");
+
+            //counter for numbers in menu
+            int menuCount = 1;
+
+            //hold integer from user input
+            int choice;
+
+            for(Openable o : openableForMenu)
+            {
+                System.out.println(menuCount + ". " + o);
+                menuCount++;
+            }
+
+            System.out.println(menuCount + ". Quit");
+            System.out.println();
+            System.out.print("Choice: ");
+
+            choice = input.nextInt();
+
+            //make sure the choice is greater than zero, but within range of array
+            if(choice > 0 && choice <= openableForMenu.size())
+            {
+                //open the item and print return String to screen
+                System.out.println();
+                System.out.println(openableForMenu.get(choice-1).open());
+
+                //TODO:remove from list of openable items
+            }
+            else
+            {
+                //TODO: should I do something else here?
+                System.out.println();
+                System.out.println("Bad selection.");
+            }
         }
     }
 
