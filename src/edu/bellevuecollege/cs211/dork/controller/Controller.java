@@ -2,6 +2,7 @@ package edu.bellevuecollege.cs211.dork.controller;
 import edu.bellevuecollege.cs211.dork.items.*;
 import edu.bellevuecollege.cs211.dork.model.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controller 
@@ -106,49 +107,56 @@ public class Controller
             System.out.println();
             System.out.print("Enter an integer: ");
 
-            int choice = scan.nextInt();
+            try
+            {
+                int choice = scan.nextInt();
 
-            //TODO: handle error cases
+                if(choice == 1)
+                {
+                    roomForScenario = movePath(roomForScenario);
+                }
+                else if(choice == 2)
+                {
+                    ArrayList<Item> itemsForMenu = roomForScenario.getItemsInRoom();
 
-            if(choice == 1)
-            {
-                roomForScenario = movePath(roomForScenario);
-            }
-            else if(choice == 2)
-            {
-                ArrayList<Item> itemsForMenu = roomForScenario.getItemsInRoom();
+                    System.out.println();
+                    System.out.println("Items in " + roomForScenario.getName() + ": " + itemsForMenu);
 
-                System.out.println();
-                System.out.println("Items in " + roomForScenario.getName() + ": " + itemsForMenu);
+                }
+                else if(choice == 3)
+                {
+                    manipulateItemsPath(roomForScenario, personForScenario);
 
-            }
-            else if(choice == 3)
-            {
-                manipulateItemsPath(roomForScenario, personForScenario);
+                }
+                else if(choice == 4)
+                {
+                    ArrayList<Item> peopleForMenu = roomForScenario.getPeopleInRoom();
 
+                    System.out.println();
+                    System.out.println("People in " + roomForScenario.getName() + ": " + peopleForMenu);
+                }
+                else if(choice == 5)
+                {
+                    interactPeoplePath(roomForScenario, personForScenario);
+                }
+                else if(choice == 6)
+                {
+                    System.out.println();
+                    System.out.println("May the dork be with you.");
+                    gameOver = true;
+                }
+                else
+                {
+                    //TODO: should I do something else here?
+                    System.out.println();
+                    System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                    continue;
+                }
             }
-            else if(choice == 4)
+            catch (InputMismatchException e)
             {
-                ArrayList<Item> peopleForMenu = roomForScenario.getPeopleInRoom();
-
-                System.out.println();
-                System.out.println("People in " + roomForScenario.getName() + ": " + peopleForMenu);
-            }
-            else if(choice == 5)
-            {
-                interactPeoplePath(roomForScenario, personForScenario);
-            }
-            else if(choice == 6)
-            {
-                System.out.println();
-                System.out.println("May the dork be with you.");
-                gameOver = true;
-            }
-            else
-            {
-                //TODO: should I do something else here?
-                System.out.println();
-                System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                scan.next();
+                //System.out.println();
                 continue;
             }
         }
