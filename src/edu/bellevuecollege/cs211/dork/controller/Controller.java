@@ -9,14 +9,14 @@ public class Controller
 	private static boolean gameOver;
 
     //Rooms in scenario ; rooms arrayed in '+' pattern
-    private static Room center;
-    private static Room top;
-    private static Room bottom;
-    private static Room left;
-    private static Room right;
+    //private static Room center;
+    //private static Room top;
+    //private static Room bottom;
+    //private static Room left;
+    //private static Room right;
 
     //used to track current room
-    private static Room currentRoom;
+    //private static Room currentRoom;
 
     //Items in scenario
     private static Item dirtyDiaper1;
@@ -33,10 +33,36 @@ public class Controller
     private static Person zombieMotherInLaw;
     private static Person zombieBaby;
     private static Person zombieKid;
-    private static Person player1;
+    //private static Person player1;
 	
 	public static void main(String Args[])
 	{
+        //Rooms in scenario
+        Room center = new Room("living room");
+        Room top = new Room("kitchen");
+        Room right = new Room("child bedroom");
+        Room bottom = new Room("bathroom");
+        Room left = new Room("adult bedroom");
+
+        //rooms arrayed in '+' pattern
+        alignRooms(center, top, right, bottom, left);
+        alignRooms(top, null, null, center, null);
+        alignRooms(right, null, null, null, center);
+        alignRooms(bottom, center, null, null, null);
+        alignRooms(left, null, center, null, null);
+
+        //set starting location
+        Room startingRoom = center;
+
+        //Items in scenario
+
+        //People in scenario
+        Person player1 = new Person("player1");
+
+        //running game
+        runScenario(startingRoom, player1);
+
+        /**
         //building map
         buildRooms();
         buildItems();
@@ -50,6 +76,7 @@ public class Controller
 
         //running game
         runScenario(currentRoom, player1);
+        **/
     }
 
     public static void runScenario(Room someRoom, Person somePerson)
@@ -221,7 +248,7 @@ public class Controller
         }
         else if(choice == 2)
         {
-            openableMenu(currentRoom);
+            openableMenu(roomForPath);
         }
         else if(choice == 3);
         {
@@ -519,6 +546,7 @@ public class Controller
      * Construct room objects and set the location of those
      * rooms objects in relation to each other.
      */
+    /**
     public static void buildRooms()
     {
         //set rooms on map
@@ -540,6 +568,23 @@ public class Controller
         bottom.setLocation(center, null, null, null);
         left.setLocation(null, center, null, null);
     }
+     **/
+
+    public static void alignRooms(Room reference, Room toTheNorth, Room toTheEast, Room toTheSouth, Room toTheWest)
+    {
+        //instantiate reference room
+        Room center = reference;
+
+        //instantiate adjacent rooms
+        Room north = toTheNorth;
+        Room east = toTheEast;
+        Room south = toTheSouth;
+        Room west = toTheWest;
+
+        //set relation of rooms to each other
+        //order of parameters is N, E, S, W
+        center.setLocation(north, east, south, west);
+    }
 
     public static void buildItems()
     {
@@ -553,6 +598,7 @@ public class Controller
         snowGlobe1 = new SnowGlobe("snow globe");
     }
 
+    /**
     public static void buildPeople()
     {
         //construct Person objects
@@ -563,7 +609,8 @@ public class Controller
         zombieKid = new Child("zombie toddler");
         player1 = new Person("player1");
     }
-
+     **/
+    /**
     public static void putThingsInRooms()
     {
         //add items for pickup
@@ -593,6 +640,6 @@ public class Controller
         right.addPerson(zombieKid);
         left.addPerson(zombieMom);
     }
-
+    **/
 }
 
