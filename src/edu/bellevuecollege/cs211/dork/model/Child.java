@@ -15,7 +15,7 @@ public class Child extends Person
         return "This is just the beginning of trouble.";
     }
 
-    public String cry()
+    public String speak()
     {
        return "WAAAAAAAAAAAAAAHHH!!!!!";
 
