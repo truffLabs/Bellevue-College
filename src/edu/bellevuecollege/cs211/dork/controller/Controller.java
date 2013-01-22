@@ -103,7 +103,7 @@ public class Controller
             System.out.println("3. Manipulate items in " + roomForScenario.getName());
             System.out.println("4. Show people in " + roomForScenario.getName());
             System.out.println("5. Interact with people in " + roomForScenario.getName());
-            System.out.println("6. Quit");
+            System.out.println("6. *Quit");
             System.out.println();
             System.out.print("Enter an integer: ");
 
@@ -147,7 +147,6 @@ public class Controller
                 }
                 else
                 {
-                    //TODO: should I do something else here?
                     System.out.println();
                     System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
                     continue;
@@ -167,83 +166,103 @@ public class Controller
         Room roomForPath = someRoom;
 
         Scanner scan = new Scanner(System.in);
-        System.out.println();
-        System.out.println("What would you like to do?");
-        System.out.println("1. Move North");
-        System.out.println("2. Move East");
-        System.out.println("3. Move South");
-        System.out.println("4. Move West");
-        System.out.println("5. Quit");
-        System.out.println();
-        System.out.print("Enter an integer: ");
-
-        int choice = scan.nextInt();
-
-        if(choice == 1)
-        {
-            //Check currentRoom.exists(Direction.NORTH);
-            //if the room exists -> go back to initial menu
-            if(roomForPath.roomExists(Direction.NORTH))
-            {
-                roomForPath = roomForPath.getNorth();
-            }
-            else
-            {
-                System.out.println();
-                System.out.println("****No room exists in the " + Direction.NORTH +  " direction.****");
-            }
-        }
-        else if(choice == 2)
-        {
-            //Check currentRoom.exists(Direction.EAST);
-            //if the room exists -> go back to initial menu
-            if(roomForPath.roomExists(Direction.EAST))
-            {
-                roomForPath = roomForPath.getEast();
-            }
-            else
-            {
-                System.out.println();
-                System.out.println("****No room exists in the " + Direction.EAST +  " direction.****");
-            }
-
-        }
-        else if(choice == 3)
-        {
-            //Check currentRoom.exists(Direction.SOUTH);
-            //if the room exists -> go back to initial menu
-            if(roomForPath.roomExists(Direction.SOUTH))
-            {
-                roomForPath = roomForPath.getSouth();
-            }
-            else
-            {
-                System.out.println();
-                System.out.println("****No room exists in the " + Direction.SOUTH +  " direction.****");
-            }
-
-        }
-        else if(choice == 4)
-        {
-            if(roomForPath.roomExists(Direction.WEST))
-            {
-                roomForPath = roomForPath.getWest();
-            }
-            else
-            {
-                System.out.println();
-                System.out.println("****No room exists in the " + Direction.WEST +  " direction.****");
-            }
-        }
-        else if(choice == 5)
+        while(true)
         {
             System.out.println();
-            System.out.println("May the dork be with you.");
-            gameOver = true;
+            System.out.println("What would you like to do? [Current Room: " + roomForPath.getName() + "]");
+            System.out.println("1. Move North");
+            System.out.println("2. Move East");
+            System.out.println("3. Move South");
+            System.out.println("4. Move West");
+            System.out.println("5. *Previous Menu");
+            System.out.println("6. *Quit");
+            System.out.println();
+            System.out.print("Enter an integer: ");
+
+            try
+            {
+                int choice = scan.nextInt();
+
+                if(choice == 1)
+                {
+                    //Check currentRoom.exists(Direction.NORTH);
+                    //if the room exists -> go back to initial menu
+                    if(roomForPath.roomExists(Direction.NORTH))
+                    {
+                        roomForPath = roomForPath.getNorth();
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("****No room exists in the " + Direction.NORTH +  " direction.****");
+                    }
+                }
+                else if(choice == 2)
+                {
+                    //Check currentRoom.exists(Direction.EAST);
+                    //if the room exists -> go back to initial menu
+                    if(roomForPath.roomExists(Direction.EAST))
+                    {
+                        roomForPath = roomForPath.getEast();
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("****No room exists in the " + Direction.EAST +  " direction.****");
+                    }
+
+                }
+                else if(choice == 3)
+                {
+                    //Check currentRoom.exists(Direction.SOUTH);
+                    //if the room exists -> go back to initial menu
+                    if(roomForPath.roomExists(Direction.SOUTH))
+                    {
+                        roomForPath = roomForPath.getSouth();
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("****No room exists in the " + Direction.SOUTH +  " direction.****");
+                    }
+
+                }
+                else if(choice == 4)
+                {
+                    if(roomForPath.roomExists(Direction.WEST))
+                    {
+                        roomForPath = roomForPath.getWest();
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("****No room exists in the " + Direction.WEST +  " direction.****");
+                    }
+                }
+                else if(choice == 5)
+                {
+                    break;
+                }
+                else if(choice == 6)
+                {
+                    System.out.println();
+                    System.out.println("May the dork be with you.");
+                    gameOver = true;
+                }
+                else
+                {
+                    System.out.println();
+                    System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                    continue;
+                }
+            }
+            catch(InputMismatchException e)
+            {
+                scan.next();
+                continue;
+            }
         }
-
         return roomForPath;
-
     }
 
     public static void manipulateItemsPath(Room someRoom, Person somePerson)
@@ -260,10 +279,10 @@ public class Controller
         System.out.println("What would you like to do?");
         System.out.println("1. Pick up item");
         System.out.println("2. Open item");
-        System.out.println("3. Quit");
+        System.out.println("3. *Quit");
         System.out.println();
         System.out.print("Enter an integer: ");
-
+        //TODO: try/catch here
         int choice = scan.nextInt();
 
         if(choice == 1)
@@ -286,47 +305,53 @@ public class Controller
 
     public static void interactPeoplePath(Room someRoom, Person somePerson)
     {
-        //Will 'somePerson' be attacking or defending?
-        String attackOrDefend;
-
         //define the Room where the Person will be interacting with People
         Room roomForPath = someRoom;
 
-        //define the Person who will be manipulating items
-        Person personForPath = somePerson;
-
-        //What weapons does 'personForPath' have for this path?
-        ArrayList<Weapon>  weaponsForPath = personForPath.getWeaponItems();
-
-        Scanner scan = new Scanner(System.in);
-        System.out.println();
-        System.out.println("What would you like to do?");
-        System.out.println("1. Attack people in " + roomForPath.getName());
-        System.out.println("2. Defend against people in " + roomForPath.getName());
-        System.out.println("3. Quit");
-        System.out.println();
-        System.out.print("Enter an integer: ");
-
-        int choice = scan.nextInt();
-
-        //TODO: handle error cases
-
-        if(choice == 1)
-        {
-            attackOrDefend = "attack";
-            attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
-        }
-        else if(choice == 2)
-        {
-            attackOrDefend = "defend";
-            attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
-
-        }
-        else if(choice == 3)
+        if(roomForPath.getPeopleInRoom().isEmpty())
         {
             System.out.println();
-            System.out.println("May the dork be with you.");
-            gameOver = true;
+            System.out.println("There are no people in this room.");
+        }
+        else
+        {
+            //Will 'somePerson' be attacking or defending?
+            String attackOrDefend;
+
+            //define the Person who will be manipulating items
+            Person personForPath = somePerson;
+
+            //What weapons does 'personForPath' have for this path?
+            ArrayList<Weapon>  weaponsForPath = personForPath.getWeaponItems();
+
+            Scanner scan = new Scanner(System.in);
+            System.out.println();
+            System.out.println("What would you like to do?");
+            System.out.println("1. Attack people in " + roomForPath.getName());
+            System.out.println("2. Defend against people in " + roomForPath.getName());
+            System.out.println("3. *Quit");
+            System.out.println();
+            System.out.print("Enter an integer: ");
+            //TODO: try/catch here
+            int choice = scan.nextInt();
+
+            if(choice == 1)
+            {
+                attackOrDefend = "attack";
+                attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+            }
+            else if(choice == 2)
+            {
+                attackOrDefend = "defend";
+                attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+
+            }
+            else if(choice == 3)
+            {
+                System.out.println();
+                System.out.println("May the dork be with you.");
+                gameOver = true;
+            }
         }
     }
 
@@ -364,7 +389,7 @@ public class Controller
                 menuCount++;
             }
 
-            System.out.println(menuCount + ". Quit");
+            System.out.println(menuCount + ". *Quit");
             System.out.println();
             System.out.print("Enter an integer: ");
 
@@ -429,7 +454,7 @@ public class Controller
                 menuCount++;
             }
 
-            System.out.println(menuCount + ". Quit");
+            System.out.println(menuCount + ". *Quit");
             System.out.println();
             System.out.print("Enter an integer: ");
 
@@ -499,7 +524,7 @@ public class Controller
                 menuCount++;
             }
 
-            System.out.println(menuCount + ". Quit");
+            System.out.println(menuCount + ". *Quit");
             System.out.println();
             System.out.print("Enter an integer: ");
 
@@ -531,7 +556,7 @@ public class Controller
                     menuCount++;
                 }
 
-                System.out.println(menuCount + ". Quit");
+                System.out.println(menuCount + ". *Quit");
                 System.out.println();
                 System.out.print("Enter an integer: ");
 
