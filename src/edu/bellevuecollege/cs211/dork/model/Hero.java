@@ -14,6 +14,6 @@ public class Hero extends Person
 
     public String die()
     {
-        return "This is the end.";
+        return this.getPersonsName() + " is dead.";
     }
 }
