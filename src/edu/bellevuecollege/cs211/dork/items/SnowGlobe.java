@@ -16,7 +16,7 @@ public class SnowGlobe extends Item implements Weapon{
    @Override
    public String attack(Person p)
    {
-       return "You just went all Sons Of Anarchy on" + p.getPersonsName() + ".";
+       return "You just went all Sons Of Anarchy on " + p.getPersonsName() + ".";
    }
 
    @Override
