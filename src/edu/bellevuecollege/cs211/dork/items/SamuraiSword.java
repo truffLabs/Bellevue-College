@@ -1,5 +1,5 @@
 package edu.bellevuecollege.cs211.dork.items;
-import edu.bellevuecollege.cs211.dork.model.Person;
+import edu.bellevuecollege.cs211.dork.model.*;
 
 public class SamuraiSword extends Item implements Weapon{
 
@@ -13,13 +13,11 @@ public class SamuraiSword extends Item implements Weapon{
        return "Sweet Jesus.";
    }
 
-   @Override
    public String attack(Person p)
    {
-       return "Like butter.";
+       return "Do not attack people with this weapon.";
    }
 
-   @Override
    public String defend(Weapon w)
    {
        return "You really need to move faster.";

@@ -8,10 +8,6 @@ public class Controller
 {
 	private static boolean gameOver;
 
-    //declare array list of zombies on map
-    private static ArrayList<Zombie> zombiesInScenario = new ArrayList<Zombie>();
-
-
 	public static void main(String Args[])
 	{
         //Rooms in scenario
@@ -48,9 +44,8 @@ public class Controller
         Child baby = new Child("baby");
         Child kid = new Child("kid");
 
-        //initialize zombie and add to list
+        //initialize zombie
         Zombie evilZombie = new Zombie("zombie");
-        zombiesInScenario.add(evilZombie);
 
         //Place things
         //add items for pickup
@@ -473,8 +468,11 @@ public class Controller
             //hold integer from user input
             int choice;
 
-            //set the weapon that will be used for attack
+            //assign weapon that will be used for attack
             Weapon weaponForAttackOrDefend;
+
+            //assign person to attack or defend
+            Person personToAttackOrDefend;
 
             System.out.println();
             System.out.println("Which item would you like to " + attackOrDefend + " with?");
@@ -524,11 +522,30 @@ public class Controller
 
                 choice = input.nextInt();
 
+                //assign person
+                personToAttackOrDefend = peopleForMenu.get(choice-1);
+
                 if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("attack"))
                 {
+                    //TODO: put in method
+                    //public static Boolean checkZombieDeadGameOver(Weapon someWeapon, Person somePerson)
+                    //gameOver = checkZombieDeadGameOver(weaponForAttackOrDefend, personToAttackOrDefend);
+                    //if you attack the zombie with the samurai sword -> YOU WIN!
+                    if(weaponForAttackOrDefend instanceof SamuraiSword && personToAttackOrDefend instanceof Zombie)
+                    {
+                        //kill the zombie
+                        System.out.println();
+                        System.out.println(((Zombie) personToAttackOrDefend).die());
+                        System.out.println();
+                        System.out.println("****YOU WIN. THE ZOMBIE IS DEAD!****");
+                        gameOver = true;
+                    }
+                    else
+                    {
                     //do the attacking
                     System.out.println();
                     System.out.println(weaponForAttackOrDefend.attack(peopleForMenu.get(choice-1)));
+                    }
                 }
                 else if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("defend"))
                 {

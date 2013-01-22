@@ -7,8 +7,13 @@ public class Zombie extends Person
         super(someName);
     }
 
-    public String speak()
+    public String growl()
     {
         return "GRRRRRRRRRRR...AAAAAAAAHHHH...GRRRRRRRR...";
+    }
+
+    public String die()
+    {
+        return "I'm meeelllltttiiingggg!";
     }
 }
