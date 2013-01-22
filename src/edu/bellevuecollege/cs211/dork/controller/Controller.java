@@ -37,12 +37,15 @@ public class Controller
         SamuraiSword samuraiSword = new SamuraiSword("samurai sword");
 
         //People in scenario
-        Person player1 = new Person("player1");
+        //Person player1 = new Person("player1");
         Person mom = new Person("mom");
         Person dad = new Person("dad");
         Person motherInLaw = new Person("mother-in-law");
         Child baby = new Child("baby");
         Child kid = new Child("kid");
+
+        //initialize main character
+        Hero player1 = new Hero("player1");
 
         //initialize zombie
         Zombie evilZombie = new Zombie("zombie");
@@ -83,7 +86,6 @@ public class Controller
 
         //running game
         runScenario(startingRoom, player1);
-
     }
 
     public static void runScenario(Room someRoom, Person somePerson)
@@ -535,9 +537,19 @@ public class Controller
                     {
                         //kill the zombie
                         System.out.println();
-                        System.out.println(((Zombie) personToAttackOrDefend).die());
+                        System.out.println(((Zombie)personToAttackOrDefend).die());
                         System.out.println();
                         System.out.println("****YOU WIN. THE ZOMBIE IS DEAD!****");
+                        gameOver = true;
+                    }
+                    else if(personToAttackOrDefend instanceof Zombie)
+                    {
+                        //kill the hero
+                        System.out.println();
+                        System.out.println("You can't kill a zombie with a " + weaponForAttackOrDefend.toString() +
+                                ". ");
+                        System.out.println();
+                        System.out.println("****" + (((Hero)personForMenu).die()) + " GAME OVER!****");
                         gameOver = true;
                     }
                     else
