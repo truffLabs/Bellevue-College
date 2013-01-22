@@ -237,6 +237,7 @@ public class Controller
         Person personForPath = somePerson;
 
         Scanner scan = new Scanner(System.in);
+
         System.out.println();
         System.out.println("What would you like to do?");
         System.out.println("1. Pick up item");
@@ -250,12 +251,14 @@ public class Controller
         if(choice == 1)
         {
             pickUpMenu(roomForPath, personForPath);
+
         }
         else if(choice == 2)
         {
             openableMenu(roomForPath);
         }
-        else if(choice == 3);
+        //TODO: figure out why if this is an 'else-if' it always gets called after methods above return...ALWAYS
+        else// if(choice == 3);
         {
             System.out.println();
             System.out.println("May the dork be with you.");
@@ -280,10 +283,9 @@ public class Controller
         Scanner scan = new Scanner(System.in);
         System.out.println();
         System.out.println("What would you like to do?");
-        System.out.println("1. Attack people in living room");
-        System.out.println("2. Defend against people in living room");
-        System.out.println("3. Talk to people in living room");
-        System.out.println("4. Quit");
+        System.out.println("1. Attack people in " + roomForPath.getName());
+        System.out.println("2. Defend against people in " + roomForPath.getName());
+        System.out.println("3. Quit");
         System.out.println();
         System.out.print("Choice: ");
 
@@ -304,14 +306,10 @@ public class Controller
         }
         else if(choice == 3)
         {
-            //talkMenu(Room someRoom, Person somePerson);
-
-        }
-        else if(choice == 4)
-        {
             System.out.println();
             System.out.println("May the dork be with you.");
             gameOver = true;
+
         }
     }
 
