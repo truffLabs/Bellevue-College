@@ -293,46 +293,9 @@ public class Controller
         }
         else if(choice == 2)
         {
-            System.out.println();
-            System.out.println("Which item would you like to open?");
-
-            //counter for numbers in menu
-            int menuCount = 1;
-
-            for(Openable o : openableItems)
-            {
-                System.out.println(menuCount + ". " + o);
-                menuCount++;
-            }
-
-            System.out.println(menuCount + ". Quit");
-            System.out.println();
-            System.out.print("Choice: ");
-
-            choice = scan.nextInt();
-
-            //make sure the choice is greater than zero, but within range of array
-            if(choice > 0 && choice <= openableItems.size())
-            {
-                //open the item and print return String to screen
-                System.out.println();
-                System.out.println(openableItems.get(choice-1).open());
-
-                //TODO:remove from list of openable items
-
-                //user feedback
-                //System.out.println();
-                //System.out.println("You picked up a " + itemsForPickup.get(choice-1));
-            }
-            else
-            {
-                //TODO: should I do something else here?
-                System.out.println();
-                System.out.println("Bad selection.");
-            }
-
+            //make call to openableMenu method
+            openableMenu(currentRoom);
         }
-        //TODO: Make sure I'm only attacking with items the user has already picked up
         else if(choice == 3 && personForPath.getWeaponItems().isEmpty())
         {
             System.out.println(personForPath.getWeaponItems());
@@ -342,12 +305,54 @@ public class Controller
         {
             attackMenu(currentRoom, personForPath);
         }
-
     }
 
-    public static void openMenu()
+    public static void openableMenu(Room someRoom)
     {
-        //TODO: move code into here from open items stuff
+        Room roomForMenu = someRoom;
+
+        //what openable items are available in the room?
+        ArrayList<Openable> openableForMenu = roomForMenu.getOpenableInRoom();
+
+        //scanner object for block
+        Scanner input = new Scanner(System.in);
+
+        System.out.println();
+        System.out.println("Which item would you like to open?");
+
+        //counter for numbers in menu
+        int menuCount = 1;
+
+        //hold integer from user input
+        int choice;
+
+        for(Openable o : openableForMenu)
+        {
+            System.out.println(menuCount + ". " + o);
+            menuCount++;
+        }
+
+        System.out.println(menuCount + ". Quit");
+        System.out.println();
+        System.out.print("Choice: ");
+
+        choice = input.nextInt();
+
+        //make sure the choice is greater than zero, but within range of array
+        if(choice > 0 && choice <= openableForMenu.size())
+        {
+            //open the item and print return String to screen
+            System.out.println();
+            System.out.println(openableForMenu.get(choice-1).open());
+
+            //TODO:remove from list of openable items
+        }
+        else
+        {
+            //TODO: should I do something else here?
+            System.out.println();
+            System.out.println("Bad selection.");
+        }
     }
 
     //ASSUMPTION: I'm not calling the attackMenu method unless I first know the person has weapons to use
