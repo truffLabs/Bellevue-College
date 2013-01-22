@@ -229,7 +229,7 @@ public class RoomTest {
         assertTrue(listOfItemsInRoom.contains(diaperInRoom));
         assertTrue(listOfItemsInRoom.contains(diaperInRoom2));
 
-        testRemoveItem.clearItems();
+        testRemoveItem.clearItems(listOfItemsInRoom);
 
         //is the list empty?
         assertTrue(listOfItemsInRoom.isEmpty());
