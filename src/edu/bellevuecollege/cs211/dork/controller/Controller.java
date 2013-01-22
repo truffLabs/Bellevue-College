@@ -89,14 +89,14 @@ public class Controller
         Scanner scan = new Scanner(System.in);
         while(!gameOver)
         {
-
             System.out.println();
             System.out.println("What would you like to do?");
             System.out.println("1. Move");
             System.out.println("2. Show items in " + roomForScenario.getName());
             System.out.println("3. Manipulate items in " + roomForScenario.getName());
             System.out.println("4. Show people in " + roomForScenario.getName());
-            System.out.println("5. Quit");
+            System.out.println("5. Interact with people in " + roomForScenario.getName());
+            System.out.println("6. Quit");
             System.out.println();
             System.out.print("Choice: ");
 
@@ -118,7 +118,7 @@ public class Controller
             }
             else if(choice == 3)
             {
-                manipulateItemsPath(personForScenario);
+                manipulateItemsPath(roomForScenario, personForScenario);
 
             }
             else if(choice == 4)
@@ -130,11 +130,15 @@ public class Controller
             }
             else if(choice == 5)
             {
+                //TODO: implement interact with people path
+                interactPeoplePath(roomForScenario, personForScenario);
+            }
+            else if(choice == 6)
+            {
                 System.out.println();
                 System.out.println("May the dork be with you.");
                 gameOver = true;
             }
-
         }
     }
 
@@ -201,8 +205,6 @@ public class Controller
         }
         if(choice == 4)
         {
-            //Check currentRoom.exists(Direction.WEST);
-            //if the room exists -> go back to initial menu
             if(roomForPath.roomExists(Direction.WEST))
             {
                 roomForPath = roomForPath.getWest();
@@ -224,12 +226,15 @@ public class Controller
 
     }
 
-    public static void manipulateItemsPath(Person somePerson)
+    public static void manipulateItemsPath(Room someRoom, Person somePerson)
     {
 
         ArrayList<Item>  itemsForPickup = currentRoom.getItemsInRoom();
         ArrayList<Openable>  openableItems = currentRoom.getOpenableInRoom();
         ArrayList<Weapon>  weaponItems = currentRoom.getWeaponInRoom();
+
+        //define the Room where items will be manipulated
+        Room roomForPath = someRoom;
 
         //define the Person who will be manipulating items
         Person personForPath = somePerson;
@@ -239,27 +244,110 @@ public class Controller
         System.out.println("What would you like to do?");
         System.out.println("1. Pick up item");
         System.out.println("2. Open item");
-        System.out.println("3. Attack with item");
+        System.out.println("3. Quit");
+        System.out.println();
+        System.out.print("Choice: ");
+
+        int choice = scan.nextInt();
+
+        if(choice == 1)
+        {
+            pickUpMenu(roomForPath, personForPath);
+        }
+        //Don't enter path if there aren't any openable items in the room
+        else if(choice == 2 && openableItems.isEmpty())
+        {
+            //TODO: configure openableMenu to do this error checking
+            System.out.println();
+            System.out.println("There are no openable items in this room.");
+        }
+        else if(choice == 2)
+        {
+            openableMenu(currentRoom);
+        }
+    }
+
+    public static void interactPeoplePath(Room someRoom, Person somePerson)
+    {
+        //Will 'somePerson' be attacking or defending?
+        String attackOrDefend;
+
+        //define the Room where the Person will be interacting with People
+        Room roomForPath = someRoom;
+
+        //define the Person who will be manipulating items
+        Person personForPath = somePerson;
+
+        //What weapons does 'personForPath' have for this path?
+        ArrayList<Weapon>  weaponsForPath = personForPath.getWeaponItems();
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println();
+        System.out.println("What would you like to do?");
+        System.out.println("1. Attack people in living room");
+        System.out.println("2. Defend against people in living room");
+        System.out.println("3. Talk to people in living room");
         System.out.println("4. Quit");
         System.out.println();
         System.out.print("Choice: ");
 
         int choice = scan.nextInt();
 
-        if(choice == 1 && itemsForPickup.isEmpty())
+        //TODO: handle error cases
+
+        if(choice == 1)
+        {
+            attackOrDefend = "attack";
+            attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+        }
+        else if(choice == 2)
+        {
+            attackOrDefend = "defend";
+            attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+
+        }
+        else if(choice == 3)
+        {
+            //talkMenu(Room someRoom, Person somePerson);
+
+        }
+        else if(choice == 4)
         {
             System.out.println();
-            System.out.println("There are no items that can be picked up in this room.");
+            System.out.println("May the dork be with you.");
+            gameOver = true;
         }
-        else if(choice == 1)
+    }
+
+    public static void pickUpMenu(Room someRoom, Person somePerson)
+    {
+        Room roomForMenu = someRoom;
+
+        if(roomForMenu.getItemsInRoom().isEmpty())
         {
+            System.out.println();
+            System.out.println("There are no items to pick up in this room.");
+        }
+        else
+        {
+            Person personForMenu = somePerson;
+
+            //what items are available in the room?
+            ArrayList<Item> itemsForMenu = roomForMenu.getItemsInRoom();
+
             System.out.println();
             System.out.println("Which item would you like to pick up?");
+
+            //scanner object for block
+            Scanner input = new Scanner(System.in);
 
             //counter for numbers in menu
             int menuCount = 1;
 
-            for(Item i : itemsForPickup)
+            //hold integer from user input
+            int choice;
+
+            for(Item i : itemsForMenu)
             {
                 System.out.println(menuCount + ". " + i);
                 menuCount++;
@@ -269,52 +357,32 @@ public class Controller
             System.out.println();
             System.out.print("Choice: ");
 
-            choice = scan.nextInt();
+            choice = input.nextInt();
 
             //make sure the choice is greater than zero, but within range of array
-            if(choice > 0 && choice <= itemsForPickup.size())
+            if(choice > 0 && choice <= itemsForMenu.size())
             {
                 //pickup the item and add it to 'personForPath'
-                personForPath.addItems(itemsForPickup.get(choice-1));
+                personForMenu.addItems(itemsForMenu.get(choice-1));
 
                 //TODO: better way to add item to Weapon list on Person?
-                if(itemsForPickup.get(choice-1) instanceof Weapon)
+                if(itemsForMenu.get(choice-1) instanceof Weapon)
                 {
                     //also add the item to the Weapon list on 'personForPath'
-                    personForPath.addItems((Weapon)itemsForPickup.get(choice-1));
+                    personForMenu.addItems((Weapon)itemsForMenu.get(choice-1));
                 }
 
                 //TODO:remove it from the room
 
                 //user feedback
                 System.out.println();
-                System.out.println("You picked up a " + itemsForPickup.get(choice-1));
+                System.out.println("You picked up a " + itemsForMenu.get(choice-1));
             }
             else
             {
                 //TODO: should I do something else here?
                 System.out.println("Bad selection.");
             }
-        }
-        //Don't enter path if there aren't any openable items in the room
-        else if(choice == 2 && openableItems.isEmpty())
-        {
-            System.out.println();
-            System.out.println("There are no openable items in this room.");
-        }
-        else if(choice == 2)
-        {
-            //make call to openableMenu method
-            openableMenu(currentRoom);
-        }
-        else if(choice == 3 && personForPath.getWeaponItems().isEmpty())
-        {
-            System.out.println(personForPath.getWeaponItems());
-            System.out.println("You haven't picked up anything to attack with.");
-        }
-        else if(choice == 3)
-        {
-            attackMenu(currentRoom, personForPath);
         }
     }
 
@@ -366,61 +434,46 @@ public class Controller
         }
     }
 
-    //ASSUMPTION: I'm not calling the attackMenu method unless I first know the person has weapons to use
-    public static void attackMenu(Room someRoom, Person somePerson)
+    public static void attackOrDefendMenu(String attackOrDefend, Room someRoom, Person somePerson)
     {
-        Room roomForMenu = someRoom;
+        String attackOrDefendForMenu = attackOrDefend;
+
         Person personForMenu = somePerson;
 
-        //what weapons does the person have to use?
-        ArrayList<Weapon> weaponsForMenu = personForMenu.getWeaponItems();
-
-        //who can the person use these weapons against?
-        ArrayList<Person> peopleForMenu = roomForMenu.getPeopleInRoom();
-
-        //scanner object for block
-        Scanner input = new Scanner(System.in);
-
-        //counter for numbers in menu
-        int menuCount = 1;
-
-        //hold integer from user input
-        int choice;
-
-        //set the weapon that will be used for attack
-        Weapon weaponForAttack;
-
-        System.out.println();
-        System.out.println("Which item would you like to attack with?");
-
-        //TODO: Loop through Weapon objects that 'personForMenu' holds
-        for(Weapon w : weaponsForMenu)
+        if(personForMenu.getWeaponItems().isEmpty())
         {
-            System.out.println(menuCount + ". " + w);
-            menuCount++;
+            System.out.println();
+            System.out.println("You haven't picked up anything to " + attackOrDefend + " with.");
         }
-
-        System.out.println(menuCount + ". Quit");
-        System.out.println();
-        System.out.print("Choice: ");
-
-        choice = input.nextInt();
-
-        //make sure the choice is greater than zero, but within range of array
-        if(choice > 0 && choice <= weaponsForMenu.size())
+        else
         {
-            //set weapon to use
-            weaponForAttack = weaponsForMenu.get(choice-1);
+            Room roomForMenu = someRoom;
+
+            //what weapons does the person have to use?
+            ArrayList<Weapon> weaponsForMenu = personForMenu.getWeaponItems();
+
+            //who can the person use these weapons against?
+            ArrayList<Person> peopleForMenu = roomForMenu.getPeopleInRoom();
+
+            //scanner object for block
+            Scanner input = new Scanner(System.in);
 
             //counter for numbers in menu
-            menuCount = 1;
+            int menuCount = 1;
+
+            //hold integer from user input
+            int choice;
+
+            //set the weapon that will be used for attack
+            Weapon weaponForAttackOrDefend;
 
             System.out.println();
-            System.out.println("Who would you like to attack?");
+            System.out.println("Which item would you like to " + attackOrDefend + " with?");
 
-            for(Person p : peopleForMenu)
+            //TODO: Loop through Weapon objects that 'personForMenu' holds
+            for(Weapon w : weaponsForMenu)
             {
-                System.out.println(menuCount + ". " + p);
+                System.out.println(menuCount + ". " + w);
                 menuCount++;
             }
 
@@ -430,11 +483,56 @@ public class Controller
 
             choice = input.nextInt();
 
-            if(choice > 0 && choice <= peopleForMenu.size())
+            //make sure the choice is greater than zero, but within range of array
+            if(choice > 0 && choice <= weaponsForMenu.size())
             {
-                //do the attacking
+                //set weapon to use
+                weaponForAttackOrDefend = weaponsForMenu.get(choice-1);
+
+                //counter for numbers in menu
+                menuCount = 1;
+
+                if(attackOrDefend.equals("attack"))
+                {
+                    System.out.println();
+                    System.out.println("Who would you like to " + attackOrDefend + "?");
+                }
+                else if (attackOrDefend.equals("defend"))
+                {
+                    System.out.println();
+                    System.out.println("Who would you like to " + attackOrDefend + " against?");
+                }
+
+                for(Person p : peopleForMenu)
+                {
+                    System.out.println(menuCount + ". " + p);
+                    menuCount++;
+                }
+
+                System.out.println(menuCount + ". Quit");
                 System.out.println();
-                System.out.println(weaponForAttack.attack(peopleForMenu.get(choice-1)));
+                System.out.print("Choice: ");
+
+                choice = input.nextInt();
+
+                if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("attack"))
+                {
+                    //do the attacking
+                    System.out.println();
+                    System.out.println(weaponForAttackOrDefend.attack(peopleForMenu.get(choice-1)));
+                }
+                else if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("defend"))
+                {
+                    //do the attacking
+                    System.out.println();
+                    System.out.println(weaponForAttackOrDefend.defend(weaponForAttackOrDefend));
+                }
+                else
+                {
+                    //TODO: should I do something else here?
+                    System.out.println();
+                    System.out.println("Bad selection.");
+                }
             }
             else
             {
@@ -442,17 +540,7 @@ public class Controller
                 System.out.println();
                 System.out.println("Bad selection.");
             }
-
-
         }
-        else
-        {
-            //TODO: should I do something else here?
-            System.out.println();
-            System.out.println("Bad selection.");
-        }
-
-
     }
 
     /**
