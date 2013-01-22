@@ -25,7 +25,7 @@ public class Controller
     private static Item diaperGeenie1;
     private static Item babyWipeContainer1;
     private static Item sippyCup1;
-    private static Item bat1;
+    private static Weapon bat1;
     private static Item bat2;
     private static Item snowGlobe1;
 
@@ -115,7 +115,7 @@ public class Controller
             }
             else if(choice == 3)
             {
-                manipulateItemsPath();
+                manipulateItemsPath(player1);
 
             }
             else if(choice == 4)
@@ -213,14 +213,15 @@ public class Controller
 
     }
 
-    public static void manipulateItemsPath()
+    public static void manipulateItemsPath(Person somePerson)
     {
-
-        //create menu
 
         ArrayList<Item>  itemsForPickup = currentRoom.getItemsInRoom();
         ArrayList<Openable>  openableItems = currentRoom.getOpenableInRoom();
         ArrayList<Weapon>  weaponItems = currentRoom.getWeaponInRoom();
+
+        //define the Person who will be manipulating items
+        Person personForPath = somePerson;
 
         Scanner scan = new Scanner(System.in);
         System.out.println();
@@ -264,6 +265,13 @@ public class Controller
             {
                 //pickup the item and add it to player1
                 player1.addItems(itemsForPickup.get(choice-1));
+
+                //TODO: better way to add item to Weapon list on Person?
+                if(itemsForPickup.get(choice-1) instanceof Weapon)
+                {
+                    //also add the item to the Weapon list on 'personForPath'
+                    player1.addItems((Weapon)itemsForPickup.get(choice-1));
+                }
 
                 //TODO:remove it from the room
 
@@ -325,14 +333,14 @@ public class Controller
 
         }
         //TODO: Make sure I'm only attacking with items the user has already picked up
-        else if(choice == 3 && weaponItems.isEmpty())
+        else if(choice == 3 && personForPath.getWeaponItems().isEmpty())
         {
-            System.out.println();
-            System.out.println("There are no items that can be used as weapons in this room.");
+            System.out.println(personForPath.getWeaponItems());
+            System.out.println("You haven't picked up anything to attack with.");
         }
         else if(choice == 3)
         {
-            attackMenu(currentRoom);
+            attackMenu(currentRoom, personForPath);
         }
 
     }
@@ -342,10 +350,16 @@ public class Controller
         //TODO: move code into here from open items stuff
     }
 
-    public static void attackMenu(Room someRoom)
+    //ASSUMPTION: I'm not calling the attackMenu method unless I first know the person has weapons to use
+    public static void attackMenu(Room someRoom, Person somePerson)
     {
         Room roomForMenu = someRoom;
-        ArrayList<Weapon> weaponsForMenu = roomForMenu.getWeaponInRoom();
+        Person personForMenu = somePerson;
+
+        //what weapons does the person have to use?
+        ArrayList<Weapon> weaponsForMenu = personForMenu.getWeaponItems();
+
+        //who can the person use these weapons against?
         ArrayList<Person> peopleForMenu = roomForMenu.getPeopleInRoom();
 
         //scanner object for block
@@ -363,6 +377,7 @@ public class Controller
         System.out.println();
         System.out.println("Which item would you like to attack with?");
 
+        //TODO: Loop through Weapon objects that 'personForMenu' holds
         for(Weapon w : weaponsForMenu)
         {
             System.out.println(menuCount + ". " + w);
@@ -375,12 +390,12 @@ public class Controller
 
         choice = input.nextInt();
 
-        //set weapon to use
-        weaponForAttack = weaponsForMenu.get(choice-1);
-
         //make sure the choice is greater than zero, but within range of array
         if(choice > 0 && choice <= weaponsForMenu.size())
         {
+            //set weapon to use
+            weaponForAttack = weaponsForMenu.get(choice-1);
+
             //counter for numbers in menu
             menuCount = 1;
 
@@ -476,7 +491,7 @@ public class Controller
     public static void putThingsInRooms()
     {
         //add items for pickup
-        center.addItem(bat1);
+        center.addItem((Item) bat1);
         top.addItem(sippyCup1);
         right.addItem(babyWipeContainer1);
         right.addItem(dirtyDiaper1);
