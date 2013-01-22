@@ -332,8 +332,7 @@ public class Room
     @Override
     public String toString()
     {
-        return "Room name: " + this.name + "\nAdjacency: " + "north - " + this.getNorth().getName() + " south - "
-                + this.getSouth().getName() + " east - " + this.getEast().getName() + " west - " + this.getWest();
+        return this.name;
     }
 
     public String getName() {
