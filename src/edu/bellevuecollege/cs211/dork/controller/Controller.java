@@ -8,75 +8,80 @@ public class Controller
 {
 	private static boolean gameOver;
 
-    //Rooms in scenario ; rooms arrayed in '+' pattern
-    //private static Room center;
-    //private static Room top;
-    //private static Room bottom;
-    //private static Room left;
-    //private static Room right;
-
-    //used to track current room
-    //private static Room currentRoom;
-
-    //Items in scenario
-    private static Item dirtyDiaper1;
-    private static Item diaperGeenie1;
-    private static Item babyWipeContainer1;
-    private static Item sippyCup1;
-    private static Weapon bat1;
-    private static Item bat2;
-    private static Item snowGlobe1;
-
-    //People in scenario
-    private static Person zombieMom;
-    private static Person zombieDad;
-    private static Person zombieMotherInLaw;
-    private static Person zombieBaby;
-    private static Person zombieKid;
-    //private static Person player1;
-	
 	public static void main(String Args[])
 	{
         //Rooms in scenario
+        Room topLeft = new Room("patio");
         Room center = new Room("living room");
         Room top = new Room("kitchen");
         Room right = new Room("child bedroom");
         Room bottom = new Room("bathroom");
-        Room left = new Room("adult bedroom");
+        Room left = new Room("main bedroom");
 
-        //rooms arrayed in '+' pattern
+        //rooms arrayed in '+' pattern with one additional room in top left corner
+        alignRooms(topLeft, null, top, left, null);
         alignRooms(center, top, right, bottom, left);
-        alignRooms(top, null, null, center, null);
+        alignRooms(top, null, null, center, topLeft);
         alignRooms(right, null, null, null, center);
         alignRooms(bottom, center, null, null, null);
-        alignRooms(left, null, center, null, null);
+        alignRooms(left, topLeft, center, null, null);
+
+        //Items in scenario
+        DirtyDiaper dirtyDiaper1 = new DirtyDiaper("dirty diaper");
+        DiaperGeenie diaperGeenie1 = new DiaperGeenie("diaper geenie");
+        BabyWipeContainer babyWipeContainer1 = new BabyWipeContainer("baby wipe container");
+        SippyCup sippyCup1 = new SippyCup("sippy cup");
+        Bat bat1= new Bat("foam bat");
+        Bat bat2= new Bat("foam bat");
+        SnowGlobe snowGlobe1 = new SnowGlobe("snow globe");
+        SamuraiSword samuraiSword = new SamuraiSword("samurai sword");
+
+        //People in scenario
+        Person player1 = new Person("player1");
+        Zombie evilZombie = new Zombie("zombie");
+        Person mom = new Person("mom");
+        Person dad = new Person("dad");
+        Person motherInLaw = new Person("mother-in-law");
+        Child baby = new Child("baby");
+        Child kid = new Child("kid");
+
+        //Place things
+        //add items for pickup
+        center.addItem(bat1);
+        top.addItem(sippyCup1);
+        right.addItem(babyWipeContainer1);
+        right.addItem(dirtyDiaper1);
+        bottom.addItem(diaperGeenie1);
+        bottom.addItem(samuraiSword);
+        left.addItem(snowGlobe1);
+        left.addItem(bat2);
+
+        //add items to openable lists in room
+        top.addOpenableItem(sippyCup1);
+        right.addOpenableItem(babyWipeContainer1);
+        right.addOpenableItem(dirtyDiaper1);
+        bottom.addOpenableItem(diaperGeenie1);
+
+        //add items to weapon lists in room
+        center.addWeaponItem(bat1);
+        bottom.addWeaponItem(samuraiSword);
+        left.addWeaponItem(snowGlobe1);
+        left.addWeaponItem(bat2);
+
+        //add people
+        center.addPerson(dad);
+        top.addPerson(motherInLaw);
+        right.addPerson(baby);
+        right.addPerson(kid);
+        bottom.addPerson(evilZombie);
+        left.addPerson(mom);
 
         //set starting location
         Room startingRoom = center;
 
-        //Items in scenario
-
-        //People in scenario
-        Person player1 = new Person("player1");
-
         //running game
         runScenario(startingRoom, player1);
 
-        /**
-        //building map
-        buildRooms();
-        buildItems();
-        buildPeople();
-
-        //populating rooms
-        putThingsInRooms();
-
-        //set starting location
-        currentRoom = center;
-
-        //running game
-        runScenario(currentRoom, player1);
-        **/
     }
 
     public static void runScenario(Room someRoom, Person somePerson)
@@ -542,38 +547,10 @@ public class Controller
         }
     }
 
-    /**
-     * Construct room objects and set the location of those
-     * rooms objects in relation to each other.
-     */
-    /**
-    public static void buildRooms()
-    {
-        //set rooms on map
-        //create room in shape of '+' with five total
-        //rooms ; one in center and one at each extremity
-
-        center = new Room("living room");
-        top = new Room("kitchen");
-        right = new Room("child bedroom");
-        bottom = new Room("bathroom");
-        left = new Room("adult bedroom");
-
-
-        //set relation of rooms to each other
-        //order of parameters is N, E, S, W
-        center.setLocation(top, right, bottom, left);
-        top.setLocation(null, null, center, null);
-        right.setLocation(null, null, null, center);
-        bottom.setLocation(center, null, null, null);
-        left.setLocation(null, center, null, null);
-    }
-     **/
-
     public static void alignRooms(Room reference, Room toTheNorth, Room toTheEast, Room toTheSouth, Room toTheWest)
     {
         //instantiate reference room
-        Room center = reference;
+        Room baseRoom = reference;
 
         //instantiate adjacent rooms
         Room north = toTheNorth;
@@ -583,63 +560,7 @@ public class Controller
 
         //set relation of rooms to each other
         //order of parameters is N, E, S, W
-        center.setLocation(north, east, south, west);
+        baseRoom.setLocation(north, east, south, west);
     }
-
-    public static void buildItems()
-    {
-        //construct Item objects
-        dirtyDiaper1 = new DirtyDiaper("dirty diaper");
-        diaperGeenie1 = new DiaperGeenie("diaper geenie");
-        babyWipeContainer1 = new BabyWipeContainer("baby wipe container");
-        sippyCup1 = new SippyCup("sippy cup");
-        bat1= new Bat("foam bat");
-        bat2= new Bat("foam bat");
-        snowGlobe1 = new SnowGlobe("snow globe");
-    }
-
-    /**
-    public static void buildPeople()
-    {
-        //construct Person objects
-        zombieMom = new Person("zombie mom");
-        zombieDad = new Person("zombie dad");
-        zombieMotherInLaw = new Person("zombie mother-in-law");
-        zombieBaby = new Child("zombie infant");
-        zombieKid = new Child("zombie toddler");
-        player1 = new Person("player1");
-    }
-     **/
-    /**
-    public static void putThingsInRooms()
-    {
-        //add items for pickup
-        center.addItem((Item) bat1);
-        top.addItem(sippyCup1);
-        right.addItem(babyWipeContainer1);
-        right.addItem(dirtyDiaper1);
-        bottom.addItem(diaperGeenie1);
-        left.addItem(snowGlobe1);
-        left.addItem(bat2);
-
-        //add items to openable lists in room
-        top.addOpenableItem((Openable) sippyCup1);
-        right.addOpenableItem((Openable) babyWipeContainer1);
-        right.addOpenableItem((Openable) dirtyDiaper1);
-        bottom.addOpenableItem((Openable) diaperGeenie1);
-
-        //add items to weapon lists in room
-        center.addWeaponItem((Weapon) bat1);
-        left.addWeaponItem((Weapon) snowGlobe1);
-        left.addWeaponItem((Weapon) bat2);
-
-        //add people
-        center.addPerson(zombieDad);
-        top.addPerson(zombieMotherInLaw);
-        right.addPerson(zombieBaby);
-        right.addPerson(zombieKid);
-        left.addPerson(zombieMom);
-    }
-    **/
 }
 
