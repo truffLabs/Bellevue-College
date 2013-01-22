@@ -37,7 +37,6 @@ public class Controller
         SamuraiSword samuraiSword = new SamuraiSword("samurai sword");
 
         //People in scenario
-        //Person player1 = new Person("player1");
         Person mom = new Person("mom");
         Person dad = new Person("dad");
         Person motherInLaw = new Person("mother-in-law");
