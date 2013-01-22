@@ -5,11 +5,11 @@ public class PropertiesFileClient {
 
     public static void main(String Args[]){
 
-        String someInputPath = getInputPath();
-        String someOutputPath = getOutputPath();
+        //String someInputPath = getInputPath();
+        //String someOutputPath = getOutputPath();
 
-        PropertiesFile inputPropertiesFile = new PropertiesFile(someInputPath);
-        inputPropertiesFile.convertToChefAttributesFile(someOutputPath);
+        PropertiesFile inputPropertiesFile = new PropertiesFile("/Users/pakaehua/Temp/profile.properties");
+        inputPropertiesFile.convertToChefAttributesFile("/Users/pakaehua/Temp/" + "output.txt");
     }
 
     public static String getInputPath(){

@@ -1,9 +1,11 @@
 package disney.sedid.chef.util.filemagic;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.Scanner;
 
 public class PropertiesFile {
 
@@ -46,12 +48,12 @@ public class PropertiesFile {
      * Takes key-value pairs from propertiesHash and converts to "chef-esque" attributes file, minus comments.
      *
      */
+    /**
     public void convertToChefAttributesFile(String pathToOutput)
     {
         //TODO: ideally I'd be able to figure out the whole namespace thing
         try
         {
-            //open in new file in current working directory
             PrintStream outputFile = new PrintStream(pathToOutput);
 
             //TODO: Understand better
@@ -60,6 +62,72 @@ public class PropertiesFile {
             {
                 outputFile.println("default['profile']['" + key + "']=" + propertiesTree.get(key));
             }
+
+
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Caught FileNotFoundException: " + e.getMessage());
+        }
+
+    }
+
+    **/
+
+    public void convertToChefAttributesFile(String pathToOutput)
+    {
+        //TODO: ideally I'd be able to figure out the whole namespace thing
+        try
+        {
+
+            //read in line from profile.properties
+            Scanner inputFromFile = new Scanner(new File (this.pathToFile));
+
+            //open output file
+            //PrintStream outputFile = new PrintStream(pathToOutput);
+
+            //sort keys
+            Set<String> keys = propertiesTree.keySet();
+
+            while(inputFromFile.hasNextLine())
+            {
+
+                String oneLine = inputFromFile.nextLine();
+
+                //if first character of line is '#' -> print to output
+                if(oneLine.startsWith("#"))
+                {
+                    System.out.println(oneLine);
+                }
+                else
+                {
+                    for(String key: keys)
+                    {
+                        if(key.substring(0,3).equals("val"))
+                        {
+
+                            System.out.println("default['profile']['" + key + "']=" + propertiesTree.get(key));
+                        }
+                    }
+
+
+                }
+
+
+
+            }
+
+            //if begins with '#' -> print to output
+
+            //if line does not begin with 'dev', 'qa', 'stg', or 'prod' ->
+            //print to line
+
+            //if line begins with 'dev', 'qa', 'stg', or 'prod' ->
+            //search for matching key in hashTable
+            //print key and value
+
+
+            //open in new file in current working directory
 
 
         }
