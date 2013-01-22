@@ -51,7 +51,7 @@ public class Controller
         currentRoom = center;
 
         //running game
-        runScenario();
+        runScenario(currentRoom, player1);
     }
 
     /**
@@ -81,8 +81,11 @@ public class Controller
     }
      **/
 
-    public static void runScenario()
+    public static void runScenario(Room someRoom, Person somePerson)
     {
+        Room roomForScenario = someRoom;
+        Person personForScenario = somePerson;
+
         Scanner scan = new Scanner(System.in);
         while(!gameOver)
         {
@@ -90,9 +93,9 @@ public class Controller
             System.out.println();
             System.out.println("What would you like to do?");
             System.out.println("1. Move");
-            System.out.println("2. Show items in " + currentRoom.getName());
-            System.out.println("3. Manipulate items in " + currentRoom.getName());
-            System.out.println("4. Show people in " + currentRoom.getName());
+            System.out.println("2. Show items in " + roomForScenario.getName());
+            System.out.println("3. Manipulate items in " + roomForScenario.getName());
+            System.out.println("4. Show people in " + roomForScenario.getName());
             System.out.println("5. Quit");
             System.out.println();
             System.out.print("Choice: ");
@@ -103,27 +106,27 @@ public class Controller
 
             if(choice == 1)
             {
-                movePath();
+                roomForScenario = movePath(roomForScenario);
             }
             else if(choice == 2)
             {
-                ArrayList<Item> itemsForMenu = currentRoom.getItemsInRoom();
+                ArrayList<Item> itemsForMenu = roomForScenario.getItemsInRoom();
 
                 System.out.println();
-                System.out.println("Items in " + currentRoom.getName() + ": " + itemsForMenu);
+                System.out.println("Items in " + roomForScenario.getName() + ": " + itemsForMenu);
 
             }
             else if(choice == 3)
             {
-                manipulateItemsPath(player1);
+                manipulateItemsPath(personForScenario);
 
             }
             else if(choice == 4)
             {
-                ArrayList<Item> peopleForMenu = currentRoom.getPeopleInRoom();
+                ArrayList<Item> peopleForMenu = roomForScenario.getPeopleInRoom();
 
                 System.out.println();
-                System.out.println("People in " + currentRoom.getName() + ": " + peopleForMenu);
+                System.out.println("People in " + roomForScenario.getName() + ": " + peopleForMenu);
             }
             else if(choice == 5)
             {
@@ -135,8 +138,10 @@ public class Controller
         }
     }
 
-    public static void movePath()
+    public static Room movePath(Room someRoom)
     {
+        Room roomForPath = someRoom;
+
         Scanner scan = new Scanner(System.in);
         System.out.println();
         System.out.println("What would you like to do?");
@@ -154,12 +159,13 @@ public class Controller
         {
             //Check currentRoom.exists(Direction.NORTH);
             //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.NORTH))
+            if(roomForPath.roomExists(Direction.NORTH))
             {
-                currentRoom = currentRoom.getNorth();
+                roomForPath = roomForPath.getNorth();
             }
             else
             {
+                System.out.println();
                 System.out.println("****No room exists in the " + Direction.NORTH +  " direction.****");
             }
         }
@@ -167,12 +173,13 @@ public class Controller
         {
             //Check currentRoom.exists(Direction.EAST);
             //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.EAST))
+            if(roomForPath.roomExists(Direction.EAST))
             {
-                currentRoom = currentRoom.getEast();
+                roomForPath = roomForPath.getEast();
             }
             else
             {
+                System.out.println();
                 System.out.println("****No room exists in the " + Direction.EAST +  " direction.****");
             }
 
@@ -181,12 +188,13 @@ public class Controller
         {
             //Check currentRoom.exists(Direction.SOUTH);
             //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.SOUTH))
+            if(roomForPath.roomExists(Direction.SOUTH))
             {
-                currentRoom = currentRoom.getSouth();
+                roomForPath = roomForPath.getSouth();
             }
             else
             {
+                System.out.println();
                 System.out.println("****No room exists in the " + Direction.SOUTH +  " direction.****");
             }
 
@@ -195,12 +203,13 @@ public class Controller
         {
             //Check currentRoom.exists(Direction.WEST);
             //if the room exists -> go back to initial menu
-            if(currentRoom.roomExists(Direction.WEST))
+            if(roomForPath.roomExists(Direction.WEST))
             {
-                currentRoom = currentRoom.getWest();
+                roomForPath = roomForPath.getWest();
             }
             else
             {
+                System.out.println();
                 System.out.println("****No room exists in the " + Direction.WEST +  " direction.****");
             }
         }
@@ -210,6 +219,8 @@ public class Controller
             System.out.println("May the dork be with you.");
             gameOver = true;
         }
+
+        return roomForPath;
 
     }
 
