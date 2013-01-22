@@ -104,7 +104,7 @@ public class Controller
             System.out.println("5. Interact with people in " + roomForScenario.getName());
             System.out.println("6. Quit");
             System.out.println();
-            System.out.print("Choice: ");
+            System.out.print("Enter an integer: ");
 
             int choice = scan.nextInt();
 
@@ -144,6 +144,13 @@ public class Controller
                 System.out.println("May the dork be with you.");
                 gameOver = true;
             }
+            else
+            {
+                //TODO: should I do something else here?
+                System.out.println();
+                System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                continue;
+            }
         }
     }
 
@@ -160,7 +167,7 @@ public class Controller
         System.out.println("4. Move West");
         System.out.println("5. Quit");
         System.out.println();
-        System.out.print("Choice: ");
+        System.out.print("Enter an integer: ");
 
         int choice = scan.nextInt();
 
@@ -247,7 +254,7 @@ public class Controller
         System.out.println("2. Open item");
         System.out.println("3. Quit");
         System.out.println();
-        System.out.print("Choice: ");
+        System.out.print("Enter an integer: ");
 
         int choice = scan.nextInt();
 
@@ -290,7 +297,7 @@ public class Controller
         System.out.println("2. Defend against people in " + roomForPath.getName());
         System.out.println("3. Quit");
         System.out.println();
-        System.out.print("Choice: ");
+        System.out.print("Enter an integer: ");
 
         int choice = scan.nextInt();
 
@@ -312,7 +319,6 @@ public class Controller
             System.out.println();
             System.out.println("May the dork be with you.");
             gameOver = true;
-
         }
     }
 
@@ -352,7 +358,7 @@ public class Controller
 
             System.out.println(menuCount + ". Quit");
             System.out.println();
-            System.out.print("Choice: ");
+            System.out.print("Enter an integer: ");
 
             choice = input.nextInt();
 
@@ -417,7 +423,7 @@ public class Controller
 
             System.out.println(menuCount + ". Quit");
             System.out.println();
-            System.out.print("Choice: ");
+            System.out.print("Enter an integer: ");
 
             choice = input.nextInt();
 
@@ -487,7 +493,7 @@ public class Controller
 
             System.out.println(menuCount + ". Quit");
             System.out.println();
-            System.out.print("Choice: ");
+            System.out.print("Enter an integer: ");
 
             choice = input.nextInt();
 
@@ -519,7 +525,7 @@ public class Controller
 
                 System.out.println(menuCount + ". Quit");
                 System.out.println();
-                System.out.print("Choice: ");
+                System.out.print("Enter an integer: ");
 
                 choice = input.nextInt();
 
