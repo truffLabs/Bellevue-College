@@ -263,14 +263,14 @@ public class Controller
             //make sure the choice is greater than zero, but within range of array
             if(choice > 0 && choice <= itemsForPickup.size())
             {
-                //pickup the item and add it to player1
-                player1.addItems(itemsForPickup.get(choice-1));
+                //pickup the item and add it to 'personForPath'
+                personForPath.addItems(itemsForPickup.get(choice-1));
 
                 //TODO: better way to add item to Weapon list on Person?
                 if(itemsForPickup.get(choice-1) instanceof Weapon)
                 {
                     //also add the item to the Weapon list on 'personForPath'
-                    player1.addItems((Weapon)itemsForPickup.get(choice-1));
+                    personForPath.addItems((Weapon)itemsForPickup.get(choice-1));
                 }
 
                 //TODO:remove it from the room
