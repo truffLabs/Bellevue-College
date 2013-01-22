@@ -8,6 +8,10 @@ public class Controller
 {
 	private static boolean gameOver;
 
+    //declare array list of zombies on map
+    private static ArrayList<Zombie> zombiesInScenario = new ArrayList<Zombie>();
+
+
 	public static void main(String Args[])
 	{
         //Rooms in scenario
@@ -38,12 +42,15 @@ public class Controller
 
         //People in scenario
         Person player1 = new Person("player1");
-        Zombie evilZombie = new Zombie("zombie");
         Person mom = new Person("mom");
         Person dad = new Person("dad");
         Person motherInLaw = new Person("mother-in-law");
         Child baby = new Child("baby");
         Child kid = new Child("kid");
+
+        //initialize zombie and add to list
+        Zombie evilZombie = new Zombie("zombie");
+        zombiesInScenario.add(evilZombie);
 
         //Place things
         //add items for pickup
@@ -175,7 +182,7 @@ public class Controller
                 System.out.println("****No room exists in the " + Direction.NORTH +  " direction.****");
             }
         }
-        if(choice == 2)
+        else if(choice == 2)
         {
             //Check currentRoom.exists(Direction.EAST);
             //if the room exists -> go back to initial menu
@@ -190,7 +197,7 @@ public class Controller
             }
 
         }
-        if(choice == 3)
+        else if(choice == 3)
         {
             //Check currentRoom.exists(Direction.SOUTH);
             //if the room exists -> go back to initial menu
@@ -205,7 +212,7 @@ public class Controller
             }
 
         }
-        if(choice == 4)
+        else if(choice == 4)
         {
             if(roomForPath.roomExists(Direction.WEST))
             {
