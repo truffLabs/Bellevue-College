@@ -1,6 +1,11 @@
 package edu.bellevuecollege.cs211.dork.items;
 import edu.bellevuecollege.cs211.dork.model.Person;
 
+/**
+ *Class defines a Bat object. This class extends Item and
+ * implements the Weapon interface.
+ *
+ */
 public class Bat extends Item implements Weapon{
 
     public Bat(String itemName)
@@ -23,5 +28,10 @@ public class Bat extends Item implements Weapon{
    public String defend(Weapon w)
    {
        return "Great choice for defense.";
+   }
+
+   public String swing()
+   {
+       return "Homerun!";
    }
 }

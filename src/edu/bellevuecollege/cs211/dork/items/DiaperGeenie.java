@@ -19,7 +19,6 @@ public class DiaperGeenie extends Item implements Openable {
     {
 
        return "Make sure you use two hands.";
-       //TODO: Add to list of things on person.
    }
 
    public String open()
@@ -33,9 +32,4 @@ public class DiaperGeenie extends Item implements Openable {
 
        return "Be careful not to overfill or your house will smell like turd.";
    }
-
-    public String refill()
-    {
-        return "Nothing like a fresh geenie.";
-    }
 }
