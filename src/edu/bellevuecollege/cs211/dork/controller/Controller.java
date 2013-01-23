@@ -5,13 +5,20 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The Controller class is both the orchestrator of the "Dork" scenario and the entity that holds the
+ * state of this system. The main method in this class constructs rooms, items and people. A call is then
+ * made to align the rooms in relation to each other (build the map), and place "things" (items and people)
+ * on the map. The "startingRoom" is defined and passed to the "runScenario" method which initiates all
+ * of the menu driven options.
+ */
 public class Controller 
 {
 	private static boolean gameOver;
 
 	public static void main(String Args[])
 	{
-        //Rooms in scenario
+        //define Rooms in scenario
         Room topLeft = new Room("patio");
         Room center = new Room("living room");
         Room top = new Room("kitchen");
@@ -27,7 +34,7 @@ public class Controller
         alignRooms(bottom, center, null, null, null);
         alignRooms(left, topLeft, center, null, null);
 
-        //Items in scenario
+        //define Items in scenario
         DirtyDiaper dirtyDiaper1 = new DirtyDiaper("dirty diaper");
         DiaperGeenie diaperGeenie1 = new DiaperGeenie("diaper geenie");
         BabyWipeContainer babyWipeContainer1 = new BabyWipeContainer("baby wipe container");
@@ -37,7 +44,7 @@ public class Controller
         SnowGlobe snowGlobe1 = new SnowGlobe("snow globe");
         SamuraiSword samuraiSword = new SamuraiSword("samurai sword");
 
-        //People in scenario
+        //define People in scenario
         Person mom = new Person("mom");
         Person dad = new Person("dad");
         Person motherInLaw = new Person("mother-in-law");
@@ -50,8 +57,7 @@ public class Controller
         //initialize zombie
         Zombie evilZombie = new Zombie("zombie");
 
-        //Place things
-        //add items for pickup
+        //place things in Rooms
         center.addItem(bat1);
         top.addItem(sippyCup1);
         right.addItem(babyWipeContainer1);
@@ -73,7 +79,7 @@ public class Controller
         left.addWeaponItem(snowGlobe1);
         left.addWeaponItem(bat2);
 
-        //add people
+        //place people in Rooms
         center.addPerson(dad);
         top.addPerson(motherInLaw);
         right.addPerson(baby);
@@ -88,6 +94,13 @@ public class Controller
         runScenario(startingRoom, player1);
     }
 
+    /**
+     * Initiates all of the menus found in the game. Loops through base menu until
+     * "gameOver" is true.
+     *
+     * @param someRoom Room object treated as starting location for scenario
+     * @param somePerson Person object treated as main character or hero
+     */
     public static void runScenario(Room someRoom, Person somePerson)
     {
         Room roomForScenario = someRoom;
@@ -161,6 +174,14 @@ public class Controller
         }
     }
 
+    /**
+     * Method called when user chooses to "Move" from base menu. Method will
+     * present a list of cardinal directions the user can move in. If a valid
+     * direction is selected, the method will effectively set the "current room".
+     *
+     * @param someRoom Room object used as frame of reference
+     * @return a Room object where the player moved to
+     */
     public static Room movePath(Room someRoom)
     {
         Room roomForPath = someRoom;
@@ -265,6 +286,14 @@ public class Controller
         return roomForPath;
     }
 
+    /**
+     * Called when a user chooses to "Manipulate items in" a room. This method
+     * makes calls to two additional methods "pickUpMenu" and "openableMenu"
+     * depending on user selection.
+     *
+     * @param someRoom Room object used as reference for item location
+     * @param somePerson Person object who will ultimately pick up or open items
+     */
     public static void manipulateItemsPath(Room someRoom, Person somePerson)
     {
         //define the Room where items will be manipulated
@@ -324,81 +353,14 @@ public class Controller
 
     }
 
-    public static void interactPeoplePath(Room someRoom, Person somePerson)
-    {
-        //define the Room where the Person will be interacting with People
-        Room roomForPath = someRoom;
-
-        if(roomForPath.getPeopleInRoom().isEmpty())
-        {
-            System.out.println();
-            System.out.println("There are no people in this room.");
-        }
-        else
-        {
-            //Will 'somePerson' be attacking or defending?
-            String attackOrDefend;
-
-            //define the Person who will be manipulating items
-            Person personForPath = somePerson;
-
-            //What weapons does 'personForPath' have for this path?
-            ArrayList<Weapon>  weaponsForPath = personForPath.getWeaponItems();
-
-            Scanner scan = new Scanner(System.in);
-
-            while(!gameOver)
-            {
-                System.out.println();
-                System.out.println("What would you like to do?");
-                System.out.println("1. Attack people in " + roomForPath.getName());
-                System.out.println("2. Defend against people in " + roomForPath.getName());
-                System.out.println("3. *Previous Menu");
-                System.out.println("4. *Quit");
-                System.out.println();
-                System.out.print("Enter an integer: ");
-
-                try
-                {
-                    int choice = scan.nextInt();
-
-                    if(choice == 1)
-                    {
-                        attackOrDefend = "attack";
-                        attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
-                    }
-                    else if(choice == 2)
-                    {
-                        attackOrDefend = "defend";
-                        attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
-
-                    }
-                    else if(choice == 3)
-                    {
-                        break;
-                    }
-                    else if(choice == 4)
-                    {
-                        System.out.println();
-                        System.out.println("May the dork be with you.");
-                        gameOver = true;
-                    }
-                    else
-                    {
-                        System.out.println();
-                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
-                        continue;
-                    }
-                }
-                catch(InputMismatchException e)
-                {
-                    scan.next();
-                    continue;
-                }
-            }
-        }
-    }
-
+    /**
+     * Called from "manipulateItemsPath" method. Presents the user with interface
+     * to pick up an item, but first checks if there are any items in the room to
+     * pick up.
+     *
+     * @param someRoom Room object used as location for Items presented to user
+     * @param somePerson Person object that will be picking up Items
+     */
     public static void pickUpMenu(Room someRoom, Person somePerson)
     {
         Room roomForMenu = someRoom;
@@ -484,6 +446,13 @@ public class Controller
         }
     }
 
+    /**
+     * Called from "manipulateItemsPath" method. Presents the user with interface
+     * to open an item, but first checks if there are any items in the room to
+     * open.
+     *
+     * @param someRoom Room object used as location for Items presented to user
+     */
     public static void openableMenu(Room someRoom)
     {
         Room roomForMenu = someRoom;
@@ -554,6 +523,100 @@ public class Controller
         }
     }
 
+    /**
+     * Called when user chooses "Interact with people in" from base menu. Makes calls
+     * to "attackOrDefendMenu" method depending on user selection. Ultimately allows
+     * a Person object to attack or defend against other Person objects in a room.
+     *
+     * @param someRoom Room object used as base for listing or interacting with people
+     * @param somePerson Person object used to reference 'who' will attack or defend
+     */
+    public static void interactPeoplePath(Room someRoom, Person somePerson)
+    {
+        //define the Room where the Person will be interacting with People
+        Room roomForPath = someRoom;
+
+        if(roomForPath.getPeopleInRoom().isEmpty())
+        {
+            System.out.println();
+            System.out.println("There are no people in this room.");
+        }
+        else
+        {
+            //Will 'somePerson' be attacking or defending?
+            String attackOrDefend;
+
+            //define the Person who will be manipulating items
+            Person personForPath = somePerson;
+
+            //What weapons does 'personForPath' have for this path?
+            ArrayList<Weapon>  weaponsForPath = personForPath.getWeaponItems();
+
+            Scanner scan = new Scanner(System.in);
+
+            while(!gameOver)
+            {
+                System.out.println();
+                System.out.println("What would you like to do?");
+                System.out.println("1. Attack people in " + roomForPath.getName());
+                System.out.println("2. Defend against people in " + roomForPath.getName());
+                System.out.println("3. *Previous Menu");
+                System.out.println("4. *Quit");
+                System.out.println();
+                System.out.print("Enter an integer: ");
+
+                try
+                {
+                    int choice = scan.nextInt();
+
+                    if(choice == 1)
+                    {
+                        attackOrDefend = "attack";
+                        attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+                    }
+                    else if(choice == 2)
+                    {
+                        attackOrDefend = "defend";
+                        attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+
+                    }
+                    else if(choice == 3)
+                    {
+                        break;
+                    }
+                    else if(choice == 4)
+                    {
+                        System.out.println();
+                        System.out.println("May the dork be with you.");
+                        gameOver = true;
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                        continue;
+                    }
+                }
+                catch(InputMismatchException e)
+                {
+                    scan.next();
+                    continue;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Called from "interactPeoplePath" method when a user chooses to attack or defend people
+     * in a room. First checks whether user possesses any weapons. If a user does possess a weapon,
+     * the user is allowed to select a weapon for attack, or defense, then a person to do either
+     * against.
+     *
+     * @param attackOrDefend String that determines "attack" or "defend"
+     * @param someRoom Room object used to determine if there are people in room to attack or defend against
+     * @param somePerson Person object who will be attacking or defending
+     */
     public static void attackOrDefendMenu(String attackOrDefend, Room someRoom, Person somePerson)
     {
         String attackOrDefendForMenu = attackOrDefend;
@@ -702,6 +765,16 @@ public class Controller
         }
     }
 
+    /**
+     * Sets the location of other Room objects on map based on a central Room object "reference". Aligns
+     * rooms in the four cardinal directions, North, South, East, and West.
+     *
+     * @param reference Room object used as reference for placing other Room objects
+     * @param toTheNorth Room object placed North of reference
+     * @param toTheEast Room object placed East of reference
+     * @param toTheSouth Room object placed South of reference
+     * @param toTheWest Room object placed West of reference
+     */
     public static void alignRooms(Room reference, Room toTheNorth, Room toTheEast, Room toTheSouth, Room toTheWest)
     {
         //instantiate reference room
