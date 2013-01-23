@@ -502,7 +502,8 @@ public class Controller
                     System.out.println();
                     System.out.println(openableForMenu.get(choice-1).open());
 
-                    //TODO:remove from list of openable items
+                    //remove the openable item from the room
+                    openableForMenu.remove(choice-1);
                 }
                 else if(choice == menuCount)
                 {
