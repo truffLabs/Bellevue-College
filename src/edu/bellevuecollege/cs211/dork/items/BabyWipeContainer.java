@@ -1,8 +1,8 @@
 package edu.bellevuecollege.cs211.dork.items;
 
 /**
- * Satisfies the requirements for Exercise #X, page XX
- * of "Building Java Programs" second edition.
+ * Class defines a BabyWipeContainer object. This class extends Item and
+ * implements the Openable interface.
  *
  * @author Pat Kaehuaea
  *         1/13/13
@@ -18,7 +18,6 @@ public class BabyWipeContainer extends Item implements Openable {
     public String pickUp(){
 
        return "These things are all sorts of awesome.";
-       //TODO: Add to list of things on person.
    }
 
    public String open(){
@@ -29,5 +28,10 @@ public class BabyWipeContainer extends Item implements Openable {
    public String close(){
 
        return "Keep these things moist.";
+   }
+
+   public String refill(){
+
+       return "Nothing like a full stack of wipes.";
    }
 }
