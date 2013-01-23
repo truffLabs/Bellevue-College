@@ -415,18 +415,17 @@ public class Controller
             //what items are available in the room?
             ArrayList<Item> itemsForMenu = roomForMenu.getItemsInRoom();
 
+            //what weapons are available in the room?
+            ArrayList<Item> weaponForMenu = roomForMenu.getWeaponInRoom();
+
             //scanner object for block
             Scanner input = new Scanner(System.in);
 
             //counter for numbers in menu
-            int menuCount;
+            int menuCount =1;
 
             //hold integer from user input
             int choice;
-
-
-
-            menuCount = 1;
 
             System.out.println();
             System.out.println("Which item would you like to pick up?");
@@ -443,7 +442,6 @@ public class Controller
 
             try
             {
-
                 choice = input.nextInt();
 
                 //make sure the choice is greater than zero, but within range of array
@@ -458,13 +456,14 @@ public class Controller
                         personForMenu.addItems((Weapon)itemsForMenu.get(choice-1));
                     }
 
-                    //TODO:remove it from the room
-
                     //user feedback
                     System.out.println();
                     System.out.println("You picked up a " + itemsForMenu.get(choice-1));
+
+                    //remove the item from the room
+                    roomForMenu.removeItem(itemsForMenu.get(choice-1));
                 }
-                else if(choice == menuCount+1)
+                else if(choice == menuCount)
                 {
                     System.out.println();
                     System.out.println("May the dork be with you.");
@@ -474,13 +473,11 @@ public class Controller
                 {
                     System.out.println();
                     System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
-                    //continue;
                 }
             }
             catch(InputMismatchException e)
             {
                 input.next();
-
             }
         }
     }
@@ -503,66 +500,54 @@ public class Controller
             Scanner input = new Scanner(System.in);
 
             //counter for numbers in menu
-            int menuCount;
+            int menuCount = 1;
 
             //hold integer from user input
             int choice;
 
-            while(!gameOver)
+            System.out.println();
+            System.out.println("Which item would you like to open?");
+
+
+
+            for(Openable o : openableForMenu)
             {
-                menuCount = 1;
+                System.out.println(menuCount + ". " + o);
+                menuCount++;
+            }
 
-                System.out.println();
-                System.out.println("Which item would you like to open?");
+            System.out.println(menuCount + ". *Quit");
+            System.out.println();
+            System.out.print("Enter an integer: ");
 
+            try
+            {
+                choice = input.nextInt();
 
-
-                for(Openable o : openableForMenu)
+                //make sure the choice is greater than zero, but within range of array
+                if(choice > 0 && choice <= openableForMenu.size())
                 {
-                    System.out.println(menuCount + ". " + o);
-                    menuCount++;
+                    //open the item and print return String to screen
+                    System.out.println();
+                    System.out.println(openableForMenu.get(choice-1).open());
+
+                    //TODO:remove from list of openable items
                 }
-
-                System.out.println(menuCount + ". *Previous Menu");
-                System.out.println(menuCount + 1 + ". *Quit");
-                System.out.println();
-                System.out.print("Enter an integer: ");
-
-                try
+                else if(choice == menuCount)
                 {
-                    choice = input.nextInt();
-
-                    //make sure the choice is greater than zero, but within range of array
-                    if(choice > 0 && choice <= openableForMenu.size())
-                    {
-                        //open the item and print return String to screen
-                        System.out.println();
-                        System.out.println(openableForMenu.get(choice-1).open());
-
-                        //TODO:remove from list of openable items
-                    }
-                    else if(choice == menuCount)
-                    {
-                        break;
-                    }
-                    else if(choice == menuCount+1)
-                    {
-                        System.out.println();
-                        System.out.println("May the dork be with you.");
-                        gameOver = true;
-                    }
-                    else
-                    {
-                        System.out.println();
-                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
-                        continue;
-                    }
+                    System.out.println();
+                    System.out.println("May the dork be with you.");
+                    gameOver = true;
                 }
-                catch(InputMismatchException e)
+                else
                 {
-                    input.next();
-                    continue;
+                    System.out.println();
+                    System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
                 }
+            }
+            catch(InputMismatchException e)
+            {
+                input.next();
             }
         }
     }
