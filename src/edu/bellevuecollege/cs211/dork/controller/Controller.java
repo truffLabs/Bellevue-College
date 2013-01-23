@@ -155,7 +155,7 @@ public class Controller
             catch (InputMismatchException e)
             {
                 scan.next();
-                //System.out.println();
+                System.out.println();
                 continue;
             }
         }
@@ -166,7 +166,7 @@ public class Controller
         Room roomForPath = someRoom;
 
         Scanner scan = new Scanner(System.in);
-        while(true)
+        while(!gameOver)
         {
             System.out.println();
             System.out.println("What would you like to do? [Current Room: " + roomForPath.getName() + "]");
@@ -275,32 +275,53 @@ public class Controller
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println();
-        System.out.println("What would you like to do?");
-        System.out.println("1. Pick up item");
-        System.out.println("2. Open item");
-        System.out.println("3. *Quit");
-        System.out.println();
-        System.out.print("Enter an integer: ");
-        //TODO: try/catch here
-        int choice = scan.nextInt();
-
-        if(choice == 1)
-        {
-            pickUpMenu(roomForPath, personForPath);
-
-        }
-        else if(choice == 2)
-        {
-            openableMenu(roomForPath);
-        }
-        //TODO: figure out why if this is an 'else-if' it always gets called after methods above return...ALWAYS
-        else// if(choice == 3);
+        while(!gameOver)
         {
             System.out.println();
-            System.out.println("May the dork be with you.");
-            gameOver = true;
+            System.out.println("What would you like to do?");
+            System.out.println("1. Pick up item");
+            System.out.println("2. Open item");
+            System.out.println("3. *Previous Menu");
+            System.out.println("4. *Quit");
+            System.out.println();
+            System.out.print("Enter an integer: ");
+
+            try
+            {
+                int choice = scan.nextInt();
+
+                if(choice == 1)
+                {
+                    pickUpMenu(roomForPath, personForPath);
+                }
+                else if(choice == 2)
+                {
+                    openableMenu(roomForPath);
+                }
+                else if(choice == 3)
+                {
+                    break;
+                }
+                else if(choice == 4)
+                {
+                    System.out.println();
+                    System.out.println("May the dork be with you.");
+                    gameOver = true;
+                }
+                else
+                {
+                    System.out.println();
+                    System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                    continue;
+                }
+            }
+            catch(InputMismatchException e)
+            {
+                scan.next();
+                continue;
+            }
         }
+
     }
 
     public static void interactPeoplePath(Room someRoom, Person somePerson)
@@ -325,32 +346,55 @@ public class Controller
             ArrayList<Weapon>  weaponsForPath = personForPath.getWeaponItems();
 
             Scanner scan = new Scanner(System.in);
-            System.out.println();
-            System.out.println("What would you like to do?");
-            System.out.println("1. Attack people in " + roomForPath.getName());
-            System.out.println("2. Defend against people in " + roomForPath.getName());
-            System.out.println("3. *Quit");
-            System.out.println();
-            System.out.print("Enter an integer: ");
-            //TODO: try/catch here
-            int choice = scan.nextInt();
 
-            if(choice == 1)
-            {
-                attackOrDefend = "attack";
-                attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
-            }
-            else if(choice == 2)
-            {
-                attackOrDefend = "defend";
-                attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
-
-            }
-            else if(choice == 3)
+            while(!gameOver)
             {
                 System.out.println();
-                System.out.println("May the dork be with you.");
-                gameOver = true;
+                System.out.println("What would you like to do?");
+                System.out.println("1. Attack people in " + roomForPath.getName());
+                System.out.println("2. Defend against people in " + roomForPath.getName());
+                System.out.println("3. *Previous Menu");
+                System.out.println("4. *Quit");
+                System.out.println();
+                System.out.print("Enter an integer: ");
+
+                try
+                {
+                    int choice = scan.nextInt();
+
+                    if(choice == 1)
+                    {
+                        attackOrDefend = "attack";
+                        attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+                    }
+                    else if(choice == 2)
+                    {
+                        attackOrDefend = "defend";
+                        attackOrDefendMenu(attackOrDefend, roomForPath, personForPath);
+
+                    }
+                    else if(choice == 3)
+                    {
+                        break;
+                    }
+                    else if(choice == 4)
+                    {
+                        System.out.println();
+                        System.out.println("May the dork be with you.");
+                        gameOver = true;
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                        continue;
+                    }
+                }
+                catch(InputMismatchException e)
+                {
+                    scan.next();
+                    continue;
+                }
             }
         }
     }
@@ -371,53 +415,80 @@ public class Controller
             //what items are available in the room?
             ArrayList<Item> itemsForMenu = roomForMenu.getItemsInRoom();
 
-            System.out.println();
-            System.out.println("Which item would you like to pick up?");
-
             //scanner object for block
             Scanner input = new Scanner(System.in);
 
             //counter for numbers in menu
-            int menuCount = 1;
+            int menuCount;
 
             //hold integer from user input
             int choice;
 
-            for(Item i : itemsForMenu)
+
+
+            while(!gameOver)
             {
-                System.out.println(menuCount + ". " + i);
-                menuCount++;
-            }
+                menuCount = 1;
 
-            System.out.println(menuCount + ". *Quit");
-            System.out.println();
-            System.out.print("Enter an integer: ");
+                System.out.println();
+                System.out.println("Which item would you like to pick up?");
 
-            choice = input.nextInt();
-
-            //make sure the choice is greater than zero, but within range of array
-            if(choice > 0 && choice <= itemsForMenu.size())
-            {
-                //pickup the item and add it to 'personForPath'
-                personForMenu.addItems(itemsForMenu.get(choice-1));
-
-                //TODO: better way to add item to Weapon list on Person?
-                if(itemsForMenu.get(choice-1) instanceof Weapon)
+                for(Item i : itemsForMenu)
                 {
-                    //also add the item to the Weapon list on 'personForPath'
-                    personForMenu.addItems((Weapon)itemsForMenu.get(choice-1));
+                    System.out.println(menuCount + ". " + i);
+                    menuCount++;
                 }
 
-                //TODO:remove it from the room
-
-                //user feedback
+                System.out.println(menuCount + ". *Previous Menu");
+                System.out.println(menuCount+1 + ". *Quit");
                 System.out.println();
-                System.out.println("You picked up a " + itemsForMenu.get(choice-1));
-            }
-            else
-            {
-                //TODO: should I do something else here?
-                System.out.println("Bad selection.");
+                System.out.print("Enter an integer: ");
+
+                try
+                {
+
+                    choice = input.nextInt();
+
+                    //make sure the choice is greater than zero, but within range of array
+                    if(choice > 0 && choice <= itemsForMenu.size())
+                    {
+                        //pickup the item and add it to 'personForPath'
+                        personForMenu.addItems(itemsForMenu.get(choice-1));
+
+                        if(itemsForMenu.get(choice-1) instanceof Weapon)
+                        {
+                            //also add the item to the Weapon list on 'personForPath'
+                            personForMenu.addItems((Weapon)itemsForMenu.get(choice-1));
+                        }
+
+                        //TODO:remove it from the room
+
+                        //user feedback
+                        System.out.println();
+                        System.out.println("You picked up a " + itemsForMenu.get(choice-1));
+                    }
+                    else if(choice == menuCount)
+                    {
+                        break;
+                    }
+                    else if(choice == menuCount+1)
+                    {
+                        System.out.println();
+                        System.out.println("May the dork be with you.");
+                        gameOver = true;
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                        continue;
+                    }
+                }
+                catch(InputMismatchException e)
+                {
+                    input.next();
+                    continue;
+                }
             }
         }
     }
@@ -439,41 +510,67 @@ public class Controller
             //scanner object for block
             Scanner input = new Scanner(System.in);
 
-            System.out.println();
-            System.out.println("Which item would you like to open?");
-
             //counter for numbers in menu
-            int menuCount = 1;
+            int menuCount;
 
             //hold integer from user input
             int choice;
 
-            for(Openable o : openableForMenu)
+            while(!gameOver)
             {
-                System.out.println(menuCount + ". " + o);
-                menuCount++;
-            }
+                menuCount = 1;
 
-            System.out.println(menuCount + ". *Quit");
-            System.out.println();
-            System.out.print("Enter an integer: ");
-
-            choice = input.nextInt();
-
-            //make sure the choice is greater than zero, but within range of array
-            if(choice > 0 && choice <= openableForMenu.size())
-            {
-                //open the item and print return String to screen
                 System.out.println();
-                System.out.println(openableForMenu.get(choice-1).open());
+                System.out.println("Which item would you like to open?");
 
-                //TODO:remove from list of openable items
-            }
-            else
-            {
-                //TODO: should I do something else here?
+
+
+                for(Openable o : openableForMenu)
+                {
+                    System.out.println(menuCount + ". " + o);
+                    menuCount++;
+                }
+
+                System.out.println(menuCount + ". *Previous Menu");
+                System.out.println(menuCount + 1 + ". *Quit");
                 System.out.println();
-                System.out.println("Bad selection.");
+                System.out.print("Enter an integer: ");
+
+                try
+                {
+                    choice = input.nextInt();
+
+                    //make sure the choice is greater than zero, but within range of array
+                    if(choice > 0 && choice <= openableForMenu.size())
+                    {
+                        //open the item and print return String to screen
+                        System.out.println();
+                        System.out.println(openableForMenu.get(choice-1).open());
+
+                        //TODO:remove from list of openable items
+                    }
+                    else if(choice == menuCount)
+                    {
+                        break;
+                    }
+                    else if(choice == menuCount+1)
+                    {
+                        System.out.println();
+                        System.out.println("May the dork be with you.");
+                        gameOver = true;
+                    }
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                        continue;
+                    }
+                }
+                catch(InputMismatchException e)
+                {
+                    input.next();
+                    continue;
+                }
             }
         }
     }
@@ -515,7 +612,7 @@ public class Controller
             Person personToAttackOrDefend;
 
             System.out.println();
-            System.out.println("Which item would you like to " + attackOrDefend + " with?");
+            System.out.println("Which item would you like to " + attackOrDefendForMenu + " with?");
 
             //TODO: Loop through Weapon objects that 'personForMenu' holds
             for(Weapon w : weaponsForMenu)
@@ -528,80 +625,89 @@ public class Controller
             System.out.println();
             System.out.print("Enter an integer: ");
 
-            choice = input.nextInt();
-
-            //make sure the choice is greater than zero, but within range of array
-            if(choice > 0 && choice <= weaponsForMenu.size())
+            try
             {
-                //set weapon to use
-                weaponForAttackOrDefend = weaponsForMenu.get(choice-1);
-
-                //counter for numbers in menu
-                menuCount = 1;
-
-                if(attackOrDefend.equals("attack"))
-                {
-                    System.out.println();
-                    System.out.println("Who would you like to " + attackOrDefend + "?");
-                }
-                else if (attackOrDefend.equals("defend"))
-                {
-                    System.out.println();
-                    System.out.println("Who would you like to " + attackOrDefend + " against?");
-                }
-
-                for(Person p : peopleForMenu)
-                {
-                    System.out.println(menuCount + ". " + p);
-                    menuCount++;
-                }
-
-                System.out.println(menuCount + ". *Quit");
-                System.out.println();
-                System.out.print("Enter an integer: ");
-
                 choice = input.nextInt();
 
-                //assign person
-                personToAttackOrDefend = peopleForMenu.get(choice-1);
-
-                if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("attack"))
+                //make sure the choice is greater than zero, but within range of array
+                if(choice > 0 && choice <= weaponsForMenu.size())
                 {
-                    //TODO: put in method
-                    //public static Boolean checkZombieDeadGameOver(Weapon someWeapon, Person somePerson)
-                    //gameOver = checkZombieDeadGameOver(weaponForAttackOrDefend, personToAttackOrDefend);
-                    //if you attack the zombie with the samurai sword -> YOU WIN!
-                    if(weaponForAttackOrDefend instanceof SamuraiSword && personToAttackOrDefend instanceof Zombie)
+                    //set weapon to use
+                    weaponForAttackOrDefend = weaponsForMenu.get(choice-1);
+
+                    //counter for numbers in menu
+                    menuCount = 1;
+
+                    if(attackOrDefend.equals("attack"))
                     {
-                        //kill the zombie
                         System.out.println();
-                        System.out.println(((Zombie)personToAttackOrDefend).die());
-                        System.out.println();
-                        System.out.println("****YOU WIN. THE ZOMBIE IS DEAD!****");
-                        gameOver = true;
+                        System.out.println("Who would you like to " + attackOrDefendForMenu + "?");
                     }
-                    else if(personToAttackOrDefend instanceof Zombie)
+                    else if (attackOrDefend.equals("defend"))
                     {
-                        //kill the hero
                         System.out.println();
-                        System.out.println("You can't kill a zombie with a " + weaponForAttackOrDefend.toString() +
-                                ". ");
+                        System.out.println("Who would you like to " + attackOrDefendForMenu + " against?");
+                    }
+
+                    for(Person p : peopleForMenu)
+                    {
+                        System.out.println(menuCount + ". " + p);
+                        menuCount++;
+                    }
+
+                    System.out.println(menuCount + ". *Quit");
+                    System.out.println();
+                    System.out.print("Enter an integer: ");
+
+                    choice = input.nextInt();
+
+                    //assign person
+                    personToAttackOrDefend = peopleForMenu.get(choice-1);
+
+                    if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("attack"))
+                    {
+                        //TODO: put in method
+                        //public static Boolean checkZombieDeadGameOver(Weapon someWeapon, Person somePerson)
+                        //gameOver = checkZombieDeadGameOver(weaponForAttackOrDefend, personToAttackOrDefend);
+                        //if you attack the zombie with the samurai sword -> YOU WIN!
+                        if(weaponForAttackOrDefend instanceof SamuraiSword && personToAttackOrDefend instanceof Zombie)
+                        {
+                            //kill the zombie
+                            System.out.println();
+                            System.out.println(((Zombie)personToAttackOrDefend).die());
+                            System.out.println();
+                            System.out.println("****YOU WIN. THE ZOMBIE IS DEAD!****");
+                            gameOver = true;
+                        }
+                        else if(personToAttackOrDefend instanceof Zombie)
+                        {
+                            //kill the hero
+                            System.out.println();
+                            System.out.println("You can't kill a zombie with a " + weaponForAttackOrDefend.toString() +
+                                    ". ");
+                            System.out.println();
+                            System.out.println("****" + (((Hero)personForMenu).die()) + " GAME OVER!****");
+                            gameOver = true;
+                        }
+                        else
+                        {
+                        //do the attacking
                         System.out.println();
-                        System.out.println("****" + (((Hero)personForMenu).die()) + " GAME OVER!****");
-                        gameOver = true;
+                        System.out.println(weaponForAttackOrDefend.attack(peopleForMenu.get(choice-1)));
+                        }
+                    }
+                    else if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("defend"))
+                    {
+                        //do the attacking
+                        System.out.println();
+                        System.out.println(weaponForAttackOrDefend.defend(weaponForAttackOrDefend));
                     }
                     else
                     {
-                    //do the attacking
-                    System.out.println();
-                    System.out.println(weaponForAttackOrDefend.attack(peopleForMenu.get(choice-1)));
+                        //TODO: should I do something else here?
+                        System.out.println();
+                        System.out.println("Bad selection.");
                     }
-                }
-                else if(choice > 0 && choice <= peopleForMenu.size() && attackOrDefend.equals("defend"))
-                {
-                    //do the attacking
-                    System.out.println();
-                    System.out.println(weaponForAttackOrDefend.defend(weaponForAttackOrDefend));
                 }
                 else
                 {
@@ -610,11 +716,9 @@ public class Controller
                     System.out.println("Bad selection.");
                 }
             }
-            else
+            catch(InputMismatchException e)
             {
-                //TODO: should I do something else here?
-                System.out.println();
-                System.out.println("Bad selection.");
+                input.next();
             }
         }
     }
