@@ -1,12 +1,9 @@
 package edu.bellevuecollege.cs211.dork.items;
 
 /**
- * Satisfies the requirements for Exercise #X, page XX
- * of "Building Java Programs" second edition.
- *
- * @author Pat Kaehuaea
- *         1/13/13
- *         10:30 PM
+ *Class defines a DiaperGeenie object. This class extends Item and
+ * implements the Weapon interface. Intended to represent a real
+ * life Diaper Geenie that you get to fill with dirty diapers.
  */
 public class DiaperGeenie extends Item implements Openable {
 
@@ -32,4 +29,9 @@ public class DiaperGeenie extends Item implements Openable {
 
        return "Be careful not to overfill or your house will smell like turd.";
    }
+
+    public String empty()
+    {
+        return "Imagine leaving this roll of diapers on someone's doorstep.";
+    }
 }
