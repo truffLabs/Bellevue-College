@@ -1,8 +1,9 @@
 package edu.bellevuecollege.cs211.dork.model;
 
-import edu.bellevuecollege.cs211.dork.items.Item;
-import edu.bellevuecollege.cs211.dork.items.Weapon;
-
+/**
+ *Class defines a Child object. This class extends Person and
+ * extends Person.
+ */
 public class Child extends Person
 {
     public Child(String someName)
