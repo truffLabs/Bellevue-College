@@ -426,69 +426,61 @@ public class Controller
 
 
 
-            while(!gameOver)
+            menuCount = 1;
+
+            System.out.println();
+            System.out.println("Which item would you like to pick up?");
+
+            for(Item i : itemsForMenu)
             {
-                menuCount = 1;
+                System.out.println(menuCount + ". " + i);
+                menuCount++;
+            }
 
-                System.out.println();
-                System.out.println("Which item would you like to pick up?");
+            System.out.println(menuCount + ". *Quit");
+            System.out.println();
+            System.out.print("Enter an integer: ");
 
-                for(Item i : itemsForMenu)
+            try
+            {
+
+                choice = input.nextInt();
+
+                //make sure the choice is greater than zero, but within range of array
+                if(choice > 0 && choice <= itemsForMenu.size())
                 {
-                    System.out.println(menuCount + ". " + i);
-                    menuCount++;
+                    //pickup the item and add it to 'personForPath'
+                    personForMenu.addItems(itemsForMenu.get(choice-1));
+
+                    if(itemsForMenu.get(choice-1) instanceof Weapon)
+                    {
+                        //also add the item to the Weapon list on 'personForPath'
+                        personForMenu.addItems((Weapon)itemsForMenu.get(choice-1));
+                    }
+
+                    //TODO:remove it from the room
+
+                    //user feedback
+                    System.out.println();
+                    System.out.println("You picked up a " + itemsForMenu.get(choice-1));
                 }
-
-                System.out.println(menuCount + ". *Previous Menu");
-                System.out.println(menuCount+1 + ". *Quit");
-                System.out.println();
-                System.out.print("Enter an integer: ");
-
-                try
+                else if(choice == menuCount+1)
                 {
-
-                    choice = input.nextInt();
-
-                    //make sure the choice is greater than zero, but within range of array
-                    if(choice > 0 && choice <= itemsForMenu.size())
-                    {
-                        //pickup the item and add it to 'personForPath'
-                        personForMenu.addItems(itemsForMenu.get(choice-1));
-
-                        if(itemsForMenu.get(choice-1) instanceof Weapon)
-                        {
-                            //also add the item to the Weapon list on 'personForPath'
-                            personForMenu.addItems((Weapon)itemsForMenu.get(choice-1));
-                        }
-
-                        //TODO:remove it from the room
-
-                        //user feedback
-                        System.out.println();
-                        System.out.println("You picked up a " + itemsForMenu.get(choice-1));
-                    }
-                    else if(choice == menuCount)
-                    {
-                        break;
-                    }
-                    else if(choice == menuCount+1)
-                    {
-                        System.out.println();
-                        System.out.println("May the dork be with you.");
-                        gameOver = true;
-                    }
-                    else
-                    {
-                        System.out.println();
-                        System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
-                        continue;
-                    }
+                    System.out.println();
+                    System.out.println("May the dork be with you.");
+                    gameOver = true;
                 }
-                catch(InputMismatchException e)
+                else
                 {
-                    input.next();
-                    continue;
+                    System.out.println();
+                    System.out.println("Bad selection. '" + choice + "' is not a valid menu item.");
+                    //continue;
                 }
+            }
+            catch(InputMismatchException e)
+            {
+                input.next();
+
             }
         }
     }
