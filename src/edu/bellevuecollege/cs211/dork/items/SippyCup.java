@@ -1,5 +1,10 @@
 package edu.bellevuecollege.cs211.dork.items;
 
+/**
+ *Class defines a SippyCup object. This class extends Item and
+ * implements the Openable interface. Intended to represent one of those
+ * cups you give kids when they are starting to learn how to drink from a cup.
+ */
 public class SippyCup extends Item implements Openable{
 
     public SippyCup(String itemName)
@@ -10,7 +15,6 @@ public class SippyCup extends Item implements Openable{
     public String pickUp(){
 
        return "These things are all sorts of awesome.";
-       //TODO: Add to list of things on person.
    }
 
    public String open(){
@@ -21,5 +25,10 @@ public class SippyCup extends Item implements Openable{
    public String close(){
 
        return "Keep these things moist.";
+   }
+
+   public String spill(){
+
+       return "Great sadness.";
    }
 }
