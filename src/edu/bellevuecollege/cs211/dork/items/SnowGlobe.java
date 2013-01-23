@@ -27,7 +27,7 @@ public class SnowGlobe extends Item implements Weapon{
    @Override
    public String defend(Weapon w)
    {
-       return "Its probably not a good idea to block a karate chop with a " + this.getItemName() + ".";
+       return "You just blocked a " + w.toString() + ".";
    }
 
    public String shake()
