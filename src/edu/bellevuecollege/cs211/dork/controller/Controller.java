@@ -447,6 +447,7 @@ public class Controller
                 //make sure the choice is greater than zero, but within range of array
                 if(choice > 0 && choice <= itemsForMenu.size())
                 {
+
                     //pickup the item and add it to 'personForPath'
                     personForMenu.addItems(itemsForMenu.get(choice-1));
 
@@ -462,6 +463,7 @@ public class Controller
 
                     //remove the item from the room
                     roomForMenu.removeItem(itemsForMenu.get(choice-1));
+
                 }
                 else if(choice == menuCount)
                 {
