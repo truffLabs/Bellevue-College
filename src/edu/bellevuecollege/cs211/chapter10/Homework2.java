@@ -41,6 +41,7 @@ public class Homework2
         System.out.println("Numbers after: " + numbers);
         **/
 
+        /**
         //exercise 9:
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         numbers.add(7);
@@ -58,8 +59,35 @@ public class Homework2
         System.out.println("List of numbers: " + numbers);
         System.out.println("Number of idexes apart the two furthest occurrences of the number 0 are: "
                 + rangeBetweenZeroes(numbers));
+         **/
+
+        //exercise 11
+        ArrayList<String> listOfStrings = new ArrayList<String>();
+        listOfStrings.add("do");
+        listOfStrings.add("re");
+        listOfStrings.add("mi");
+
+        stutter(listOfStrings);
+        System.out.println(listOfStrings);
+    }
+
+    public static void stutter(ArrayList<String> someList)
+    {
+        ArrayList<String> tempList= new ArrayList<String>();
+
+        //for each String in 'someList', add the String to the 'tempList' twice
+        for(String s : someList)
+        {
+            tempList.add(s);
+            tempList.add(s);
+        }
+
+        //clear list and repopulate
+        someList.clear();
+        someList.addAll(0, tempList);
 
     }
+
 
     public static int rangeBetweenZeroes(ArrayList<Integer> someList)
     {
