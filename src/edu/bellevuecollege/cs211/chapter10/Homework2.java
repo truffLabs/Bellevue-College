@@ -79,9 +79,9 @@ public class Homework2
         numbers.add(20);
         numbers.add(30);
         numbers.add(40);
-        numbers.add(50);
-        numbers.add(60);
-        numbers.add(70);
+        //numbers.add(50);
+        //numbers.add(60);
+        //numbers.add(70);
 
 
         ArrayList<Integer> numbers2 = new ArrayList<Integer>();
@@ -89,13 +89,13 @@ public class Homework2
         numbers2.add(5);
         numbers2.add(6);
         numbers2.add(7);
-        //numbers2.add(8);
-        //numbers2.add(9);
-        //numbers2.add(10);
-        //numbers2.add(11);
+        numbers2.add(8);
+        numbers2.add(9);
+        numbers2.add(10);
+        numbers2.add(11);
 
-        System.out.println("Base list: " + numbers);
-        System.out.println("Supplemental: " + numbers2);
+        System.out.println("list1: " + numbers);
+        System.out.println("list2: " + numbers2);
 
         interleave(numbers, numbers2);
 
@@ -269,26 +269,4 @@ public class Homework2
         }
 
     }
-    /**
-    public static void swapPairs(ArrayList someList)
-    {
-        for(int i =0 ; i < someList.size(); i = i + 2 )
-        {
-            //take the second element of baseList and
-            //add it to the first element of the swappedList
-            //as long as 'i+1' doesn't exceed the range of baseList
-            if(i+1 < someList.size())
-            {
-                swappedList.add(someList.get(i+1));
-                swappedList.add(someList.get(i));
-            }
-            //print the last element
-            else
-            {
-                swappedList.add(someList.get(i));
-            }
-        }
-    }
-    **/
-
 }
