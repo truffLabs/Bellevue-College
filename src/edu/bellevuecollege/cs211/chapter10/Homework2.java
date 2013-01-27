@@ -97,12 +97,38 @@ public class Homework2
         System.out.println("list1: " + numbers);
         System.out.println("list2: " + numbers2);
 
-        interleave(numbers, numbers2);
+        //interleave(numbers, numbers2);
+        ArrayList<Integer> interleaved = interleave(numbers, numbers2);
+
 
         System.out.println();
-        System.out.println("Combined: " + numbers);
+        System.out.println("Combined: " + interleaved);
     }
 
+    public static ArrayList<Integer> interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
+    {
+        Iterator<Integer> itr1 = list1.iterator();
+        Iterator<Integer> itr2 = list2.iterator();
+
+        ArrayList<Integer> interleaved = new ArrayList<Integer>();
+
+        //keep interleaving while there are still elements in each of the lists
+        while(itr1.hasNext() || itr2.hasNext())
+        {
+            if(itr1.hasNext())
+            {
+                interleaved.add(itr1.next());
+            }
+            if(itr2.hasNext())
+            {
+                interleaved.add(itr2.next());
+            }
+        }
+
+        return interleaved;
+    }
+
+    /**
     public static void interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
     {
         //obtain an iterator for the collection
@@ -145,6 +171,7 @@ public class Homework2
            }
         }
     }
+     **/
 
     public static void stutter(ArrayList<String> someList)
     {
