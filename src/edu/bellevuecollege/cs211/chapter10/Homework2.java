@@ -108,16 +108,12 @@ public class Homework2
         //obtain an iterator for the collection
         Iterator<Integer> itr2 = list2.iterator();
 
-       //set the initial size of the list
-       int initialList1Size = list1.size();
-       int initialList2Size = list2.size();
+        //loop counter
+        int count = 1;
 
-       //loop counter
-       int count = 1;
-
-       //handle based on initial size of lists
-       if(initialList1Size >= initialList2Size)
-       {
+        //handle based on initial size of lists
+        if(list1.size() >= list2.size())
+        {
            //loop through the first array and add elements from list 2 after each element
            while(itr2.hasNext())
            {
@@ -127,9 +123,9 @@ public class Homework2
                //make sure elements are getting added at 1, 3, 5, 7, 9, etc
                count = count + 2;
            }
-       }
-       else if(initialList1Size < initialList2Size)
-       {
+        }
+        else if(list1.size() < list2.size())
+        {
            //loop through the first array and add elements from list 2 after each element
            while(itr2.hasNext())
            {
@@ -147,7 +143,7 @@ public class Homework2
                    list1.add(itr2.next());
                }
            }
-       }
+        }
     }
 
     public static void stutter(ArrayList<String> someList)
