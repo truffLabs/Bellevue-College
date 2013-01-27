@@ -25,7 +25,7 @@ public class Homework2
         System.out.println(hamlet);
         **/
 
-        /**
+
         //exercise5: [4, 1, 2, 0, 3]
         //TODO: refresh why ArrayList can't contain primitive types
         ArrayList<Integer> numbers = new ArrayList<Integer>();
@@ -40,7 +40,7 @@ public class Homework2
         scaleByK(numbers);
 
         System.out.println("Numbers after: " + numbers);
-        **/
+
 
         /**
         //exercise 9:
@@ -73,6 +73,7 @@ public class Homework2
         System.out.println(listOfStrings);
         **/
 
+        /**
         //exercise 16
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         numbers.add(10);
@@ -103,6 +104,7 @@ public class Homework2
 
         System.out.println();
         System.out.println("Combined: " + interleaved);
+        **/
     }
 
     public static ArrayList<Integer> interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
@@ -250,15 +252,16 @@ public class Homework2
                 {
                     tempList.add(count);
                 }
-
             }
         }
 
+        someList = tempList;
+
         //clear the initial list
-        someList.clear();
+        //someList.clear();
 
         //add the elements from tempList back to someList
-        someList.addAll(0, tempList);
+        //someList.addAll(0, tempList);
     }
 
     public static void swapPairs(ArrayList someList)
