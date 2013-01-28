@@ -255,13 +255,11 @@ public class Homework2
             }
         }
 
-        someList = tempList;
-
         //clear the initial list
-        //someList.clear();
+        someList.clear();
 
         //add the elements from tempList back to someList
-        //someList.addAll(0, tempList);
+        someList.addAll(0, tempList);
     }
 
     public static void swapPairs(ArrayList someList)
