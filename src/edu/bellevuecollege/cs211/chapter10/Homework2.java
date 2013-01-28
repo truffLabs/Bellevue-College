@@ -1,8 +1,6 @@
 package edu.bellevuecollege.cs211.chapter10;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.*;
 
 public class Homework2
 {
@@ -25,7 +23,7 @@ public class Homework2
         System.out.println(hamlet);
         **/
 
-
+        /**
         //exercise5: [4, 1, 2, 0, 3]
         //TODO: refresh why ArrayList can't contain primitive types
         ArrayList<Integer> numbers = new ArrayList<Integer>();
@@ -40,7 +38,7 @@ public class Homework2
         scaleByK(numbers);
 
         System.out.println("Numbers after: " + numbers);
-
+        **/
 
         /**
         //exercise 9:
@@ -63,15 +61,19 @@ public class Homework2
          **/
 
         //exercise 11
-        /**
         ArrayList<String> listOfStrings = new ArrayList<String>();
         listOfStrings.add("do");
         listOfStrings.add("re");
         listOfStrings.add("mi");
+        listOfStrings.add("fa");
+        listOfStrings.add("so");
+        listOfStrings.add("la");
+        listOfStrings.add("ti");
+        listOfStrings.add("do");
 
         stutter(listOfStrings);
         System.out.println(listOfStrings);
-        **/
+
 
         /**
         //exercise 16
@@ -107,6 +109,7 @@ public class Homework2
         **/
     }
 
+    //exercise 16
     public static ArrayList<Integer> interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
     {
         Iterator<Integer> itr1 = list1.iterator();
@@ -130,69 +133,18 @@ public class Homework2
         return interleaved;
     }
 
-    /**
-    public static void interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
-    {
-        //obtain an iterator for the collection
-        Iterator<Integer> itr2 = list2.iterator();
-
-        //loop counter
-        int count = 1;
-
-        //handle based on initial size of lists
-        if(list1.size() >= list2.size())
-        {
-           //loop through the first array and add elements from list 2 after each element
-           while(itr2.hasNext())
-           {
-               //insert elements from list2
-               list1.add(count, itr2.next());
-
-               //make sure elements are getting added at 1, 3, 5, 7, 9, etc
-               count = count + 2;
-           }
-        }
-        else if(list1.size() < list2.size())
-        {
-           //loop through the first array and add elements from list 2 after each element
-           while(itr2.hasNext())
-           {
-               if(count <= list1.size())
-               {
-                   //insert elements from list2
-                   list1.add(count, itr2.next());
-
-                   //make sure elements are getting added at 1, 3, 5, 7, 9, etc
-                   count = count + 2;
-               }
-               else
-               {
-                   //fill in the remainder of the elements from list2 to list1
-                   list1.add(itr2.next());
-               }
-           }
-        }
-    }
-     **/
-
+    //exercise 11
     public static void stutter(ArrayList<String> someList)
     {
-        ArrayList<String> tempList= new ArrayList<String>();
-
-        //for each String in 'someList', add the String to the 'tempList' twice
-        for(String s : someList)
+        //read from the end of the list
+        for(int i = someList.size()-1 ; i >= 0 ; i--)
         {
-            tempList.add(s);
-            tempList.add(s);
+            //add string at index i to end of list
+            someList.add(i, someList.get(i));
         }
-
-        //clear list and repopulate
-        someList.clear();
-        someList.addAll(0, tempList);
-
     }
 
-
+    //exercise 9
     public static int rangeBetweenZeroes(ArrayList<Integer> someList)
     {
         int numZeroes = 0;
@@ -234,6 +186,7 @@ public class Homework2
         }
     }
 
+    //exercise 5
     public static void scaleByK(ArrayList<Integer> someList)
     {
         int count = 0;
@@ -255,10 +208,8 @@ public class Homework2
             }
         }
 
-        //clear the initial list
-        someList.clear();
-
         //add the elements from tempList back to someList
+        someList.clear();
         someList.addAll(0, tempList);
     }
 
