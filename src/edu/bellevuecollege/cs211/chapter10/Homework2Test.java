@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class Homework2Test
 {
+
     //exercise 16
     @Test
     public void testInterleave() throws Exception
@@ -16,9 +17,6 @@ public class Homework2Test
         numbers.add(20);
         numbers.add(30);
         numbers.add(40);
-        //numbers.add(50);
-        //numbers.add(60);
-        //numbers.add(70);
 
         ArrayList<Integer> numbers2 = new ArrayList<Integer>();
         numbers2.add(4);
@@ -158,6 +156,13 @@ public class Homework2Test
         numbers4.add(13);
 
         assertEquals(Homework2.rangeBetweenZeroes(numbers4), 0);
+
+        //test with one zero
+        ArrayList<Integer> numbers5 = new ArrayList<Integer>();
+        numbers5.add(-1);
+        numbers5.add(0);
+
+        assertEquals(Homework2.rangeBetweenZeroes(numbers5), 1);
     }
 
     //exercise5
