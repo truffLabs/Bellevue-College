@@ -1,11 +1,8 @@
 package edu.bellevuecollege.cs211.chapter10;
 
 import java.util.*;
-import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.junit.*;
-
 
 public class Homework2Test
 {
