@@ -109,6 +109,50 @@ public class Homework2
         **/
     }
 
+    public static void interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
+    {
+        //obtain an iterator for the collection
+        Iterator<Integer> itr2 = list2.iterator();
+
+        //loop counter
+        int count = 1;
+
+        //handle based on initial size of lists
+        if(list1.size() >= list2.size())
+        {
+            //loop through the first array and add elements from list 2 after each element
+            while(itr2.hasNext())
+            {
+                //insert elements from list2
+                list1.add(count, itr2.next());
+
+                //make sure elements are getting added at 1, 3, 5, 7, 9, etc
+                count = count + 2;
+            }
+        }
+        else if(list1.size() < list2.size())
+        {
+            //loop through the first array and add elements from list 2 after each element
+            while(itr2.hasNext())
+            {
+                if(count <= list1.size())
+                {
+                    //insert elements from list2
+                    list1.add(count, itr2.next());
+
+                    //make sure elements are getting added at 1, 3, 5, 7, 9, etc
+                    count = count + 2;
+                }
+                else
+                {
+                    //fill in the remainder of the elements from list2 to list1
+                    list1.add(itr2.next());
+                }
+            }
+        }
+    }
+
+    /**
     //exercise 16
     public static ArrayList<Integer> interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
     {
@@ -132,6 +176,7 @@ public class Homework2
 
         return interleaved;
     }
+     **/
 
     //exercise 11
     public static void stutter(ArrayList<String> someList)

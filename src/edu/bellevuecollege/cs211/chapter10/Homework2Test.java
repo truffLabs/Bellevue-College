@@ -31,9 +31,9 @@ public class Homework2Test
         numbers2.add(11);
 
         //interleave(numbers, numbers2);
-        ArrayList<Integer> interleaved = Homework2.interleave(numbers, numbers2);
+        Homework2.interleave(numbers, numbers2);
 
-        assertEquals(interleaved.toString(), "[10, 4, 20, 5, 30, 6, 40, 7, 8, 9, 10, 11]");
+        assertEquals(numbers.toString(), "[10, 4, 20, 5, 30, 6, 40, 7, 8, 9, 10, 11]");
     }
 
     //exercise 16
@@ -55,9 +55,9 @@ public class Homework2Test
 
 
         //interleave(numbers, numbers2);
-        ArrayList<Integer> interleaved = Homework2.interleave(numbers, numbers2);
+        Homework2.interleave(numbers, numbers2);
 
-        assertEquals(interleaved.toString(), "[10, 4, 20, 5, 30, 6, 40, 7]");
+        assertEquals(numbers.toString(), "[10, 4, 20, 5, 30, 6, 40, 7]");
     }
 
     //exercise 16
@@ -80,9 +80,9 @@ public class Homework2Test
 
 
         //interleave(numbers, numbers2);
-        ArrayList<Integer> interleaved = Homework2.interleave(numbers, numbers2);
+        Homework2.interleave(numbers, numbers2);
 
-        assertEquals(interleaved.toString(), "[10, 4, 20, 5, 30, 6, 40, 7, 50]");
+        assertEquals(numbers.toString(), "[10, 4, 20, 5, 30, 6, 40, 7, 50]");
     }
 
     @Test
