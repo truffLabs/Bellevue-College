@@ -1,10 +1,13 @@
 package edu.bellevuecollege.cs211.chapter10;
-
 import java.util.*;
+
+/**
+ * Fulfills requirements of Homework 2 as assigned in CS211.
+ */
 public class Homework2
 
 {
-
+    //contains code to test each method
     public static void main(String[] Args)
     {
         /**
@@ -60,6 +63,7 @@ public class Homework2
                 + rangeBetweenZeroes(numbers));
          **/
 
+        /**
         //exercise 11
         ArrayList<String> listOfStrings = new ArrayList<String>();
         listOfStrings.add("do");
@@ -73,19 +77,15 @@ public class Homework2
 
         stutter(listOfStrings);
         System.out.println(listOfStrings);
+        **/
 
 
-        /**
         //exercise 16
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         numbers.add(10);
         numbers.add(20);
         numbers.add(30);
         numbers.add(40);
-        //numbers.add(50);
-        //numbers.add(60);
-        //numbers.add(70);
-
 
         ArrayList<Integer> numbers2 = new ArrayList<Integer>();
         numbers2.add(4);
@@ -101,60 +101,16 @@ public class Homework2
         System.out.println("list2: " + numbers2);
 
         //interleave(numbers, numbers2);
-        ArrayList<Integer> interleaved = interleave(numbers, numbers2);
+        interleave(numbers, numbers2);
 
 
         System.out.println();
-        System.out.println("Combined: " + interleaved);
-        **/
+        System.out.println("Combined: " + numbers);
+
     }
 
-    public static void interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
-    {
-        //obtain an iterator for the collection
-        Iterator<Integer> itr2 = list2.iterator();
-
-        //loop counter
-        int count = 1;
-
-        //handle based on initial size of lists
-        if(list1.size() >= list2.size())
-        {
-            //loop through the first array and add elements from list 2 after each element
-            while(itr2.hasNext())
-            {
-                //insert elements from list2
-                list1.add(count, itr2.next());
-
-                //make sure elements are getting added at 1, 3, 5, 7, 9, etc
-                count = count + 2;
-            }
-        }
-        else if(list1.size() < list2.size())
-        {
-            //loop through the first array and add elements from list 2 after each element
-            while(itr2.hasNext())
-            {
-                if(count <= list1.size())
-                {
-                    //insert elements from list2
-                    list1.add(count, itr2.next());
-
-                    //make sure elements are getting added at 1, 3, 5, 7, 9, etc
-                    count = count + 2;
-                }
-                else
-                {
-                    //fill in the remainder of the elements from list2 to list1
-                    list1.add(itr2.next());
-                }
-            }
-        }
-    }
-
-    /**
     //exercise 16
-    public static ArrayList<Integer> interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
+    public static void interleave(ArrayList<Integer> list1, ArrayList<Integer> list2)
     {
         Iterator<Integer> itr1 = list1.iterator();
         Iterator<Integer> itr2 = list2.iterator();
@@ -174,9 +130,11 @@ public class Homework2
             }
         }
 
-        return interleaved;
+        //clear and set list1
+        list1.clear();
+        list1.addAll(0, interleaved);
+
     }
-     **/
 
     //exercise 11
     public static void stutter(ArrayList<String> someList)
