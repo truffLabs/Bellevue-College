@@ -1,8 +1,8 @@
 package edu.bellevuecollege.cs211.chapter10;
 
 import java.util.*;
-
 public class Homework2
+
 {
 
     public static void main(String[] Args)
@@ -213,6 +213,7 @@ public class Homework2
         someList.addAll(0, tempList);
     }
 
+    //exercise 2
     public static void swapPairs(ArrayList someList)
     {
         ArrayList<String> swappedList = someList;
