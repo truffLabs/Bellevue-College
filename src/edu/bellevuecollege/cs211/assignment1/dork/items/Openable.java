@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.dork.items;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
 
 /**
  *Interface to be extended by Items. Should represent "things" that can be opened.

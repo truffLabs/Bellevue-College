@@ -1,6 +1,6 @@
-package edu.bellevuecollege.cs211.dork.controller;
-import edu.bellevuecollege.cs211.dork.items.*;
-import edu.bellevuecollege.cs211.dork.model.*;
+package edu.bellevuecollege.cs211.assignment1.dork.controller;
+import edu.bellevuecollege.cs211.assignment1.dork.items.*;
+import edu.bellevuecollege.cs211.assignment1.dork.model.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;

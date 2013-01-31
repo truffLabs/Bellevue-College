@@ -1,5 +1,5 @@
-package edu.bellevuecollege.cs211.dork.items;
-import edu.bellevuecollege.cs211.dork.model.Person;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
+import edu.bellevuecollege.cs211.assignment1.dork.model.Person;
 
 /**
  *Interface to be extended by Items. Should represent "things" that can be used as weapons.

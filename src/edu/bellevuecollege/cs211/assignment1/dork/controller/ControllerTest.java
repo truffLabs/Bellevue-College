@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.dork.controller;
+package edu.bellevuecollege.cs211.assignment1.dork.controller;
 
 /**
  * Created with IntelliJ IDEA.

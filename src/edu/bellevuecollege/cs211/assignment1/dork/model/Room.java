@@ -1,7 +1,7 @@
-package edu.bellevuecollege.cs211.dork.model;
-import edu.bellevuecollege.cs211.dork.items.Item;
-import edu.bellevuecollege.cs211.dork.items.Openable;
-import edu.bellevuecollege.cs211.dork.items.Weapon;
+package edu.bellevuecollege.cs211.assignment1.dork.model;
+import edu.bellevuecollege.cs211.assignment1.dork.items.Item;
+import edu.bellevuecollege.cs211.assignment1.dork.items.Openable;
+import edu.bellevuecollege.cs211.assignment1.dork.items.Weapon;
 
 import java.util.ArrayList;
 

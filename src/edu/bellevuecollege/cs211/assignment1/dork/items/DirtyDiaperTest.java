@@ -1,5 +1,4 @@
-package edu.bellevuecollege.cs211.dork.items;
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Detail1_1Impl;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
 import org.junit.Test;
 
 public class DirtyDiaperTest {

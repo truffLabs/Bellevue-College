@@ -1,6 +1,5 @@
-package edu.bellevuecollege.cs211.dork.model;
-import edu.bellevuecollege.cs211.dork.items.*;
-import edu.bellevuecollege.cs211.dork.model.Person;
+package edu.bellevuecollege.cs211.assignment1.dork.model;
+import edu.bellevuecollege.cs211.assignment1.dork.items.*;
 import org.junit.*;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
@@ -34,6 +33,7 @@ public class RoomTest {
         assertEquals(r1.getSouth(), null);
         assertEquals(r1.getEast(), null);
         assertEquals(r1.getWest(), null);
+
 
         //check if array list is empty
         assertTrue(r1.getItemsInRoom().isEmpty());

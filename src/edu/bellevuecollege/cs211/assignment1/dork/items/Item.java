@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.dork.items;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
 
 /**
  * Defines abstract class representing Items present in each of the rooms of the game.

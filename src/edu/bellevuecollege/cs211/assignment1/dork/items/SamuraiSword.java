@@ -1,5 +1,5 @@
-package edu.bellevuecollege.cs211.dork.items;
-import edu.bellevuecollege.cs211.dork.model.*;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
+import edu.bellevuecollege.cs211.assignment1.dork.model.*;
 
 /**
  *Class defines a SamuraiSword object. This class extends Item and

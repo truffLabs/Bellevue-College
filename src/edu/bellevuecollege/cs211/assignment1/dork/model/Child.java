@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.dork.model;
+package edu.bellevuecollege.cs211.assignment1.dork.model;
 
 /**
  *Class defines a Child object. This class extends Person and

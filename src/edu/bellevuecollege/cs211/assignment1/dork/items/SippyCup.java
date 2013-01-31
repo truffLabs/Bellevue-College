@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.dork.items;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
 
 /**
  *Class defines a SippyCup object. This class extends Item and

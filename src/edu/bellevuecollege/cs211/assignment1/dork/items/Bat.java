@@ -1,5 +1,5 @@
-package edu.bellevuecollege.cs211.dork.items;
-import edu.bellevuecollege.cs211.dork.model.Person;
+package edu.bellevuecollege.cs211.assignment1.dork.items;
+import edu.bellevuecollege.cs211.assignment1.dork.model.Person;
 
 /**
  *Class defines a Bat object. This class extends Item and

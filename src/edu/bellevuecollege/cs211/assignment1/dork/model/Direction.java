@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.dork.model;
+package edu.bellevuecollege.cs211.assignment1.dork.model;
 
 /**
  * Used by Room objects and controller to orient "things" on the "game map".
