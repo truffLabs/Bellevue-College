@@ -2,6 +2,7 @@ package edu.bellevuecollege.cs211.chapter11;
 
 import com.sun.servicetag.SystemEnvironment;
 
+import javax.swing.*;
 import java.util.*;
 
 
@@ -43,6 +44,31 @@ public class Homework3
         **/
 
 
+    }
+
+    //exercise17
+    public static Boolean subMap(Map<String, String> firstMap, Map<String,String> secondMap)
+    {
+        int matches = 0;
+
+        //iterate through first map, then search each KV pair in second map
+        for(Map.Entry<String, String> entry : firstMap.entrySet())
+        {
+            String firstMapKey = entry.getKey();
+            String firstMapValue = entry.getValue();
+
+            for(Map.Entry<String, String> entry2 : secondMap.entrySet())
+            {
+                //if KV pair equal some KV pair in secondMap -> increment matches counter
+                if(firstMapKey.equals(entry2.getKey()) && firstMapValue.equals(entry2.getValue()))
+                {
+                    matches++;
+                }
+            }
+        }
+
+        //if matches counter is equal to the size of the firstMap -> firstMap is a submap of secondMap
+        return matches == firstMap.size();
     }
 
     //exercise16

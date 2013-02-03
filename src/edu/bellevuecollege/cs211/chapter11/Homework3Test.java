@@ -10,6 +10,34 @@ import java.util.*;
 public class Homework3Test
 {
 
+    //exercise 17
+    @Test
+    public void testSubMap() throws Exception
+    {
+        Map<String, String> m1 = new HashMap<String, String>();
+        m1.put("Marty", "206-9024"); m1.put("Hawking", "123-4567");
+
+        Map<String, String> m2 = new HashMap<String, String>();
+        m2.put("Marty", "206-9024"); m2.put("Hawking", "123-4567"); m2.put("Smith", "949-0504");
+        m2.put("Newton", "123-4567");
+
+        assertTrue(Homework3.subMap(m1, m2));
+
+        Map<String, String> m3 = new HashMap<String, String>();
+
+        assertTrue(Homework3.subMap(m3, m2));
+
+        Map<String, String> m4 = new HashMap<String, String>();
+        m4.put("Marty", null); m4.put("Hawking", "123-4567");
+
+        Map<String, String> m5 = new HashMap<String, String>();
+        m5.put("Marty", null); m5.put("Hawking", "123-4567"); m5.put("Smith", "949-0504");
+        m5.put("Newton", "123-4567");
+
+        //assertTrue(Homework3.subMap(m4, m5));
+
+    }
+
     //exercise 16
     @Test
     public void testIs1to1() throws Exception
