@@ -94,11 +94,6 @@ public class Homework3
     {
         Map<Integer, Integer> m = new HashMap<Integer, Integer>();
 
-        //set placeholder for key at maximum value
-        int keyAtMaxValue = 0;
-        //set max number of times a value is found
-        int maxOccurrence = 0;
-
         //add elements in list to map with occurrences
         for(Integer i : l)
         {
@@ -115,19 +110,14 @@ public class Homework3
             }
         }
 
-        for (Map.Entry<Integer, Integer> entry : m.entrySet())
+        if(m.isEmpty())
         {
-
-            int key = entry.getKey();
-            int value = entry.getValue();
-
-            if(value >= maxOccurrence)
-            {
-                maxOccurrence = value;
-            }
+            return 0;
         }
+        else return Collections.max(m.values());
 
-        return maxOccurrence;
+
+
     }
 
     //exercise 9
