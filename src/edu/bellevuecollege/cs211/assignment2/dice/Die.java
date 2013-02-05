@@ -1,4 +1,5 @@
 package edu.bellevuecollege.cs211.assignment2.dice;
+import java.util.Random;
 
 /**
  * A Dice class to represent dice
@@ -10,6 +11,8 @@ package edu.bellevuecollege.cs211.assignment2.dice;
 public class Die implements Comparable<Die>
 {
 
+    int value;
+
 	/**
 	 * Used to sort the dice in DiceCollection, compares two dice, returns negative if this dice is less than the given
 	 * dice. Returns 0 if equal. Returns a positive number if this die is greater than the given die
@@ -19,7 +22,15 @@ public class Die implements Comparable<Die>
 	@Override
 	public int compareTo(Die arg0)
 	{
-		return 0;
+		if(this.value < arg0.getDieValue())
+        {
+            return this.value - arg0.getDieValue();
+        }
+        else if(this.value > arg0.getDieValue())
+        {
+            return arg0.getDieValue() - this.value;
+        }
+        else return 0;
 	}
 
 	/**
@@ -27,6 +38,9 @@ public class Die implements Comparable<Die>
 	 */
 	public void roll()
 	{
+        Random r = new Random();
+        this.value = r.nextInt(6);
+
 	}
 
 	/**
@@ -36,7 +50,7 @@ public class Die implements Comparable<Die>
 	 */
 	public int getDieValue()
 	{
-		return 0;
+		return this.value;
 	}
 
 	/**
@@ -47,6 +61,11 @@ public class Die implements Comparable<Die>
 	 */
 	public void setDieValue(int value)
 	{
+        if(value >= 1 && value <= 6)
+        {
+            value = this.value;
+        }
+        else throw new IllegalArgumentException("Die value must be between 1 and 6.");
 	}
 
 }
