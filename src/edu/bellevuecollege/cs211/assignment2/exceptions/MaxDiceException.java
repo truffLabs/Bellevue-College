@@ -3,7 +3,7 @@ package edu.bellevuecollege.cs211.assignment2.exceptions;
 public class MaxDiceException extends RuntimeException
 {
     /**
-     * Reuired if serialzed over wire
+     * Required if serialized over wire
      */
     private static final long serialVersionUID = 1L;
 
