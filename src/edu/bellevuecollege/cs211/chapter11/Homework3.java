@@ -1,13 +1,12 @@
 package edu.bellevuecollege.cs211.chapter11;
 import java.util.*;
 
-
 /**
- * Created with IntelliJ IDEA. User: pakaehua Date: 1/30/13 Time: 5:21 PM To change this template use File | Settings |
- * File Templates.
+ * Fulfills requirements of Homework 2 as assigned in CS211.
  */
 public class Homework3
 {
+    //contains code to test each method
     public static void main(String Args[])
     {
         /**
