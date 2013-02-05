@@ -34,7 +34,7 @@ public class Homework3Test
         m5.put("Marty", null); m5.put("Hawking", "123-4567"); m5.put("Smith", "949-0504");
         m5.put("Newton", "123-4567");
 
-        //assertTrue(Homework3.subMap(m4, m5));
+        assertTrue(Homework3.subMap(m4, m5));
 
     }
 
@@ -83,9 +83,9 @@ public class Homework3Test
         m9.put(null, "123"); m9.put(null, "123"); m9.put(null, "123");
         assertTrue(Homework3.is1to1(m9));
 
-        //Map<String, String> m10 = new HashMap<String, String>();
-        //m10.put("1", "123"); m10.put("2", null); m10.put(null, "123");
-        //assertTrue(Homework3.is1to1(m10));
+        Map<String, String> m10 = new HashMap<String, String>();
+        m10.put("1", "123"); m10.put("2", null); m10.put(null, "123");
+        assertTrue(Homework3.is1to1(m10));
 
 
     }

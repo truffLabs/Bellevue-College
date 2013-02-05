@@ -39,6 +39,17 @@ public class Homework3
         System.out.println(is1to1(m1));
         **/
 
+        /**
+        //exercise 17:
+        Map<String, String> m1 = new HashMap<String, String>();
+        m1.put("Marty", "206-9024"); m1.put("Hawking", "123-4567");
+
+        Map<String, String> m2 = new HashMap<String, String>();
+        m2.put("Marty", "206-9024"); m2.put("Hawking", "123-4567"); m2.put("Smith", "949-0504");
+        m2.put("Newton", "123-4567");
+
+        System.out.println(subMap(m1, m2));
+        **/
 
     }
 
@@ -53,10 +64,17 @@ public class Homework3
             String firstMapKey = entry.getKey();
             String firstMapValue = entry.getValue();
 
+            //if KV pair equal some KV pair in secondMap -> increment matches counter
             for(Map.Entry<String, String> entry2 : secondMap.entrySet())
             {
-                //if KV pair equal some KV pair in secondMap -> increment matches counter
-                if(firstMapKey.equals(entry2.getKey()) && firstMapValue.equals(entry2.getValue()))
+
+                //handle null values
+                if(firstMapKey.equals(entry2.getKey()) && firstMapValue == null && entry2.getValue() == null)
+                {
+                    matches ++;
+                }
+                //handle where values are not null
+                else if(firstMapKey.equals(entry2.getKey()) && firstMapValue.equals(entry2.getValue()))
                 {
                     matches++;
                 }
@@ -74,7 +92,7 @@ public class Homework3
 
         for(Map.Entry<String, String> entry : m.entrySet())
         {
-            if(entry.getValue().equals(value))
+            if(entry.getValue() != null && entry.getValue().equals(value))
             {
                 return false;
             }
