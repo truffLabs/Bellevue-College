@@ -1,5 +1,8 @@
 package edu.bellevuecollege.cs211.assignment2.dice;
 import edu.bellevuecollege.cs211.assignment2.exceptions.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents a collection of dice
@@ -10,21 +13,32 @@ import edu.bellevuecollege.cs211.assignment2.exceptions.*;
 
 public class DiceCollection
 {
+    List<Die> bunchOfDice;
+    int numDiceInCollection;
+
+    //Erik is keeping a separate list of initial dice, keeper dice, and dice to roll
 
 	/**
-	 * Constructs a collection of dice
+	 * Constructs a collection of dice. Assume assignment 2 only generates 5 die.
 	 * 
 	 * @param numDice
 	 *            The number of dice in the collection
 	 */
-    //always going to be 5 for our program
+
 	public DiceCollection(int numDice)
 	{
+        bunchOfDice = new ArrayList<Die>();
 
+        for(int i = 0 ; i < numDice ; i++)
+        {
+            bunchOfDice.add(new Die());
+        }
+
+        this.numDiceInCollection = bunchOfDice.size();
 	}
 
 	/**
-	 * Returns the die and position num.
+	 * Returns the die from position num.
 	 * 
 	 * @param dieNum
 	 *            The die at the given position.
@@ -32,9 +46,10 @@ public class DiceCollection
 	 *             thrown if the die number is greater than the number of dice in the collection
 	 * @return The die requested.
 	 */
+    //TODO: find out if we actually need to return the die AND position number
 	public Die getDie(int dieNum) throws MaxDiceException
 	{
-		return null;
+        return bunchOfDice.get(dieNum-1);
 	}
 
 	/**
@@ -44,17 +59,18 @@ public class DiceCollection
 	 * @throws MaxDiceException
 	 *             thrown if the number of booleans is greater than the number of dice in the collection
 	 */
-
-    //you can have a variable number of booleans ; pass in as many as you like ; since the number of dice is variable
-    //needed to set a variable
-    //if you only wanted to roll 3, 4, 5, you can pass (false, false, true, true, true)
-    //designed to tell you which of the 5 dice you want to reroll
 	public void rollDice(boolean... arguments) throws MaxDiceException
 	{
+        for(int i = 0 ; i < arguments.length ; i++)
+        {
+            if(arguments[i] == true)
+            {
+                getDie(i).roll();
+            }
+        }
 
-        //turns into an array...first one is arguments[0] etc
-
-	}
+        Collections.sort(bunchOfDice);
+    }
 
 	/**
 	 * Set values of all the dice. This will be used for my testing.
@@ -64,9 +80,22 @@ public class DiceCollection
 	 * @throws MaxDiceException
 	 *             thrown if the number of values to set is greater than the number of dice in the collection
 	 */
-
-    //Vinayak will pass in a bunch of ints and you should set the value on those dice
 	public void setValues(int... values) throws MaxDiceException
 	{
+        for(int i = 0 ; i < values.length ; i++)
+        {
+            getDie(i).setDieValue(values[i]);
+        }
 	}
+
+    public List<Die> getBunchOfDice()
+    {
+        return this.bunchOfDice;
+    }
+
+
+    public int getNumDiceInCollection()
+    {
+        return this.numDiceInCollection;
+    }
 }

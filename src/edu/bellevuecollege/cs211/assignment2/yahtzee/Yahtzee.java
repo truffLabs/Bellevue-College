@@ -17,6 +17,12 @@ import edu.bellevuecollege.cs211.assignment2.dice.*;
 
 public class Yahtzee
 {
+    //track player's current score
+    int currentScore;
+
+    //hold collection of 5 dice for this game
+    DiceCollection theseDice;
+
 
 	/**
 	 * You should roll the dice, ask the user which ones they want to roll again and update the score. The user is
@@ -27,6 +33,26 @@ public class Yahtzee
 	public static void main(String[] args)
 	{
 
+        //instantiate a dice collection object
+            //object needs to be built with 5 dice
+
+        //user needs to roll the dice
+            //for each dice object, call dice.roll
+
+        //do you want to re-roll? * 3
+            //user selects dice they want to re-roll
+            //call dice.roll for each of the objects they want to re-roll
+
+        //user is asked to select which of 13 scoring methods will be used
+
+        //user presented with final score
+
+
+
+
+
+
+
 	}
 
 	/**
@@ -34,6 +60,8 @@ public class Yahtzee
 	 */
 	public Yahtzee()
 	{
+
+        //construct state here and assign to instance variables
 
 	}
 

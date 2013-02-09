@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * A Dice class to represent dice
  * 
- * @author Vinayak Rao
+ * @author Pat Kaehuaea
  * 
  */
 
@@ -22,15 +22,7 @@ public class Die implements Comparable<Die>
 	@Override
 	public int compareTo(Die arg0)
 	{
-		if(this.value < arg0.getDieValue())
-        {
-            return this.value - arg0.getDieValue();
-        }
-        else if(this.value > arg0.getDieValue())
-        {
-            return arg0.getDieValue() - this.value;
-        }
-        else return 0;
+		return this.getDieValue() - arg0.getDieValue();
 	}
 
 	/**
@@ -39,7 +31,7 @@ public class Die implements Comparable<Die>
 	public void roll()
 	{
         Random r = new Random();
-        this.value = r.nextInt(6);
+        this.value = r.nextInt(5) + 1;
 
 	}
 
@@ -63,7 +55,7 @@ public class Die implements Comparable<Die>
 	{
         if(value >= 1 && value <= 6)
         {
-            value = this.value;
+            this.value = value;
         }
         else throw new IllegalArgumentException("Die value must be between 1 and 6.");
 	}

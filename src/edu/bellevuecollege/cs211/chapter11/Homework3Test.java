@@ -86,8 +86,6 @@ public class Homework3Test
         Map<String, String> m10 = new HashMap<String, String>();
         m10.put("1", "123"); m10.put("2", null); m10.put(null, "123");
         assertTrue(Homework3.is1to1(m10));
-
-
     }
 
     //exercise 15
