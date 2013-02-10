@@ -1,5 +1,6 @@
 package edu.bellevuecollege.cs211.assignment2.yahtzee;
 import edu.bellevuecollege.cs211.assignment2.dice.*;
+import edu.bellevuecollege.cs211.assignment2.score.ScoreCard;
 
 //NOTES
 
@@ -22,6 +23,9 @@ public class Yahtzee
 
     //hold collection of 5 dice for this game
     DiceCollection theseDice;
+
+    //hold ScoreCard for current game
+    ScoreCard playerScoreCard;
 
 
 	/**
@@ -60,9 +64,10 @@ public class Yahtzee
 	 */
 	public Yahtzee()
 	{
-
         //construct state here and assign to instance variables
-
+        currentScore = 0;
+        theseDice = new DiceCollection(5);
+        playerScoreCard = new ScoreCard();
 	}
 
 	/**
