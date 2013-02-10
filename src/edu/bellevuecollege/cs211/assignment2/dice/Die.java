@@ -60,4 +60,10 @@ public class Die implements Comparable<Die>
         else throw new IllegalArgumentException("Die value must be between 1 and 6.");
 	}
 
+    @Override
+    public String toString()
+    {
+        return String.valueOf(this.value);
+    }
+
 }
