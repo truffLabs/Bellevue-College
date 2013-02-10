@@ -11,7 +11,7 @@ import java.util.Random;
 public class Die implements Comparable<Die>
 {
 
-    int value;
+    private int value;
 
 	/**
 	 * Used to sort the dice in DiceCollection, compares two dice, returns negative if this dice is less than the given

@@ -12,10 +12,10 @@ import java.util.*;
 public class DiceCollection
 {
     //use a Map to track die number and object associated with die
-    Map<Integer, Die> bunchOfDice;
+    private Map<Integer, Die> bunchOfDice;
 
     //track number of dice in the collection
-    int numDiceInCollection;
+    private int numDiceInCollection;
 
 	/**
 	 * Constructs a collection of dice. Assume assignment 2 only generates 5 die.
