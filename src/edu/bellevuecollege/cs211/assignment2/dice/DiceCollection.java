@@ -1,22 +1,21 @@
 package edu.bellevuecollege.cs211.assignment2.dice;
 import edu.bellevuecollege.cs211.assignment2.exceptions.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents a collection of dice
  * 
- * @author Vinayak Rao
+ * @author Pat Kaehuaea
  * 
  */
 
 public class DiceCollection
 {
-    List<Die> bunchOfDice;
-    int numDiceInCollection;
+    //use a Map to track die number and object associated with die
+    Map<Integer, Die> bunchOfDice;
 
-    //Erik is keeping a separate list of initial dice, keeper dice, and dice to roll
+    //track number of dice in the collection
+    int numDiceInCollection;
 
 	/**
 	 * Constructs a collection of dice. Assume assignment 2 only generates 5 die.
@@ -27,68 +26,73 @@ public class DiceCollection
 
 	public DiceCollection(int numDice)
 	{
-        bunchOfDice = new ArrayList<Die>();
-
-        for(int i = 0 ; i < numDice ; i++)
+        if(numDice > 0)
         {
-            bunchOfDice.add(new Die());
-        }
+            bunchOfDice = new TreeMap<Integer, Die>();
 
-        this.numDiceInCollection = bunchOfDice.size();
+            for(int i = 1 ; i <= numDice ; i ++)
+            {
+                bunchOfDice.put(i, new Die());
+            }
+
+            this.numDiceInCollection = bunchOfDice.size();
+        }
+        else throw new IllegalArgumentException("The number of dice in any collection must be greater than 0.");
+
 	}
 
 	/**
 	 * Returns the die from position num.
 	 * 
 	 * @param dieNum
-	 *            The die at the given position.
-	 * @throws MaxDiceException
-	 *             thrown if the die number is greater than the number of dice in the collection
+	 *            The die from the given position.
 	 * @return The die requested.
 	 */
-    //TODO: find out if we actually need to return the die AND position number
-	public Die getDie(int dieNum) throws MaxDiceException
+
+	public Die getDie(int dieNum)
 	{
-        return bunchOfDice.get(dieNum-1);
+        if(bunchOfDice.containsKey(dieNum))
+        {
+            return bunchOfDice.get(dieNum);
+        }
+        else throw new NoDiceException();
+
 	}
 
 	/**
 	 * Rolls the dice and sorts them so that they come out of the collection in sorted order. Dice 0 is the lowest Dice
 	 * numDice is the highest. The arguments will take an unlimited number of booleans, basically a boolean array
-	 * 
-	 * @throws MaxDiceException
-	 *             thrown if the number of booleans is greater than the number of dice in the collection
+	 *
 	 */
-	public void rollDice(boolean... arguments) throws MaxDiceException
+	public void rollDice(boolean... arguments)
 	{
         for(int i = 0 ; i < arguments.length ; i++)
         {
             if(arguments[i] == true)
             {
-                getDie(i).roll();
+                //error checking is handled in getDie method via NoDiceException
+                getDie(i+1).roll();
             }
         }
-
-        Collections.sort(bunchOfDice);
     }
 
 	/**
-	 * Set values of all the dice. This will be used for my testing.
+	 * Set values of all the dice. This will be used for testing.
 	 * 
 	 * @param values
 	 *            The dice to set the values to.
-	 * @throws MaxDiceException
-	 *             thrown if the number of values to set is greater than the number of dice in the collection
 	 */
-	public void setValues(int... values) throws MaxDiceException
+	public void setValues(int... values)
 	{
         for(int i = 0 ; i < values.length ; i++)
         {
-            getDie(i).setDieValue(values[i]);
+            //handle element exception in getDie method
+            //handle value exception in Die class
+            getDie(i+1).setDieValue(values[i]);
         }
 	}
 
-    public List<Die> getBunchOfDice()
+    public Map<Integer, Die> getBunchOfDice()
     {
         return this.bunchOfDice;
     }
@@ -97,5 +101,11 @@ public class DiceCollection
     public int getNumDiceInCollection()
     {
         return this.numDiceInCollection;
+    }
+
+    @Override
+    public String toString()
+    {
+        return bunchOfDice.toString();
     }
 }
