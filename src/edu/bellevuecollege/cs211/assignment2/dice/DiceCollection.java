@@ -1,5 +1,7 @@
 package edu.bellevuecollege.cs211.assignment2.dice;
 import edu.bellevuecollege.cs211.assignment2.exceptions.*;
+
+import javax.swing.event.TreeModelListener;
 import java.util.*;
 
 /**
@@ -91,6 +93,42 @@ public class DiceCollection
             getDie(i+1).setDieValue(values[i]);
         }
 	}
+
+    /**
+     * Used to return a sorted list of values from all of the die in 'bunchOfDice'. A call is first
+     * made to construct a new ArrayList. Each of teh elements in 'bunchOfDice' are then read
+     * into 'listOfValues'. After all values are placed in the ArrayList a call is made to
+     * Collections.sort() to order the list.
+     *
+     * @return listOfValues
+     * a sorted list representing the values of all die in 'bunchOfDice'
+     */
+    public List<Integer> getSortedValuesAsList()
+    {
+        List<Integer> listOfValues = new ArrayList<Integer>();
+
+        for(Die d : bunchOfDice.values())
+        {
+            listOfValues.add(d.getDieValue());
+        }
+
+        Collections.sort(listOfValues);
+
+        return listOfValues;
+    }
+
+    public Set<Integer> getSortedValuesAsSet()
+    {
+        Set<Integer> setOfSortedValues = new TreeSet<Integer>();
+
+        for(Die d : bunchOfDice.values())
+        {
+            setOfSortedValues.add(d.getDieValue());
+        }
+
+        return setOfSortedValues;
+
+    }
 
     public Map<Integer, Die> getBunchOfDice()
     {

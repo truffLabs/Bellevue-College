@@ -122,6 +122,27 @@ public class DiceCollectionTest
     }
 
     @Test
+    public void testGetSortedValuesAsList() throws Exception
+    {
+        DiceCollection dc1 = new DiceCollection(5);
+        dc1.setValues(1, 2, 2, 3, 5);
+
+        assertEquals(dc1.getSortedValuesAsList().toString(), "[1, 2, 2, 3, 5]");
+    }
+
+    @Test
+    public void testGetValuesAsSet() throws Exception
+    {
+        DiceCollection dc1 = new DiceCollection(5);
+        dc1.setValues(1, 2, 3, 3, 3);
+        assertEquals(dc1.getSortedValuesAsSet().toString(), "[1, 2, 3]");
+
+        DiceCollection dc2 = new DiceCollection(1);
+        dc2.setValues(1);
+        assertEquals(dc2.getSortedValuesAsSet().toString(), "[1]");
+    }
+
+    @Test
     public void testGetBunchOfDice() throws Exception
     {
         DiceCollection dc1 = new DiceCollection(5);
