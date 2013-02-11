@@ -18,5 +18,6 @@ public enum ScoreTypes
     SMALLSTRAIGHT,
     LARGESTRAIGHT,
     YAHTZEE,
-    CHANCE;
+    CHANCE,
+    YAHTZEEBONUS;
 }
