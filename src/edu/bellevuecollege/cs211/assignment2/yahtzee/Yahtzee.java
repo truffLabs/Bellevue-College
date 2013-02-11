@@ -1,6 +1,7 @@
 package edu.bellevuecollege.cs211.assignment2.yahtzee;
 import edu.bellevuecollege.cs211.assignment2.dice.*;
-import edu.bellevuecollege.cs211.assignment2.score.ScoreCard;
+import edu.bellevuecollege.cs211.assignment2.score.ScoreTypes;
+import java.util.*;
 
 //NOTES
 
@@ -19,14 +20,23 @@ import edu.bellevuecollege.cs211.assignment2.score.ScoreCard;
 public class Yahtzee
 {
     //track player's current score
-    int currentScore;
+    private int currentScore;
+
+    //track two halves of score card separately
+    private int upperScore;
+    private int lowerScore;
+
+    //keep track of how many Yahtzees have occured
+    private int countYahtzees;
 
     //hold collection of 5 dice for this game
-    DiceCollection theseDice;
+    private DiceCollection theseDice;
 
-    //hold ScoreCard for current game
-    ScoreCard playerScoreCard;
+    //construct List to track available scoring methods
+    private Set<ScoreTypes> availableScoreTypes;
 
+    //construct Map to hold relationship between scoring type and points for that type
+    private Map<ScoreTypes, Integer> scoreCard;
 
 	/**
 	 * You should roll the dice, ask the user which ones they want to roll again and update the score. The user is
@@ -51,12 +61,6 @@ public class Yahtzee
 
         //user presented with final score
 
-
-
-
-
-
-
 	}
 
 	/**
@@ -67,8 +71,28 @@ public class Yahtzee
         //construct state here and assign to instance variables
         currentScore = 0;
         theseDice = new DiceCollection(5);
-        playerScoreCard = new ScoreCard();
-	}
+        availableScoreTypes = new TreeSet<ScoreTypes>();
+        scoreCard = new HashMap<ScoreTypes, Integer>();
+
+        //add available scoring types to a Set
+        availableScoreTypes.add(ScoreTypes.ONES); availableScoreTypes.add(ScoreTypes.TWOS);
+        availableScoreTypes.add(ScoreTypes.THREES); availableScoreTypes.add(ScoreTypes.FOURS);
+        availableScoreTypes.add(ScoreTypes.FIVES); availableScoreTypes.add(ScoreTypes.SIXES);
+        availableScoreTypes.add(ScoreTypes.THREEOFAKIND); availableScoreTypes.add(ScoreTypes.FOUROFAKIND);
+        availableScoreTypes.add(ScoreTypes.FULLHOUSE); availableScoreTypes.add(ScoreTypes.SMALLSTRAIGHT);
+        availableScoreTypes.add(ScoreTypes.LARGESTRAIGHT); availableScoreTypes.add(ScoreTypes.YAHTZEE);
+        availableScoreTypes.add(ScoreTypes.CHANCE);
+
+        //add relevant values to scoreCard
+        scoreCard.put(ScoreTypes.ONES, 0); scoreCard.put(ScoreTypes.TWOS, 0); scoreCard.put(ScoreTypes.THREES, 0);
+        scoreCard.put(ScoreTypes.FOURS, 0); scoreCard.put(ScoreTypes.FIVES, 0); scoreCard.put(ScoreTypes.SIXES, 0);
+        scoreCard.put(ScoreTypes.BONUS, 0); scoreCard.put(ScoreTypes.THREEOFAKIND, 0);
+        scoreCard.put(ScoreTypes.FOUROFAKIND, 0); scoreCard.put(ScoreTypes.FULLHOUSE, 0);
+        scoreCard.put(ScoreTypes.SMALLSTRAIGHT, 0); scoreCard.put(ScoreTypes.LARGESTRAIGHT, 0);
+        scoreCard.put(ScoreTypes.YAHTZEE, 0); scoreCard.put(ScoreTypes.CHANCE, 0);
+        scoreCard.put(ScoreTypes.YAHTZEEBONUS, 0);
+
+    }
 
 	/**
 	 * Return the current score
@@ -78,7 +102,7 @@ public class Yahtzee
 
 	public int getCurrentScore()
 	{
-		return 0;
+		return currentScore;
 	}
 
 	/**
@@ -89,7 +113,7 @@ public class Yahtzee
 
 	public DiceCollection getDiceCollection()
 	{
-		return null;
+		return theseDice;
 	}
 
 	/**
@@ -99,7 +123,19 @@ public class Yahtzee
 	 */
 	public int scoreOnes()
 	{
-		return 0;
+        int ones = 0;
+
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            if(d.getDieValue() == 1)
+            {
+                ones++;
+            }
+        }
+
+        availableScoreTypes.remove(ScoreTypes.ONES);
+
+        return ones;
 	}
 
 	/**
@@ -109,7 +145,19 @@ public class Yahtzee
 	 */
 	public int scoreTwos()
 	{
-		return 0;
+        int twos = 0;
+
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            if(d.getDieValue() == 2)
+            {
+                twos+=2;
+            }
+        }
+
+        availableScoreTypes.remove(ScoreTypes.TWOS);
+
+        return twos;
 	}
 
 	/**
@@ -119,7 +167,19 @@ public class Yahtzee
 	 */
 	public int scoreThrees()
 	{
-		return 0;
+        int threes = 0;
+
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            if(d.getDieValue() == 3)
+            {
+                threes+=3;
+            }
+        }
+
+        availableScoreTypes.remove(ScoreTypes.THREES);
+
+        return threes;
 	}
 
 	/**
@@ -129,7 +189,19 @@ public class Yahtzee
 	 */
 	public int scoreFours()
 	{
-		return 0;
+        int fours = 0;
+
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            if(d.getDieValue() == 4)
+            {
+                fours+=4;
+            }
+        }
+
+        availableScoreTypes.remove(ScoreTypes.FOURS);
+
+        return fours;
 	}
 
 	/**
@@ -139,7 +211,19 @@ public class Yahtzee
 	 */
 	public int scoreFives()
 	{
-		return 0;
+        int fives = 0;
+
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            if(d.getDieValue() == 5)
+            {
+                fives+=5;
+            }
+        }
+
+        availableScoreTypes.remove(ScoreTypes.FIVES);
+
+        return fives;
 	}
 
 	/**
@@ -149,7 +233,19 @@ public class Yahtzee
 	 */
 	public int scoreSixes()
 	{
-		return 0;
+        int sixes = 0;
+
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            if(d.getDieValue() == 6)
+            {
+                sixes+=6;
+            }
+        }
+
+        availableScoreTypes.remove(ScoreTypes.SIXES);
+
+        return sixes;
 	}
 
 	/**
@@ -159,6 +255,11 @@ public class Yahtzee
 	 */
 	public int scoreBonus()
 	{
+        if(upperScore >= 63)
+        {
+            return 35;
+        }
+
 		return 0;
 	}
 
@@ -169,7 +270,50 @@ public class Yahtzee
 	 */
 	public int scoreThreeOfAKind()
 	{
-		return 0;
+        int sumOfDice = 0;
+
+        //retrieve an ordered set of die values
+        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
+
+        //retrieve ordered list of all die values
+        List<Integer> sortedValuesAsList = theseDice.getSortedValuesAsList();
+
+        //search the set of values to reduce the number of iterations
+        for(Integer i : valuesAsSet)
+        {
+            //if one of the values in the set occurs in the the collection of all values four times
+            if(Collections.frequency(sortedValuesAsList, i) == 3)
+            {
+                //sum the values of all of the dice
+                for(int j=0 ; j < sortedValuesAsList.size() ; j++)
+                {
+                    sumOfDice = sumOfDice + sortedValuesAsList.get(j);
+                }
+            }
+        }
+
+        return sumOfDice;
+        /**
+        int sumOfDice = 0;
+
+        //retrieve an ordered set of die values
+        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
+
+        //number of dice in collection minus 2 is a valid test to determine
+        //if there are three of a kind in the dice collection
+        if(valuesAsSet.size() == (theseDice.getNumDiceInCollection() - 2))
+        {
+            //read all of the die values into its own sorted list
+            List<Integer> sortedValuesAsList = theseDice.getSortedValuesAsList();
+
+            for(int i=0 ; i < sortedValuesAsList.size() ; i++)
+            {
+                sumOfDice = sumOfDice + sortedValuesAsList.get(i);
+            }
+        }
+
+        return sumOfDice;
+        **/
 	}
 
 	/**
@@ -179,7 +323,29 @@ public class Yahtzee
 	 */
 	public int scoreFourOfAKind()
 	{
-		return 0;
+        int sumOfDice = 0;
+
+        //retrieve an ordered set of die values
+        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
+
+        //retrieve ordered list of all die values
+        List<Integer> sortedValuesAsList = theseDice.getSortedValuesAsList();
+
+        //search the set of values to reduce the number of iterations
+        for(Integer i : valuesAsSet)
+        {
+            //if one of the values in the set occurs in the the collection of all values four times
+            if(Collections.frequency(sortedValuesAsList, i) == 4)
+            {
+                //sum the values of all of the dice
+                for(int j=0 ; j < sortedValuesAsList.size() ; j++)
+                {
+                    sumOfDice = sumOfDice + sortedValuesAsList.get(j);
+                }
+            }
+        }
+
+        return sumOfDice;
 	}
 
 	/**
@@ -189,7 +355,30 @@ public class Yahtzee
 	 */
 	public int scoreFullHouse()
 	{
-		return 0;
+        HashMap<Integer, Integer> occurrences = new HashMap<Integer, Integer>();
+
+        //determine if there are 4 occurrence of the same die value in the collection
+        for(Die d : theseDice.getBunchOfDice().values())
+        {
+            //if the integer already exists as a key ; increment value
+            if(occurrences.containsKey(d.getDieValue()))
+            {
+                int tempCount = occurrences.get(d.getDieValue()) + 1;
+                occurrences.put(d.getDieValue(), tempCount);
+            }
+            //else add integer as key
+            else
+            {
+                occurrences.put(d.getDieValue(), 1);
+            }
+        }
+
+        if(occurrences.values().contains(3) && occurrences.values().contains(2))
+        {
+            return 25;
+        }
+
+        return 0;
 	}
 
 	/**
@@ -199,6 +388,34 @@ public class Yahtzee
 	 */
 	public int scoreSmallStraight()
 	{
+        //retrieve an ordered set of die values to REMOVE DUPLICATES
+        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
+
+        //set counter
+        int trackSmallStraight = 0;
+
+        //proceed only if the size of the set contains at least 4 integers AND this wouldn't score as a large Straight
+        if(valuesAsSet.size() >= 4 && scoreLargeStraight() == 0)
+        {
+            //read de-duplicated set into temporary arrayList
+            List<Integer> tempList = new ArrayList<Integer>(valuesAsSet);
+
+            //use multiple four loops to increment 'trackSmallStraight'
+            for(int i = 3 ; i >= 1 ; i--)
+            {
+                if(tempList.get(i) - tempList.get(0) == (i))
+                {
+                    trackSmallStraight++;
+                }
+            }
+        }
+
+        //if trackSmallStraight == 3 then we have a smallStraight
+        if(trackSmallStraight == 3)
+        {
+            return 30;
+        }
+
 		return 0;
 	}
 
@@ -209,7 +426,37 @@ public class Yahtzee
 	 */
 	public int scoreLargeStraight()
 	{
-		return 0;
+        //retrieve an ordered set of die values to REMOVE DUPLICATES
+        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
+
+        //set counter
+        int trackSmallStraight = 0;
+
+        //proceed only if the size of the set contains at least 5 integers
+        if(valuesAsSet.size() == 5)
+        {
+            //read de-duplicated set into temporary arrayList
+            List<Integer> tempList = new ArrayList<Integer>(valuesAsSet);
+
+            //use multiple four loops to increment 'trackSmallStraight'
+            //leverage relationship between elements starting at end of list and
+            //the first element in the list
+            for(int i = 4 ; i >= 1 ; i--)
+            {
+                if(tempList.get(i) - tempList.get(0) == (i))
+                {
+                    trackSmallStraight++;
+                }
+            }
+        }
+
+        //if trackSmallStraight == 4 then we have a large straight
+        if(trackSmallStraight == 4)
+        {
+            return 40;
+        }
+
+        return 0;
 	}
 
 	/**
@@ -219,7 +466,18 @@ public class Yahtzee
 	 */
 	public int scoreYahtzee()
 	{
-		return 0;
+        //retrieve an ordered set of die values
+        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
+
+        //assuming there were 5 die in the collection -> having a set of size 1 means
+        //all 5 die have identical values
+
+        if(valuesAsSet.size() == 1)
+        {
+            return 50;
+        }
+
+        return 0;
 	}
 
 	/**
@@ -229,7 +487,17 @@ public class Yahtzee
 	 */
 	public int scoreChance()
 	{
-		return 0;
+        int sumOfDice = 0;
+
+        //retrieve ordered list of all die values
+        List<Integer> sortedValuesAsList = theseDice.getSortedValuesAsList();
+
+        for(Integer i : sortedValuesAsList)
+        {
+            sumOfDice = sumOfDice + i;
+        }
+
+		return sumOfDice;
 	}
 
 }
