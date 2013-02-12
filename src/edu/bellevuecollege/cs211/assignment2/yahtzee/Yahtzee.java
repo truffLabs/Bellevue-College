@@ -91,7 +91,6 @@ public class Yahtzee
         scoreCard.put(ScoreTypes.SMALLSTRAIGHT, 0); scoreCard.put(ScoreTypes.LARGESTRAIGHT, 0);
         scoreCard.put(ScoreTypes.YAHTZEE, 0); scoreCard.put(ScoreTypes.CHANCE, 0);
         scoreCard.put(ScoreTypes.YAHTZEEBONUS, 0);
-
     }
 
 	/**
@@ -394,8 +393,8 @@ public class Yahtzee
         //set counter
         int trackSmallStraight = 0;
 
-        //proceed only if the size of the set contains at least 4 integers AND this wouldn't score as a large Straight
-        if(valuesAsSet.size() >= 4 && scoreLargeStraight() == 0)
+        //proceed only if the size of the set contains at least 4 integers
+        if(valuesAsSet.size() >= 4)
         {
             //read de-duplicated set into temporary arrayList
             List<Integer> tempList = new ArrayList<Integer>(valuesAsSet);

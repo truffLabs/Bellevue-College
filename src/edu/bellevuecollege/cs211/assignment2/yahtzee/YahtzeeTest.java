@@ -353,17 +353,7 @@ public class YahtzeeTest
         assertEquals(0, y1.scoreSmallStraight());
 
         //test with large straight
-        y1.getDiceCollection().setValues(1, 2, 3, 4, 5);
-        assertEquals(0, y1.scoreSmallStraight());
-
-        y1.getDiceCollection().setValues(2, 3, 4, 5, 6);
-        assertEquals(0, y1.scoreSmallStraight());
-
-        y1.getDiceCollection().setValues(6, 3, 4, 5, 2);
-        assertEquals(0, y1.scoreSmallStraight());
-
-        y1.getDiceCollection().setValues(6, 3, 5, 2, 4);
-        assertEquals(0, y1.scoreSmallStraight());
+        //a small straight should be able to be scored as a large straight
 
         //test with yahtzee
         for(int i = 1; i <= 6 ; i++)
