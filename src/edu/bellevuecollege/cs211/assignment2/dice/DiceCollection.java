@@ -1,7 +1,6 @@
 package edu.bellevuecollege.cs211.assignment2.dice;
 import edu.bellevuecollege.cs211.assignment2.exceptions.*;
 
-import javax.swing.event.TreeModelListener;
 import java.util.*;
 
 /**
@@ -51,13 +50,15 @@ public class DiceCollection
 	 * @return The die requested.
 	 */
 
-	public Die getDie(int dieNum)
+	public Die getDie(int dieNum) throws MaxDiceException
 	{
+        //TODO: need to handle zero as dieNum
+
         if(bunchOfDice.containsKey(dieNum))
         {
             return bunchOfDice.get(dieNum);
         }
-        else throw new NoDiceException();
+        else throw new MaxDiceException();
 
 	}
 
