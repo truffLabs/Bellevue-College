@@ -270,7 +270,6 @@ public class YahtzeeTest
         //verify current score is still 62
         assertEquals(62, y2.getScoreCard().getCurrentScore());
 
-
     }
 
     @Test
@@ -659,12 +658,9 @@ public class YahtzeeTest
         //initialize an instance of the Yahtzee class to access scoring methods
         Yahtzee y1 = new Yahtzee();
 
-        //run through each integer
-        for(int i = 1; i <= 6 ; i++)
-        {
-            y1.getDiceCollection().setValues(i, i, i, i, i);
-            assertEquals(50, y1.scoreYahtzee());
-        }
+        y1.getDiceCollection().setValues(5, 5, 5, 5, 5);
+        assertEquals(50, y1.scoreYahtzee());
+
 
         //EXPECT ZERO
 

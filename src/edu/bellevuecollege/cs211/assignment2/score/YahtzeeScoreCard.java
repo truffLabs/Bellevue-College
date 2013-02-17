@@ -368,6 +368,9 @@ public class YahtzeeScoreCard
 
                 if(countYahtzees == 0 && valuesAsSet.size() == 1)
                 {
+                    //increment the Yahtzee count
+                    countYahtzees++;
+
                     //increment upper score by some value
                     lowerScore += 50;
 
@@ -389,6 +392,9 @@ public class YahtzeeScoreCard
 
                     return 100;
                 }
+
+                //remove from list of available types
+                availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.YAHTZEE);
 
                 return 0;
 
@@ -422,6 +428,7 @@ public class YahtzeeScoreCard
         currentScore = upperScore + lowerScore;
     }
 
+    //TODO: this is wrong
     public void calcTotalScore()
     {
         if(upperScore >= 63)
