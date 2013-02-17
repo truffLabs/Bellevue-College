@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.exceptions;
+package edu.bellevuecollege.cs211.assignment2.exceptions;
 
 public class MaxDiceException extends RuntimeException
 {

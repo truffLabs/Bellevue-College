@@ -13,7 +13,7 @@ import java.util.*;
 public class DiceCollection
 {
     //use a Map to track die number and object associated with die
-    private Map<Integer, Die> bunchOfDice;
+    private ArrayList<Die> bunchOfDice;
 
     //track number of dice in the collection
     private int numDiceInCollection;
@@ -29,11 +29,11 @@ public class DiceCollection
 	{
         if(numDice > 0)
         {
-            bunchOfDice = new TreeMap<Integer, Die>();
+            bunchOfDice = new ArrayList<Die>();
 
-            for(int i = 1 ; i <= numDice ; i ++)
+            for(int i = 0 ; i < numDice ; i ++)
             {
-                bunchOfDice.put(i, new Die());
+                bunchOfDice.add(new Die());
             }
 
             this.numDiceInCollection = bunchOfDice.size();
@@ -47,16 +47,17 @@ public class DiceCollection
 	 * 
 	 * @param dieNum
 	 *            The die from the given position.
+     * @throws MaxDiceException
+     *             thrown if the die number is greater than the number of dice in the collection
 	 * @return The die requested.
 	 */
 
 	public Die getDie(int dieNum) throws MaxDiceException
 	{
-        //TODO: need to handle zero as dieNum
-
-        if(bunchOfDice.containsKey(dieNum))
+        //dieNum should always be between 1 and 5
+        if(dieNum >= 1 && dieNum <= 5)
         {
-            return bunchOfDice.get(dieNum);
+            return bunchOfDice.get(dieNum - 1);
         }
         else throw new MaxDiceException();
 
@@ -64,18 +65,29 @@ public class DiceCollection
 
 	/**
 	 * Rolls the dice and sorts them so that they come out of the collection in sorted order. Dice 0 is the lowest Dice
-	 * numDice is the highest. The arguments will take an unlimited number of booleans, basically a boolean array
+     *
+     * @throws MaxDiceException
+     *             thrown if the number of booleans is greater than the number of dice in the collection
 	 *
 	 */
-	public void rollDice(boolean... arguments)
+	public void rollDice(boolean... arguments) throws MaxDiceException
 	{
-        for(int i = 0 ; i < arguments.length ; i++)
+        if(arguments.length > bunchOfDice.size())
         {
-            if(arguments[i] == true)
+            throw new MaxDiceException();
+        }
+        else
+        {
+            for(int i = 0 ; i < arguments.length ; i++)
             {
-                //error checking is handled in getDie method via NoDiceException
-                getDie(i+1).roll();
+                if(arguments[i] == true)
+                {
+                    //error checking is handled in getDie method via NoDiceException
+                    getDie(i+1).roll();
+                }
             }
+
+            Collections.sort(bunchOfDice);
         }
     }
 
@@ -84,54 +96,53 @@ public class DiceCollection
 	 * 
 	 * @param values
 	 *            The dice to set the values to.
+     * @throws MaxDiceException
+     *            thrown if the number of values to set is greater than the number of dice in the collection
 	 */
-	public void setValues(int... values)
+	public void setValues(int... values) throws MaxDiceException
 	{
-        for(int i = 0 ; i < values.length ; i++)
+        if(values.length > bunchOfDice.size())
         {
-            //handle element exception in getDie method
-            //handle value exception in Die class
-            getDie(i+1).setDieValue(values[i]);
+            throw new MaxDiceException();
+        }
+        else
+        {
+            //ignore all arguments greater than the length of bunchOfDice.size()
+            for(int i = 0 ; i < bunchOfDice.size() ; i++)
+            {
+                //handle element exception in getDie method
+                //handle value exception in Die class
+                getDie(i+1).setDieValue(values[i]);
+            }
         }
 	}
-
-    /**
-     * Used to return a sorted list of values from all of the die in 'bunchOfDice'. A call is first
-     * made to construct a new ArrayList. Each of teh elements in 'bunchOfDice' are then read
-     * into 'listOfValues'. After all values are placed in the ArrayList a call is made to
-     * Collections.sort() to order the list.
-     *
-     * @return listOfValues
-     * a sorted list representing the values of all die in 'bunchOfDice'
-     */
-    public List<Integer> getSortedValuesAsList()
-    {
-        List<Integer> listOfValues = new ArrayList<Integer>();
-
-        for(Die d : bunchOfDice.values())
-        {
-            listOfValues.add(d.getDieValue());
-        }
-
-        Collections.sort(listOfValues);
-
-        return listOfValues;
-    }
 
     public Set<Integer> getSortedValuesAsSet()
     {
         Set<Integer> setOfSortedValues = new TreeSet<Integer>();
 
-        for(Die d : bunchOfDice.values())
+        for(Die d : bunchOfDice)
         {
             setOfSortedValues.add(d.getDieValue());
         }
 
         return setOfSortedValues;
-
     }
 
-    public Map<Integer, Die> getBunchOfDice()
+    public List<Integer> getSortedValuesAsList()
+    {
+        List<Integer> listOfSortedValues = new ArrayList<Integer>();
+
+        for(Die d : bunchOfDice)
+        {
+            listOfSortedValues.add(d.getDieValue());
+        }
+
+        Collections.sort(listOfSortedValues);
+        return listOfSortedValues;
+    }
+
+    public ArrayList<Die> getBunchOfDice()
     {
         return this.bunchOfDice;
     }
