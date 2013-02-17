@@ -3,7 +3,7 @@ package edu.bellevuecollege.cs211.assignment2.score;
 /**
  * Used by Room objects and controller to orient "things" on the "game map".
  */
-public enum ScoreTypes
+public enum YahtzeeScoreTypes
 {
 	ONES,
 	TWOS,
@@ -17,7 +17,6 @@ public enum ScoreTypes
     FULLHOUSE,
     SMALLSTRAIGHT,
     LARGESTRAIGHT,
-    YAHTZEE,
     CHANCE,
-    YAHTZEEBONUS;
+    YAHTZEE;
 }
