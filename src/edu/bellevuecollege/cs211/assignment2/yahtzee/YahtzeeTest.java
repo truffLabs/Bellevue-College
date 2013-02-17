@@ -1,13 +1,9 @@
 package edu.bellevuecollege.cs211.assignment2.yahtzee;
 import static org.junit.Assert.*;
 
-import edu.bellevuecollege.cs211.assignment2.dice.DiceCollection;
+import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreTypes;
 import org.junit.Test;
 
-/**
- * Created with IntelliJ IDEA. User: pakaehua Date: 2/10/13 Time: 4:10 PM To change this template use File | Settings |
- * File Templates.
- */
 public class YahtzeeTest
 {
     @Test
@@ -25,42 +21,255 @@ public class YahtzeeTest
     @Test
     public void testScoreOnes() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 2, 3, 3, 3);
+
+        //check that a specific value is returned
+        assertEquals(1, y1.scoreOnes());
+
+        //check that the upperScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES));
+
+
+        Yahtzee y2 = new Yahtzee();
+        y2.getDiceCollection().setValues(1, 2, 3, 1, 3);
+
+        //check that a specific value is returned
+        assertEquals(2, y2.scoreOnes());
+
+        //check that the upperScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES));
 
     }
 
     @Test
     public void testScoreTwos() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 2, 3, 3, 3);
+
+        //check that a specific value is returned
+        assertEquals(1, y1.scoreTwos());
+
+        //check that the upperScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.TWOS));
+
+
+        Yahtzee y2 = new Yahtzee();
+        y2.getDiceCollection().setValues(1, 2, 3, 2, 3);
+
+        //check that a specific value is returned
+        assertEquals(2, y2.scoreTwos());
+
+        //check that the upperScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.TWOS));
 
     }
 
     @Test
     public void testScoreThrees() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 2, 3, 4, 5);
+
+        //check that a specific value is returned
+        assertEquals(1, y1.scoreThrees());
+
+        //check that the upperScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREES));
+
+
+        Yahtzee y2 = new Yahtzee();
+        y2.getDiceCollection().setValues(1, 2, 3, 3, 3);
+
+        //check that a specific value is returned
+        assertEquals(3, y2.scoreThrees());
+
+        //check that the upperScore equals a specific value
+        assertEquals(3, y2.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(3, y2.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREES));
 
     }
 
     @Test
     public void testScoreFours() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 2, 4, 3, 3);
+
+        //check that a specific value is returned
+        assertEquals(1, y1.scoreFours());
+
+        //check that the upperScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOURS));
+
+
+        Yahtzee y2 = new Yahtzee();
+        y2.getDiceCollection().setValues(4, 2, 4, 2, 3);
+
+        //check that a specific value is returned
+        assertEquals(2, y2.scoreFours());
+
+        //check that the upperScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOURS));
 
     }
 
     @Test
     public void testScoreFives() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 5, 3, 3, 3);
 
+        //check that a specific value is returned
+        assertEquals(1, y1.scoreFives());
+
+        //check that the upperScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FIVES));
+
+
+        Yahtzee y2 = new Yahtzee();
+        y2.getDiceCollection().setValues(1, 2, 5, 5, 3);
+
+        //check that a specific value is returned
+        assertEquals(2, y2.scoreFives());
+
+        //check that the upperScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FIVES));
     }
 
     @Test
     public void testScoreSixes() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 2, 6, 3, 3);
+
+        //check that a specific value is returned
+        assertEquals(1, y1.scoreSixes());
+
+        //check that the upperScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(1, y1.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
+
+
+        Yahtzee y2 = new Yahtzee();
+        y2.getDiceCollection().setValues(6, 2, 3, 2, 6);
+
+        //check that a specific value is returned
+        assertEquals(2, y2.scoreSixes());
+
+        //check that the upperScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(2, y2.getScoreCard().getCurrentScore());
+
+        //verify that the set no longer contains a ONES element
+        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
 
     }
 
     @Test
     public void testScoreBonus() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+
+        //set the score to 63
+        y1.getScoreCard().setUpperScore(63);
+
+        //verify upper score set to 63
+        assertEquals(63, y1.getScoreCard().getUpperScore());
+
+        //score the bonus and verify it returns
+        assertEquals(35, y1.scoreBonus());
+
+        //verify upper score is now 98
+        assertEquals(98, y1.getScoreCard().getUpperScore());
+
+        //verify current score is 98
+        assertEquals(98, y1.getScoreCard().getCurrentScore());
+
+        Yahtzee y2 = new Yahtzee();
+
+        //set the score to 62
+        y2.getScoreCard().setUpperScore(62);
+
+        //verify upper score set to 62
+        assertEquals(62, y2.getScoreCard().getUpperScore());
+
+        //score the bonus and verify it returns
+        assertEquals(0, y2.scoreBonus());
+
+        //verify upper score is still 62
+        assertEquals(62, y2.getScoreCard().getUpperScore());
+
+        //verify current score is still 62
+        assertEquals(62, y2.getScoreCard().getCurrentScore());
+
 
     }
 
