@@ -61,6 +61,9 @@ public class Yahtzee
 
         //user presented with final score
 
+        //boolean rerollDie1 = diceToReroll.indexOf("1") > -1;
+        //boolean rerollDie2 = diceToReroll.indexOf("1") > -1;
+
 	}
 
 	/**
@@ -72,7 +75,7 @@ public class Yahtzee
         currentScore = 0;
         theseDice = new DiceCollection(5);
         availableScoreTypes = new TreeSet<ScoreTypes>();
-        scoreCard = new HashMap<ScoreTypes, Integer>();
+        //scoreCard = new HashMap<ScoreTypes, Integer>();
 
         //add available scoring types to a Set
         availableScoreTypes.add(ScoreTypes.ONES); availableScoreTypes.add(ScoreTypes.TWOS);
@@ -84,13 +87,13 @@ public class Yahtzee
         availableScoreTypes.add(ScoreTypes.CHANCE);
 
         //add relevant values to scoreCard
-        scoreCard.put(ScoreTypes.ONES, 0); scoreCard.put(ScoreTypes.TWOS, 0); scoreCard.put(ScoreTypes.THREES, 0);
-        scoreCard.put(ScoreTypes.FOURS, 0); scoreCard.put(ScoreTypes.FIVES, 0); scoreCard.put(ScoreTypes.SIXES, 0);
-        scoreCard.put(ScoreTypes.BONUS, 0); scoreCard.put(ScoreTypes.THREEOFAKIND, 0);
-        scoreCard.put(ScoreTypes.FOUROFAKIND, 0); scoreCard.put(ScoreTypes.FULLHOUSE, 0);
-        scoreCard.put(ScoreTypes.SMALLSTRAIGHT, 0); scoreCard.put(ScoreTypes.LARGESTRAIGHT, 0);
-        scoreCard.put(ScoreTypes.YAHTZEE, 0); scoreCard.put(ScoreTypes.CHANCE, 0);
-        scoreCard.put(ScoreTypes.YAHTZEEBONUS, 0);
+        //scoreCard.put(ScoreTypes.ONES, 0); scoreCard.put(ScoreTypes.TWOS, 0); scoreCard.put(ScoreTypes.THREES, 0);
+        //scoreCard.put(ScoreTypes.FOURS, 0); scoreCard.put(ScoreTypes.FIVES, 0); scoreCard.put(ScoreTypes.SIXES, 0);
+        //scoreCard.put(ScoreTypes.BONUS, 0); scoreCard.put(ScoreTypes.THREEOFAKIND, 0);
+        //scoreCard.put(ScoreTypes.FOUROFAKIND, 0); scoreCard.put(ScoreTypes.FULLHOUSE, 0);
+        //scoreCard.put(ScoreTypes.SMALLSTRAIGHT, 0); scoreCard.put(ScoreTypes.LARGESTRAIGHT, 0);
+        //scoreCard.put(ScoreTypes.YAHTZEE, 0); scoreCard.put(ScoreTypes.CHANCE, 0);
+        //scoreCard.put(ScoreTypes.YAHTZEEBONUS, 0);
     }
 
 	/**
@@ -122,19 +125,9 @@ public class Yahtzee
 	 */
 	public int scoreOnes()
 	{
-        int ones = 0;
-
-        for(Die d : theseDice.getBunchOfDice().values())
-        {
-            if(d.getDieValue() == 1)
-            {
-                ones++;
-            }
-        }
-
         availableScoreTypes.remove(ScoreTypes.ONES);
 
-        return ones;
+        return Collections.frequency(theseDice.getSortedValuesAsList(), 1);
 	}
 
 	/**
@@ -144,19 +137,9 @@ public class Yahtzee
 	 */
 	public int scoreTwos()
 	{
-        int twos = 0;
-
-        for(Die d : theseDice.getBunchOfDice().values())
-        {
-            if(d.getDieValue() == 2)
-            {
-                twos+=2;
-            }
-        }
-
         availableScoreTypes.remove(ScoreTypes.TWOS);
 
-        return twos;
+        return Collections.frequency(theseDice.getSortedValuesAsList(), 2);
 	}
 
 	/**
@@ -166,19 +149,9 @@ public class Yahtzee
 	 */
 	public int scoreThrees()
 	{
-        int threes = 0;
-
-        for(Die d : theseDice.getBunchOfDice().values())
-        {
-            if(d.getDieValue() == 3)
-            {
-                threes+=3;
-            }
-        }
-
         availableScoreTypes.remove(ScoreTypes.THREES);
 
-        return threes;
+        return Collections.frequency(theseDice.getSortedValuesAsList(), 3);
 	}
 
 	/**
@@ -188,19 +161,9 @@ public class Yahtzee
 	 */
 	public int scoreFours()
 	{
-        int fours = 0;
-
-        for(Die d : theseDice.getBunchOfDice().values())
-        {
-            if(d.getDieValue() == 4)
-            {
-                fours+=4;
-            }
-        }
-
         availableScoreTypes.remove(ScoreTypes.FOURS);
 
-        return fours;
+        return Collections.frequency(theseDice.getSortedValuesAsList(), 4);
 	}
 
 	/**
@@ -210,19 +173,9 @@ public class Yahtzee
 	 */
 	public int scoreFives()
 	{
-        int fives = 0;
-
-        for(Die d : theseDice.getBunchOfDice().values())
-        {
-            if(d.getDieValue() == 5)
-            {
-                fives+=5;
-            }
-        }
-
         availableScoreTypes.remove(ScoreTypes.FIVES);
 
-        return fives;
+        return Collections.frequency(theseDice.getSortedValuesAsList(), 5);
 	}
 
 	/**
@@ -232,19 +185,9 @@ public class Yahtzee
 	 */
 	public int scoreSixes()
 	{
-        int sixes = 0;
-
-        for(Die d : theseDice.getBunchOfDice().values())
-        {
-            if(d.getDieValue() == 6)
-            {
-                sixes+=6;
-            }
-        }
-
         availableScoreTypes.remove(ScoreTypes.SIXES);
 
-        return sixes;
+        return Collections.frequency(theseDice.getSortedValuesAsList(), 6);
 	}
 
 	/**
@@ -292,27 +235,7 @@ public class Yahtzee
         }
 
         return sumOfDice;
-        /**
-        int sumOfDice = 0;
 
-        //retrieve an ordered set of die values
-        Set<Integer> valuesAsSet = theseDice.getSortedValuesAsSet();
-
-        //number of dice in collection minus 2 is a valid test to determine
-        //if there are three of a kind in the dice collection
-        if(valuesAsSet.size() == (theseDice.getNumDiceInCollection() - 2))
-        {
-            //read all of the die values into its own sorted list
-            List<Integer> sortedValuesAsList = theseDice.getSortedValuesAsList();
-
-            for(int i=0 ; i < sortedValuesAsList.size() ; i++)
-            {
-                sumOfDice = sumOfDice + sortedValuesAsList.get(i);
-            }
-        }
-
-        return sumOfDice;
-        **/
 	}
 
 	/**
@@ -357,18 +280,18 @@ public class Yahtzee
         HashMap<Integer, Integer> occurrences = new HashMap<Integer, Integer>();
 
         //determine if there are 4 occurrence of the same die value in the collection
-        for(Die d : theseDice.getBunchOfDice().values())
+        for(Integer i : theseDice.getSortedValuesAsList())
         {
             //if the integer already exists as a key ; increment value
-            if(occurrences.containsKey(d.getDieValue()))
+            if(occurrences.containsKey(i))
             {
-                int tempCount = occurrences.get(d.getDieValue()) + 1;
-                occurrences.put(d.getDieValue(), tempCount);
+                int tempCount = occurrences.get(i) + 1;
+                occurrences.put(i, tempCount);
             }
             //else add integer as key
             else
             {
-                occurrences.put(d.getDieValue(), 1);
+                occurrences.put(i, 1);
             }
         }
 
