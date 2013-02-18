@@ -27,31 +27,11 @@ public class YahtzeeTest
         //check that a specific value is returned
         assertEquals(1, y1.scoreOnes());
 
-        //check that the upperScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES));
-
-
         Yahtzee y2 = new Yahtzee();
         y2.getDiceCollection().setValues(1, 2, 3, 1, 3);
 
         //check that a specific value is returned
         assertEquals(2, y2.scoreOnes());
-
-        //check that the upperScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES));
-
     }
 
     @Test
@@ -61,33 +41,13 @@ public class YahtzeeTest
         y1.getDiceCollection().setValues(1, 2, 3, 3, 3);
 
         //check that a specific value is returned
-        assertEquals(1, y1.scoreTwos());
-
-        //check that the upperScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.TWOS));
-
+        assertEquals(2, y1.scoreTwos());
 
         Yahtzee y2 = new Yahtzee();
         y2.getDiceCollection().setValues(1, 2, 3, 2, 3);
 
         //check that a specific value is returned
-        assertEquals(2, y2.scoreTwos());
-
-        //check that the upperScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.TWOS));
-
+        assertEquals(4, y2.scoreTwos());
     }
 
     @Test
@@ -97,33 +57,13 @@ public class YahtzeeTest
         y1.getDiceCollection().setValues(1, 2, 3, 4, 5);
 
         //check that a specific value is returned
-        assertEquals(1, y1.scoreThrees());
-
-        //check that the upperScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREES));
-
+        assertEquals(3, y1.scoreThrees());
 
         Yahtzee y2 = new Yahtzee();
         y2.getDiceCollection().setValues(1, 2, 3, 3, 3);
 
         //check that a specific value is returned
-        assertEquals(3, y2.scoreThrees());
-
-        //check that the upperScore equals a specific value
-        assertEquals(3, y2.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(3, y2.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREES));
-
+        assertEquals(9, y2.scoreThrees());
     }
 
     @Test
@@ -133,33 +73,13 @@ public class YahtzeeTest
         y1.getDiceCollection().setValues(1, 2, 4, 3, 3);
 
         //check that a specific value is returned
-        assertEquals(1, y1.scoreFours());
-
-        //check that the upperScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOURS));
-
+        assertEquals(4, y1.scoreFours());
 
         Yahtzee y2 = new Yahtzee();
         y2.getDiceCollection().setValues(4, 2, 4, 2, 3);
 
         //check that a specific value is returned
-        assertEquals(2, y2.scoreFours());
-
-        //check that the upperScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOURS));
-
+        assertEquals(8, y2.scoreFours());
     }
 
     @Test
@@ -169,32 +89,13 @@ public class YahtzeeTest
         y1.getDiceCollection().setValues(1, 5, 3, 3, 3);
 
         //check that a specific value is returned
-        assertEquals(1, y1.scoreFives());
-
-        //check that the upperScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FIVES));
-
+        assertEquals(5, y1.scoreFives());
 
         Yahtzee y2 = new Yahtzee();
         y2.getDiceCollection().setValues(1, 2, 5, 5, 3);
 
         //check that a specific value is returned
-        assertEquals(2, y2.scoreFives());
-
-        //check that the upperScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FIVES));
+        assertEquals(10, y2.scoreFives());
     }
 
     @Test
@@ -204,33 +105,13 @@ public class YahtzeeTest
         y1.getDiceCollection().setValues(1, 2, 6, 3, 3);
 
         //check that a specific value is returned
-        assertEquals(1, y1.scoreSixes());
-
-        //check that the upperScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
-
+        assertEquals(6, y1.scoreSixes());
 
         Yahtzee y2 = new Yahtzee();
         y2.getDiceCollection().setValues(6, 2, 3, 2, 6);
 
         //check that a specific value is returned
-        assertEquals(2, y2.scoreSixes());
-
-        //check that the upperScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getUpperScore());
-
-        //check that the currentScore equals a specific value
-        assertEquals(2, y2.getScoreCard().getCurrentScore());
-
-        //verify that the set no longer contains a ONES element
-        assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
-
+        assertEquals(12, y2.scoreSixes());
     }
 
     @Test
@@ -524,6 +405,11 @@ public class YahtzeeTest
 
         y1.getDiceCollection().setValues(4, 3, 2, 1, 6);
         assertEquals(30, y1.scoreSmallStraight());
+
+        y1.getDiceCollection().setValues(2, 3, 4, 4, 5);
+        assertEquals(30, y1.scoreSmallStraight());
+
+
 
         //duplicate values
         y1.getDiceCollection().setValues(5, 4, 3, 2, 5);
