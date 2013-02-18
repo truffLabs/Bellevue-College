@@ -285,7 +285,7 @@ public class YahtzeeScoreCard
             case SMALLSTRAIGHT:
 
                 //remove from list of available types
-                availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.FULLHOUSE);
+                availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.SMALLSTRAIGHT);
 
                 //set counter
                 int trackSmallStraight = 0;
@@ -323,7 +323,7 @@ public class YahtzeeScoreCard
             case LARGESTRAIGHT:
 
                 //remove from list of available types
-                availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.FULLHOUSE);
+                availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.LARGESTRAIGHT);
 
                 //set counter
                 int trackLargeStraight = 0;
