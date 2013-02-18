@@ -1,21 +1,16 @@
 package edu.bellevuecollege.cs211.assignment2.yahtzee;
 import static org.junit.Assert.*;
-
-import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreTypes;
 import org.junit.Test;
 
 public class YahtzeeTest
 {
     @Test
-    public void testGetCurrentScore() throws Exception
-    {
-
-    }
-
-    @Test
     public void testGetDiceCollection() throws Exception
     {
+        Yahtzee y1 = new Yahtzee();
+        y1.getDiceCollection().setValues(1, 3, 5, 6, 3);
 
+        assertEquals("[1, 3, 5, 6, 3]", y1.getDiceCollection().toString());
     }
 
     @Test
@@ -150,7 +145,6 @@ public class YahtzeeTest
 
         //verify current score is still 62
         assertEquals(62, y2.getScoreCard().getCurrentScore());
-
     }
 
     @Test
