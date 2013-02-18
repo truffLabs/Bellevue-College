@@ -17,7 +17,6 @@ public class YahtzeeScoreCard
     private int countYahtzees;
     private int finalScore;
 
-
     //construct List to track available scoring methods
     Set<YahtzeeScoreTypes> availableYahtzeeScoreTypes;
 
@@ -69,7 +68,7 @@ public class YahtzeeScoreCard
                 availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.TWOS);
 
                 //hold value
-                someNumber = Collections.frequency(someDice.getSortedValuesAsList(), 2);
+                someNumber = 2 * Collections.frequency(someDice.getSortedValuesAsList(), 2);
 
                 //increment upper score by some value
                 upperScore += someNumber;
@@ -86,7 +85,7 @@ public class YahtzeeScoreCard
                 availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.THREES);
 
                 //hold value
-                someNumber = Collections.frequency(someDice.getSortedValuesAsList(), 3);
+                someNumber = 3 * Collections.frequency(someDice.getSortedValuesAsList(), 3);
 
                 //increment upper score by some value
                 upperScore += someNumber;
@@ -103,7 +102,7 @@ public class YahtzeeScoreCard
                 availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.FOURS);
 
                 //hold value
-                someNumber = Collections.frequency(someDice.getSortedValuesAsList(), 4);
+                someNumber = 4 * Collections.frequency(someDice.getSortedValuesAsList(), 4);
 
                 //increment upper score by some value
                 upperScore += someNumber;
@@ -120,7 +119,7 @@ public class YahtzeeScoreCard
                 availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.FIVES);
 
                 //hold value
-                someNumber = Collections.frequency(someDice.getSortedValuesAsList(), 5);
+                someNumber = 5 * Collections.frequency(someDice.getSortedValuesAsList(), 5);
 
                 //increment upper score by some value
                 upperScore += someNumber;
@@ -137,7 +136,7 @@ public class YahtzeeScoreCard
                 availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.SIXES);
 
                 //hold value
-                someNumber = Collections.frequency(someDice.getSortedValuesAsList(), 6);
+                someNumber = 6 * Collections.frequency(someDice.getSortedValuesAsList(), 6);
 
                 //increment upper score by some value
                 upperScore += someNumber;
@@ -428,15 +427,20 @@ public class YahtzeeScoreCard
         currentScore = upperScore + lowerScore;
     }
 
-    //TODO: this is wrong
-    public void calcTotalScore()
+    public void calcFinalScore()
     {
+        //figure out the bonus
         if(upperScore >= 63)
         {
-            upperScore = upperScore + 35;
+            //increment upper score by some value
+            upperScore += 35;
+
+            //refresh currentScore
+            calcCurrentScore();
         }
 
-        finalScore = upperScore + lowerScore;
+        //should this be finalScore + scoreBonus?
+        finalScore = currentScore;
     }
 
     public Set<YahtzeeScoreTypes> getAvailableScoreTypes()
