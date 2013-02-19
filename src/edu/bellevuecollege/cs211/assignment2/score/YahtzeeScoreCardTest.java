@@ -110,6 +110,42 @@ public class YahtzeeScoreCardTest
         //verify that the set no longer contains a SIXES element
         assertFalse(y6.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
 
+        //BONUS
+        Yahtzee y7 = new Yahtzee();
+
+        //set the upperScore to 65
+        y7.getScoreCard().setUpperScore(65);
+
+        //score the BONUS and verify return value
+        assertEquals(35, y7.getScoreCard().addToUpperScore(YahtzeeScoreTypes.BONUS, y7.getDiceCollection()));
+
+        //check that the upperScore equals a specific value
+        assertEquals(100, y7.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(100, y7.getScoreCard().getScore());
+
+        //verify that the set no longer contains a BONUS element
+        assertFalse(y7.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.BONUS));
+
+        //BONUS EXPECT 0
+        Yahtzee y8 = new Yahtzee();
+
+        //set the upperScore to 65
+        y8.getScoreCard().setUpperScore(5);
+
+        //score the BONUS and verify return value
+        assertEquals(0, y8.getScoreCard().addToUpperScore(YahtzeeScoreTypes.BONUS, y8.getDiceCollection()));
+
+        //check that the upperScore equals a specific value
+        assertEquals(5, y8.getScoreCard().getUpperScore());
+
+        //check that the currentScore equals a specific value
+        assertEquals(5, y8.getScoreCard().getScore());
+
+        //verify that the set no longer contains a BONUS element
+        assertFalse(y8.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.BONUS));
+
     }
 
     @Test
