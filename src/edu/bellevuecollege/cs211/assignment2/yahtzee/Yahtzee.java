@@ -166,17 +166,53 @@ public class Yahtzee
 
     public void scoreDiceMenu(Yahtzee someYahtzee, Scanner someInput)
     {
+        //array list for menu
+        ArrayList<YahtzeeScoreTypes> availableScoringMethods = new ArrayList<YahtzeeScoreTypes>();
+
         //store score for choice
         int scoreForChoice = 0;
 
         while(true)
         {
+            ////TODO: Make it so that only available options are listed
+            /**
+            //read the set of available score types into an ArrayList -> sort the list
+            availableScoringMethods.clear();
+
+            availableScoringMethods.addAll(someYahtzee.getScoreCard().getAvailableScoreTypes());
+
+            Collections.sort(availableScoringMethods);
+
             System.out.println();
             System.out.println("Your current roll is " + someYahtzee.getDiceCollection().toString());
             System.out.println();
 
             System.out.println("Please choose how you want to score your turn.");
 
+            //user loop to print menu options
+            for(int i = 0 ; i < availableScoringMethods.size() ; i++)
+            {
+                System.out.println("Enter " + (i+1) + " to score " + availableScoringMethods.get(i) + ".");
+            }
+
+            System.out.println();
+            System.out.print("Choice (1 - " + (availableScoringMethods.size()-1) + " ): " );
+
+            //read input
+            int scoringChoice = someInput.nextInt();
+
+            if(scoreForChoice == 1)
+            {
+                break;
+            }
+            else
+            {
+                System.out.println();
+                System.out.println("Bad selection. '" + scoringChoice + "' is not a valid choice.");
+                System.out.println();
+                continue;
+            }
+            **/
 
             System.out.println("Enter 1 to score Ones.");
             System.out.println("Enter 2 to score Twos.");
