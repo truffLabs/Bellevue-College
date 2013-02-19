@@ -1,9 +1,9 @@
 package edu.bellevuecollege.cs211.assignment2.score;
-
 import edu.bellevuecollege.cs211.assignment2.yahtzee.Yahtzee;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA. User: pakaehua Date: 2/17/13 Time: 3:28 PM To change this template use File | Settings |
@@ -25,7 +25,7 @@ public class YahtzeeScoreCardTest
         assertEquals(1, y1.getScoreCard().getUpperScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(1, y1.getScoreCard().getCurrentScore());
+        assertEquals(1, y1.getScoreCard().getScore());
 
         //verify that the set no longer contains a ONES element
         assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES));
@@ -41,7 +41,7 @@ public class YahtzeeScoreCardTest
         assertEquals(4, y2.getScoreCard().getUpperScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(4, y2.getScoreCard().getCurrentScore());
+        assertEquals(4, y2.getScoreCard().getScore());
 
         //verify that the set no longer contains a TWOS element
         assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.TWOS));
@@ -57,7 +57,7 @@ public class YahtzeeScoreCardTest
         assertEquals(6, y3.getScoreCard().getUpperScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(6, y3.getScoreCard().getCurrentScore());
+        assertEquals(6, y3.getScoreCard().getScore());
 
         //verify that the set no longer contains a THREES element
         assertFalse(y3.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREES));
@@ -73,7 +73,7 @@ public class YahtzeeScoreCardTest
         assertEquals(4, y4.getScoreCard().getUpperScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(4, y4.getScoreCard().getCurrentScore());
+        assertEquals(4, y4.getScoreCard().getScore());
 
         //verify that the set no longer contains a FOURS element
         assertFalse(y4.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOURS));
@@ -89,7 +89,7 @@ public class YahtzeeScoreCardTest
         assertEquals(5, y5.getScoreCard().getUpperScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(5, y5.getScoreCard().getCurrentScore());
+        assertEquals(5, y5.getScoreCard().getScore());
 
         //verify that the set no longer contains a FIVES element
         assertFalse(y5.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FIVES));
@@ -105,7 +105,7 @@ public class YahtzeeScoreCardTest
         assertEquals(30, y6.getScoreCard().getUpperScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(30, y6.getScoreCard().getCurrentScore());
+        assertEquals(30, y6.getScoreCard().getScore());
 
         //verify that the set no longer contains a SIXES element
         assertFalse(y6.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
@@ -121,13 +121,13 @@ public class YahtzeeScoreCardTest
         y1.getDiceCollection().setValues(1, 2, 3, 3, 3);
 
         //score the set using THREEOFAKIND
-        y1.getScoreCard().addToLowerScore(YahtzeeScoreTypes.THREEOFAKIND, y1.getDiceCollection());
+        assertEquals(12, y1.getScoreCard().addToLowerScore(YahtzeeScoreTypes.THREEOFAKIND, y1.getDiceCollection()));
 
         //check that the upperScore equals a specific value
         assertEquals(12, y1.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(12, y1.getScoreCard().getCurrentScore());
+        assertEquals(12, y1.getScoreCard().getScore());
 
         //verify that the set no longer contains a THREEOFAKIND element
         assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREEOFAKIND));
@@ -137,13 +137,13 @@ public class YahtzeeScoreCardTest
         y2.getDiceCollection().setValues(1, 3, 3, 3, 3);
 
         //score the set using FOUROFAKIND
-        y2.getScoreCard().addToLowerScore(YahtzeeScoreTypes.FOUROFAKIND, y2.getDiceCollection());
+        assertEquals(13, y2.getScoreCard().addToLowerScore(YahtzeeScoreTypes.FOUROFAKIND, y2.getDiceCollection()));
 
         //check that the upperScore equals a specific value
         assertEquals(13, y2.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(13, y2.getScoreCard().getCurrentScore());
+        assertEquals(13, y2.getScoreCard().getScore());
 
         //verify that the set no longer contains a FOUROFAKIND element
         assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOUROFAKIND));
@@ -153,13 +153,13 @@ public class YahtzeeScoreCardTest
         y3.getDiceCollection().setValues(2, 2, 3, 3, 3);
 
         //score the set using FULLHOUSE
-        y3.getScoreCard().addToLowerScore(YahtzeeScoreTypes.FULLHOUSE, y3.getDiceCollection());
+        assertEquals(25, y3.getScoreCard().addToLowerScore(YahtzeeScoreTypes.FULLHOUSE, y3.getDiceCollection()));
 
         //check that the upperScore equals a specific value
         assertEquals(25, y3.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(25, y3.getScoreCard().getCurrentScore());
+        assertEquals(25, y3.getScoreCard().getScore());
 
         //verify that the set no longer contains a FULLHOUSE element
         assertFalse(y3.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FULLHOUSE));
@@ -168,13 +168,13 @@ public class YahtzeeScoreCardTest
         Yahtzee y4 = new Yahtzee();
         y4.getDiceCollection().setValues(2, 3, 4, 4, 5);
 
-        y4.getScoreCard().addToLowerScore(YahtzeeScoreTypes.SMALLSTRAIGHT, y4.getDiceCollection());
+        assertEquals(30, y4.getScoreCard().addToLowerScore(YahtzeeScoreTypes.SMALLSTRAIGHT, y4.getDiceCollection()));
 
         //check that the upperScore equals a specific value
         assertEquals(30, y4.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(30, y4.getScoreCard().getLowerScore());
+        assertEquals(30, y4.getScoreCard().getScore());
 
         //verify that the set no longer contains a SMALLSTRAIGHT element
         assertFalse(y4.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SMALLSTRAIGHT));
@@ -183,43 +183,58 @@ public class YahtzeeScoreCardTest
         Yahtzee y5 = new Yahtzee();
         y5.getDiceCollection().setValues(2, 3, 5, 4, 6);
 
-        y5.getScoreCard().addToLowerScore(YahtzeeScoreTypes.LARGESTRAIGHT, y5.getDiceCollection());
+        assertEquals(40, y5.getScoreCard().addToLowerScore(YahtzeeScoreTypes.LARGESTRAIGHT, y5.getDiceCollection()));
 
         //check that the upperScore equals a specific value
         assertEquals(40, y5.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(40, y5.getScoreCard().getLowerScore());
+        assertEquals(40, y5.getScoreCard().getScore());
 
         //verify that the set no longer contains a LARGESTRAIGHT element
         assertFalse(y5.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.LARGESTRAIGHT));
 
         //YAHTZEE
         Yahtzee y6 = new Yahtzee();
-        y6.getDiceCollection().setValues(2, 3, 5, 4, 6);
+        y6.getDiceCollection().setValues(5, 5, 5, 5, 5);
 
         y6.getScoreCard().addToLowerScore(YahtzeeScoreTypes.YAHTZEE, y6.getDiceCollection());
 
-        //check that the upperScore equals a specific value
+        //check that the lowerScore equals a specific value
         assertEquals(50, y6.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(50, y6.getScoreCard().getLowerScore());
+        assertEquals(50, y6.getScoreCard().getScore());
 
-        //verify that the set no longer contains a YAHTZEE element
+        //verify that the set still contains a YAHTZEE element
+        assertTrue(y6.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.YAHTZEE));
+
+        //score another YAHTZEE and validate that the return int is 100
+        assertEquals(100, y6.getScoreCard().addToLowerScore(YahtzeeScoreTypes.YAHTZEE, y6.getDiceCollection()));
+
+        //check that the currentScore equals a specific value
+        assertEquals(150, y6.getScoreCard().getScore());
+
+        //now set values to NON-YAHTZEE and validate scoreType was removed
+        y6.getDiceCollection().setValues(5, 4, 5, 5, 5);
+
+        //expect 0
+        assertEquals(0, y6.getScoreCard().addToLowerScore(YahtzeeScoreTypes.YAHTZEE, y6.getDiceCollection()));
+
+        //verify that the set still DOES NOT contain a YAHTZEE element
         assertFalse(y6.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.YAHTZEE));
 
         //CHANCE
         Yahtzee y7 = new Yahtzee();
         y7.getDiceCollection().setValues(2, 3, 5, 4, 6);
 
-        y7.getScoreCard().addToLowerScore(YahtzeeScoreTypes.CHANCE, y7.getDiceCollection());
+        assertEquals(20, y7.getScoreCard().addToLowerScore(YahtzeeScoreTypes.CHANCE, y7.getDiceCollection()));
 
         //check that the upperScore equals a specific value
-        assertEquals(50, y7.getScoreCard().getLowerScore());
+        assertEquals(20, y7.getScoreCard().getLowerScore());
 
         //check that the currentScore equals a specific value
-        assertEquals(50, y7.getScoreCard().getLowerScore());
+        assertEquals(20, y7.getScoreCard().getScore());
 
         //verify that the set no longer contains a YAHTZEE element
         assertFalse(y7.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.CHANCE));
@@ -227,13 +242,7 @@ public class YahtzeeScoreCardTest
     }
 
     @Test
-    public void testCalcCurrentScore() throws Exception
-    {
-
-    }
-
-    @Test
-    public void testCalcTotalScore() throws Exception
+    public void testCalcScore() throws Exception
     {
 
     }
@@ -269,7 +278,7 @@ public class YahtzeeScoreCardTest
     }
 
     @Test
-    public void testGetCurrentScore() throws Exception
+    public void testGetScore() throws Exception
     {
 
     }
@@ -282,12 +291,6 @@ public class YahtzeeScoreCardTest
 
     @Test
     public void testSetCountYahtzees() throws Exception
-    {
-
-    }
-
-    @Test
-    public void testGetFinalScore() throws Exception
     {
 
     }

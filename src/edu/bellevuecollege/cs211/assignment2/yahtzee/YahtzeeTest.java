@@ -127,7 +127,7 @@ public class YahtzeeTest
         assertEquals(98, y1.getScoreCard().getUpperScore());
 
         //verify current score is 98
-        assertEquals(98, y1.getScoreCard().getCurrentScore());
+        assertEquals(98, y1.getScoreCard().getScore());
 
         Yahtzee y2 = new Yahtzee();
 
@@ -144,7 +144,7 @@ public class YahtzeeTest
         assertEquals(62, y2.getScoreCard().getUpperScore());
 
         //verify current score is still 62
-        assertEquals(62, y2.getScoreCard().getCurrentScore());
+        assertEquals(62, y2.getScoreCard().getScore());
     }
 
     @Test
