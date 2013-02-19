@@ -1,23 +1,9 @@
 package edu.bellevuecollege.cs211.assignment2.yahtzee;
 import edu.bellevuecollege.cs211.assignment2.dice.*;
-import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreTypes;
 import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreCard;
+import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreTypes;
 
 import java.util.*;
-
-//NOTES
-
-//provide a choice to the user on how to score
-//after you roll your dice UP TO 3 times
-//provide menu on which of the 13 ways of scoring the user will select ; once you choose a way to score you man not
-//choose it again
-
-//hardest one will be a small straight
-
-//EASIER: If you score a second yahtzee just add 100 points
-
-//menus shrunk over time, don't give option of scoring something after they've already scored it
-//game can only be played by one person
 
 public class Yahtzee
 {
@@ -75,11 +61,14 @@ public class Yahtzee
             turnNumber++;
         }
 
-        //calculate total score for the user and print
-        y.getScoreCard().calcFinalScore();
+        //score the bonus
+        y.scoreBonus();
+
+        //refresh score
+        y.getScoreCard().calcScore();
 
         System.out.println();
-        System.out.println("Your total score is " + y.getScoreCard().getFinalScore());
+        System.out.println("Your total score is " + y.getScoreCard().getScore());
 	}
 
 	/**
@@ -414,7 +403,7 @@ public class Yahtzee
 
 	public int getCurrentScore()
 	{
-		return scoreCard.getCurrentScore();
+		return scoreCard.getScore();
 	}
 
 	/**
