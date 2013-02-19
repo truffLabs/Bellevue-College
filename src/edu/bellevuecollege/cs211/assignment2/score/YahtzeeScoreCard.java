@@ -13,9 +13,8 @@ public class YahtzeeScoreCard
 
     private int upperScore;
     private int lowerScore;
-    private int currentScore;
+    private int score;
     private int countYahtzees;
-    private int finalScore;
 
     //construct List to track available scoring methods
     Set<YahtzeeScoreTypes> availableYahtzeeScoreTypes;
@@ -24,9 +23,8 @@ public class YahtzeeScoreCard
     {
         upperScore = 0;
         lowerScore = 0;
-        currentScore = 0;
+        score = 0;
         countYahtzees = 0;
-        finalScore = 0;
 
         availableYahtzeeScoreTypes = new TreeSet<YahtzeeScoreTypes>();
 
@@ -56,8 +54,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 upperScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -73,8 +71,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 upperScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -90,8 +88,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 upperScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -107,8 +105,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 upperScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -124,8 +122,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 upperScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -141,33 +139,36 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 upperScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
 
             case BONUS:
 
+                //remove from list of available types
+                availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.BONUS);
+
                 if(upperScore >= 63)
                 {
                     //increment upper score by some value
                     upperScore += 35;
 
-                    //refresh currentScore
-                    calcCurrentScore();
+                    //refresh score
+                    calcScore();
 
                     return 35;
                 }
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 return 0;
         }
 
-        //refresh currentScore
-        calcCurrentScore();
+        //refresh score
+        calcScore();
 
         return someNumber;
     }
@@ -209,8 +210,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 lowerScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -237,8 +238,8 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 lowerScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 //return the same value to the calling code
                 return someNumber;
@@ -273,8 +274,8 @@ public class YahtzeeScoreCard
                     //increment upper score by some value
                     lowerScore += 25;
 
-                    //refresh currentScore
-                    calcCurrentScore();
+                    //refresh score
+                    calcScore();
 
                     return 25;
                 }
@@ -312,8 +313,8 @@ public class YahtzeeScoreCard
                     //increment upper score by some value
                     lowerScore += 30;
 
-                    //refresh currentScore
-                    calcCurrentScore();
+                    //refresh score
+                    calcScore();
 
                     return 30;
                 }
@@ -352,8 +353,8 @@ public class YahtzeeScoreCard
                     //increment upper score by some value
                     lowerScore += 40;
 
-                    //refresh currentScore
-                    calcCurrentScore();
+                    //refresh score
+                    calcScore();
 
                     return 40;
                 }
@@ -373,8 +374,8 @@ public class YahtzeeScoreCard
                     //increment upper score by some value
                     lowerScore += 50;
 
-                    //refresh currentScore
-                    calcCurrentScore();
+                    //refresh score
+                    calcScore();
 
                     return 50;
                 }
@@ -386,8 +387,8 @@ public class YahtzeeScoreCard
                     //increment upper score by some value
                     lowerScore += 100;
 
-                    //refresh currentScore
-                    calcCurrentScore();
+                    //refresh score
+                    calcScore();
 
                     return 100;
                 }
@@ -410,37 +411,21 @@ public class YahtzeeScoreCard
                 //increment upper score by some value
                 lowerScore += someNumber;
 
-                //refresh currentScore
-                calcCurrentScore();
+                //refresh score
+                calcScore();
 
                 return someNumber;
         }
 
-        //refresh currentScore
-        calcCurrentScore();
+        //refresh score
+        calcScore();
 
         return someNumber;
     }
 
-    public void calcCurrentScore()
+    public void calcScore()
     {
-        currentScore = upperScore + lowerScore;
-    }
-
-    public void calcFinalScore()
-    {
-        //figure out the bonus
-        if(upperScore >= 63)
-        {
-            //increment upper score by some value
-            upperScore += 35;
-
-            //refresh currentScore
-            calcCurrentScore();
-        }
-
-        //should this be finalScore + scoreBonus?
-        finalScore = currentScore;
+        score = upperScore + lowerScore;
     }
 
     public Set<YahtzeeScoreTypes> getAvailableScoreTypes()
@@ -468,9 +453,9 @@ public class YahtzeeScoreCard
         lowerScore = numForScore;
     }
 
-    public int getCurrentScore()
+    public int getScore()
     {
-        return currentScore;
+        return score;
     }
 
     public int getCountYahtzees()
@@ -481,10 +466,5 @@ public class YahtzeeScoreCard
     public void setCountYahtzees(int numOfYahtzees)
     {
         countYahtzees = numOfYahtzees;
-    }
-
-    public int getFinalScore()
-    {
-        return finalScore;
     }
 }
