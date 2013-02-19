@@ -169,10 +169,10 @@ public class YahtzeeTest
 
         //test with 4 of a kind
         y1.getDiceCollection().setValues(6, 6, 6, 6, 2);
-        assertEquals(0, y1.scoreThreeOfAKind());
+        assertEquals(26, y1.scoreThreeOfAKind());
 
         y1.getDiceCollection().setValues(6, 2, 6, 6, 6);
-        assertEquals(0, y1.scoreThreeOfAKind());
+        assertEquals(26, y1.scoreThreeOfAKind());
 
         //test with full house
         //SHOULD BE NON-ZERO in this case ; do not assert 0
@@ -213,7 +213,7 @@ public class YahtzeeTest
         for(int i = 1; i <= 6 ; i++)
         {
             y1.getDiceCollection().setValues(i, i, i, i, i);
-            assertEquals(0, y1.scoreThreeOfAKind());
+            assertEquals(i*5, y1.scoreThreeOfAKind());
         }
     }
 
@@ -294,7 +294,7 @@ public class YahtzeeTest
         for(int i = 1; i <= 6 ; i++)
         {
             y1.getDiceCollection().setValues(i, i, i, i, i);
-            assertEquals(0, y1.scoreFourOfAKind());
+            assertEquals(i*5, y1.scoreFourOfAKind());
         }
     }
 

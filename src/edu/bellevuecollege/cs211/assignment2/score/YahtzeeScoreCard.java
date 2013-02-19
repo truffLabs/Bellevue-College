@@ -196,7 +196,7 @@ public class YahtzeeScoreCard
                 for(Integer i : valuesAsSet)
                 {
                     //if one of the values in the set occurs in the the collection of all values four times
-                    if(Collections.frequency(sortedValuesAsList, i) == 3)
+                    if(Collections.frequency(sortedValuesAsList, i) >= 3)
                     {
                         //sum the values of all of the dice
                         for(int j=0 ; j < sortedValuesAsList.size() ; j++)
@@ -224,7 +224,7 @@ public class YahtzeeScoreCard
                 for(Integer i : valuesAsSet)
                 {
                     //if one of the values in the set occurs in the the collection of all values four times
-                    if(Collections.frequency(sortedValuesAsList, i) == 4)
+                    if(Collections.frequency(sortedValuesAsList, i) >= 4)
                     {
                         //sum the values of all of the dice
                         for(int j=0 ; j < sortedValuesAsList.size() ; j++)
