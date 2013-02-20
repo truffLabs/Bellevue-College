@@ -76,7 +76,7 @@ public class Yahtzee
         y.getScoreCard().calcScore();
 
         System.out.println();
-        System.out.println("Your total score is " + y.getScoreCard().getScore());
+        System.out.println("**Your total score is " + y.getScoreCard().getScore());
 	}
 
 	/**
