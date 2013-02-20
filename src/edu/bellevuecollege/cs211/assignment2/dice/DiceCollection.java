@@ -1,10 +1,9 @@
 package edu.bellevuecollege.cs211.assignment2.dice;
 import edu.bellevuecollege.cs211.assignment2.exceptions.*;
-
 import java.util.*;
 
 /**
- * Represents a collection of dice
+ * Represents a collection of dice stored as an ArrayList.
  * 
  * @author Pat Kaehuaea
  * 
@@ -19,10 +18,9 @@ public class DiceCollection
     private int numDiceInCollection;
 
 	/**
-	 * Constructs a collection of dice. Assume assignment 2 only generates 5 die.
+	 * Constructs a collection of dice.
 	 * 
-	 * @param numDice
-	 *            The number of dice in the collection
+	 * @param numDice The number of dice in the collection.
 	 */
 
 	public DiceCollection(int numDice)
@@ -45,10 +43,8 @@ public class DiceCollection
 	/**
 	 * Returns the die from position num.
 	 * 
-	 * @param dieNum
-	 *            The die from the given position.
-     * @throws MaxDiceException
-     *             thrown if the die number is greater than the number of dice in the collection
+	 * @param dieNum The die from the given position.
+     * @throws MaxDiceException Thrown if the die number is greater than the number of dice in the collection.
 	 * @return The die requested.
 	 */
 
@@ -66,8 +62,7 @@ public class DiceCollection
 	/**
 	 * Rolls the dice and sorts them so that they come out of the collection in sorted order. Dice 0 is the lowest Dice
      *
-     * @throws MaxDiceException
-     *             thrown if the number of booleans is greater than the number of dice in the collection
+     * @throws MaxDiceException Thrown if the number of booleans is greater than the number of dice in the collection
 	 *
 	 */
 	public void rollDice(boolean... arguments) throws MaxDiceException
@@ -94,10 +89,9 @@ public class DiceCollection
 	/**
 	 * Set values of all the dice. This will be used for testing.
 	 * 
-	 * @param values
-	 *            The dice to set the values to.
-     * @throws MaxDiceException
-     *            thrown if the number of values to set is greater than the number of dice in the collection
+	 * @param values The dice to set the values to.
+     *
+     * @throws MaxDiceException Thrown if the number of values to set is greater than the number of dice in the collection
 	 */
 	public void setValues(int... values) throws MaxDiceException
 	{
@@ -117,6 +111,11 @@ public class DiceCollection
         }
 	}
 
+    /**
+     * Returns a Set containing the sorted values of each of the Die in the collection. Used for scoring.
+     *
+     * @return A TreeSet of Die values.
+     */
     public Set<Integer> getSortedValuesAsSet()
     {
         Set<Integer> setOfSortedValues = new TreeSet<Integer>();
@@ -129,6 +128,11 @@ public class DiceCollection
         return setOfSortedValues;
     }
 
+    /**
+     * Returns a sorted ArrayList of all of the Die values in the collection.
+     *
+     * @return
+     */
     public List<Integer> getSortedValuesAsList()
     {
         List<Integer> listOfSortedValues = new ArrayList<Integer>();
@@ -142,12 +146,21 @@ public class DiceCollection
         return listOfSortedValues;
     }
 
+    /**
+     * Returns a collection of dice as an ArrayList.
+     *
+     * @return An ArrayList of this DiceCollection object.
+     */
     public ArrayList<Die> getBunchOfDice()
     {
         return this.bunchOfDice;
     }
 
-
+    /**
+     * Returns the number of dice in this DiceCollection.
+     *
+     * @return An integer value representing the number of dice in the collection.
+     */
     public int getNumDiceInCollection()
     {
         return this.numDiceInCollection;
