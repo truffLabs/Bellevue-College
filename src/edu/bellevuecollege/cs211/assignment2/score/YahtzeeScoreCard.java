@@ -1,6 +1,5 @@
 package edu.bellevuecollege.cs211.assignment2.score;
 import edu.bellevuecollege.cs211.assignment2.dice.DiceCollection;
-
 import java.util.*;
 
 /**
