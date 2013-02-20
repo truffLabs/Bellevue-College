@@ -223,6 +223,7 @@ public class Yahtzee
             //read input
             int scoringChoice = someInput.nextInt();
 
+            //TODO: The scoring methods in YahtzeeScoreCardTest already contain error checking. Get rid of it here.
             if(scoringChoice == 1)
             {
                 if(someYahtzee.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES))
@@ -234,7 +235,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Ones have already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 2)
@@ -244,12 +244,13 @@ public class Yahtzee
                     scoreForChoice = someYahtzee.scoreTwos();
                     break;
                 }
+
                 else
                 {
                     System.out.println();
                     System.out.println("Scoring method Twos have already been used.");
-                    System.out.println();
                 }
+
             }
             else if(scoringChoice == 3)
             {
@@ -262,7 +263,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Threes have already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 4)
@@ -276,7 +276,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Fours have already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 5)
@@ -290,7 +289,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Fives have already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 6)
@@ -304,7 +302,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Sixes have already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 7)
@@ -318,7 +315,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method 3 of a kind has already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 8)
@@ -332,7 +328,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method 4 of a kind has already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 9)
@@ -346,7 +341,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Full House has already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 10)
@@ -360,7 +354,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Small Straight has already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 11)
@@ -374,7 +367,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Large Straight has already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 12)
@@ -388,7 +380,6 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Yahtzee has already been used.");
-                    System.out.println();
                 }
             }
             else if(scoringChoice == 13)
@@ -402,14 +393,12 @@ public class Yahtzee
                 {
                     System.out.println();
                     System.out.println("Scoring method Chance has already been used.");
-                    System.out.println();
                 }
             }
             else
             {
                 System.out.println();
                 System.out.println("Bad selection. '" + scoringChoice + "' is not a valid choice.");
-                System.out.println();
                 continue;
             }
         }
