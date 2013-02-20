@@ -9,6 +9,8 @@ import java.util.*;
  * ultimately drives a game of Yahtzee from the perspective of a single player. This class includes several scoring
  * functions that call methods in a YahtzeeScoreCard object as well as two methods that present menus for rolling dice
  * and selecting a scoring method.
+ *
+ * @author Pat Kaehuaea 2/9/13 11:14 PM
  */
 public class Yahtzee
 {
