@@ -4,7 +4,11 @@ import edu.bellevuecollege.cs211.assignment2.dice.DiceCollection;
 import java.util.*;
 
 /**
- * Satisfies the requirements for Exercise #X, page XX of "Building Java Programs" second edition.
+ * Contains all of the scoring logic and related state for the Yahtzee class. Uses two separate methods to either
+ * add to the upper score or the lower score when called from a Yahtzee object. Logic is defined in each of those
+ * methods that add to upper or lower score AND the overall score. A Set containing available scoring types, as
+ * defined in 'YahtzeeScoreTypes' is used to prevent a user from selecting a scoring option more than once with the
+ * exception of a Yahtzee.
  *
  * @author Pat Kaehuaea 2/9/13 11:14 PM
  */
@@ -19,6 +23,9 @@ public class YahtzeeScoreCard
     //construct List to track available scoring methods
     Set<YahtzeeScoreTypes> availableYahtzeeScoreTypes;
 
+    /**
+     * Define state and add defined scoring types to 'availableYahtzeeScoreTypes'.
+     */
     public YahtzeeScoreCard()
     {
         upperScore = 0;
@@ -37,6 +44,14 @@ public class YahtzeeScoreCard
         availableYahtzeeScoreTypes.add(YahtzeeScoreTypes.CHANCE);
     }
 
+    /**
+     * Uses 'someType' and a 'someDice' to determine what integer value to add to 'upperScore' and 'score'. Removes
+     * the scoring choice from 'availableYahtzeeScoreTypes' after that type is called.
+     *
+     * @param someType  Enum used to determine which scoring type has been selected.
+     * @param someDice  Passed in with scoring type to calculate score for a collection of Die.
+     * @return  An integer value representing the score.
+     */
     public int addToUpperScore(YahtzeeScoreTypes someType, DiceCollection someDice)
     {
         int someNumber = 0;
@@ -173,6 +188,14 @@ public class YahtzeeScoreCard
         return someNumber;
     }
 
+    /**
+     * Uses 'someType' and a 'someDice' to determine what integer value to add to 'lowerScore' and 'score'. Removes
+     * the scoring choice from 'availableYahtzeeScoreTypes' after that type is called.
+     *
+     * @param someType  Enum used to determine which scoring type has been selected.
+     * @param someDice  Passed in with scoring type to calculate score for a collection of Die.
+     * @return  An integer value representing the score.
+     */
     public int addToLowerScore(YahtzeeScoreTypes someType, DiceCollection someDice)
     {
         int someNumber = 0;
@@ -423,46 +446,89 @@ public class YahtzeeScoreCard
         return someNumber;
     }
 
+    /**
+     * The 'score' is a sum of the 'upperScore' and 'lowerScore'.
+     */
     public void calcScore()
     {
         score = upperScore + lowerScore;
     }
 
+    /**
+     * Fetch the Set used to hold all of the available Yahtzee scoring types.
+     *
+     * @return A set containing the remaining scoring types for a single Yahtzee game.
+     */
     public Set<YahtzeeScoreTypes> getAvailableScoreTypes()
     {
         return availableYahtzeeScoreTypes;
     }
 
+    /**
+     * Allows client code to return the 'upperScore'.
+     *
+     * @return  The 'upperScore' for a single game of Yahtzee.
+     */
     public int getUpperScore()
     {
         return upperScore;
     }
 
+    /**
+     * Allows client code to set the 'upperScore' and is only used for testing.
+     *
+     * @param numForScore The integer value used to set the 'upperScore'.
+     */
     public void setUpperScore(int numForScore)
     {
         upperScore = numForScore;
     }
 
+    /**
+     * Fetch the 'lowerScore' for this Yahtzee game.
+     *
+     * @return  The integer value representing the 'lowerScore'.
+     */
     public int getLowerScore()
     {
         return lowerScore;
     }
 
+    /**
+     * Allows client code to set the 'lowerScore' and is only used for testing.
+     *
+     * @param numForScore The integer value used to set the 'lowerScore'.
+     */
     public void setLowerScore(int numForScore)
     {
         lowerScore = numForScore;
     }
 
+    /**
+     * Fetch the total score at the time the method is called.
+     *
+     * @return  An integer value representing the current score.
+     */
     public int getScore()
     {
         return score;
     }
 
+    /**
+     * Allows client code to query for the number of times a Yahtzee was rolled in a single game.
+     *
+     * @return  An integer value representing the number of times a Yahtzee was rolled.
+     */
     public int getCountYahtzees()
     {
         return countYahtzees;
     }
 
+    /**
+     * Used for testing scoring of Yahtzee bonus.
+     *
+     * @param numOfYahtzees An integer value used to set the number of Yahtzees in a single game.
+     */
     public void setCountYahtzees(int numOfYahtzees)
     {
         countYahtzees = numOfYahtzees;
