@@ -2,9 +2,14 @@ package edu.bellevuecollege.cs211.assignment2.yahtzee;
 import edu.bellevuecollege.cs211.assignment2.dice.*;
 import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreCard;
 import edu.bellevuecollege.cs211.assignment2.score.YahtzeeScoreTypes;
-
 import java.util.*;
 
+/**
+ * The Yahtzee class has been built to satisfy the requirements of Programming Assignment #2 of CS211. This class
+ * ultimately drives a game of Yahtzee from the perspective of a single player. This class includes several scoring
+ * functions that call methods in a YahtzeeScoreCard object as well as two methods that present menus for rolling dice
+ * and selecting a scoring method.
+ */
 public class Yahtzee
 {
     //hold collection of 5 dice for this game
@@ -14,11 +19,12 @@ public class Yahtzee
     private YahtzeeScoreCard scoreCard;
 
     /**
-	 * You should roll the dice, ask the user which ones they want to roll again and update the score. The user is
-	 * allowed to roll the dice 3 times to try and get the values they want. You must then ask the user how they want to
-	 * score the roll. They shouldn't be allowed to score under the same category twice.
-	 */
-
+     * Loops through 13 individual turns of a die roll followed by a scoring turn. Calculates and prints score
+     * from Yahtzee game to screen.
+     *
+     * @param args
+     * @throws InterruptedException Throws if thread is unable to sleep for 1000 msec.
+     */
 	public static void main(String[] args) throws InterruptedException
     {
         //construct Yahtzee object
@@ -72,7 +78,8 @@ public class Yahtzee
 	}
 
 	/**
-	 * Constructor of the yahtzee class
+	 * Construct a Yahtzee object containing a DiceCollection object and a YahtzeeScoreCard object. The DiceCollection
+     * object contains 5 Die objects.
 	 */
 	public Yahtzee()
 	{
@@ -82,8 +89,15 @@ public class Yahtzee
 
     }
 
-    //assumes that all input is done in one token, there should be no spaces
-    //shouldn't return anything...it should just keep rolling the dice
+    /**
+     * Walk the player through three possible turns for rolling, then rerolling separate Die. Loops through a single
+     * turn until a user enters a valid choice or '0' to exit. User is allowed to reroll a total of two additional
+     * times after the first roll.
+     *
+     * @param someYahtzee Pass a Yahtzee object to function in order to process Die rolls.
+     *
+     * @param someInput Pass Scanner object to access and parse user input.
+     */
     public void dieRollMenu(Yahtzee someYahtzee, Scanner someInput)
     {
         //Boolean values for rolling die in collection
@@ -164,6 +178,15 @@ public class Yahtzee
         }
     }
 
+    /**
+     * Presents user with Yahtzee scoring options once a final Die roll has been committed. Allows user to select
+     * one of 13 different scoring options for the current roll. If a user selects a scoring option that was already
+     * chosen, the user is prompted to select another choice.
+     *
+     * @param someYahtzee Pass a Yahtzee object to function in order to process Die rolls.
+     *
+     * @param someInput Pass Scanner object to access and parse user input.
+     */
     public void scoreDiceMenu(Yahtzee someYahtzee, Scanner someInput)
     {
         //array list for menu
@@ -174,45 +197,9 @@ public class Yahtzee
 
         while(true)
         {
-            ////TODO: Make it so that only available options are listed
-            /**
-            //read the set of available score types into an ArrayList -> sort the list
-            availableScoringMethods.clear();
-
-            availableScoringMethods.addAll(someYahtzee.getScoreCard().getAvailableScoreTypes());
-
-            Collections.sort(availableScoringMethods);
-
             System.out.println();
             System.out.println("Your current roll is " + someYahtzee.getDiceCollection().toString());
             System.out.println();
-
-            System.out.println("Please choose how you want to score your turn.");
-
-            //user loop to print menu options
-            for(int i = 0 ; i < availableScoringMethods.size() ; i++)
-            {
-                System.out.println("Enter " + (i+1) + " to score " + availableScoringMethods.get(i) + ".");
-            }
-
-            System.out.println();
-            System.out.print("Choice (1 - " + (availableScoringMethods.size()-1) + " ): " );
-
-            //read input
-            int scoringChoice = someInput.nextInt();
-
-            if(scoreForChoice == 1)
-            {
-                break;
-            }
-            else
-            {
-                System.out.println();
-                System.out.println("Bad selection. '" + scoringChoice + "' is not a valid choice.");
-                System.out.println();
-                continue;
-            }
-            **/
 
             System.out.println("Enter 1 to score Ones.");
             System.out.println("Enter 2 to score Twos.");
@@ -453,6 +440,11 @@ public class Yahtzee
 		return theseDice;
 	}
 
+    /**
+     * Returns the ScoreCard object in use.
+     *
+     * @return The ScoreCard object used by the game.
+     */
     public YahtzeeScoreCard getScoreCard()
     {
         return scoreCard;
