@@ -475,13 +475,17 @@ public class YahtzeeScoreCard
     }
 
     /**
-     * Allows client code to set the 'upperScore' and is only used for testing.
+     * Allows client code to set the 'upperScore' and is only used for testing. Makes call to 'calcScore()' to
+     * refresh current score.
      *
      * @param numForScore The integer value used to set the 'upperScore'.
      */
     public void setUpperScore(int numForScore)
     {
         upperScore = numForScore;
+
+        //always refresh score
+        calcScore();
     }
 
     /**
@@ -495,13 +499,17 @@ public class YahtzeeScoreCard
     }
 
     /**
-     * Allows client code to set the 'lowerScore' and is only used for testing.
+     * Allows client code to set the 'lowerScore' and is only used for testing. Makes call to 'calcScore()' to
+     * refresh current score.
      *
      * @param numForScore The integer value used to set the 'lowerScore'.
      */
     public void setLowerScore(int numForScore)
     {
         lowerScore = numForScore;
+
+        //always refresh score
+        calcScore();
     }
 
     /**
