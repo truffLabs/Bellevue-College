@@ -31,7 +31,7 @@ public class Die implements Comparable<Die>
 	public void roll()
 	{
         Random r = new Random();
-        this.value = r.nextInt(5) + 1;
+        this.value = r.nextInt(6) + 1;
 
 	}
 
