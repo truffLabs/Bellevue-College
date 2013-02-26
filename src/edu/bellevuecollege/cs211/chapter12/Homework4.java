@@ -21,7 +21,7 @@ public class Homework4
         //writeChars(5);
 
         //exercise 15
-        System.out.println(permut(7,4));
+        //System.out.println(permut(7,4));
 
     }
 
@@ -114,7 +114,6 @@ public class Homework4
     }
 
     //exercise 3
-    //TODO: Make work
     public static void writeSequence(int someInt)
     {
         if(someInt < 1)
@@ -131,9 +130,9 @@ public class Homework4
         }
         else
         {
-            System.out.print("*");
+            System.out.print(someInt/2);
             writeSequence(someInt - 2);
-            System.out.print("*");
+            System.out.print(someInt/2);
         }
 
 
