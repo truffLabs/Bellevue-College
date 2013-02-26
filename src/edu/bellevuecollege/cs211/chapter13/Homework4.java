@@ -16,14 +16,18 @@ public class Homework4
     {
         int[] someNumbers = {12, 123, 1, 28, 183, 16};
 
-        //selectionSort(someNumbers);
-        //bubbleSort(someNumbers);
+        /**
+        selectionSort(someNumbers);
+        bubbleSort(someNumbers);
 
         List<Integer> someList = new LinkedList<Integer>();
         someList.add(1); someList.add(2); someList.add(3); someList.add(4); someList.add(5); someList.add(6);
         wrapHalf(someList);
 
         System.out.println(someList);
+        **/
+
+
     }
 
     public static void selectionSort(int[] numbers)
