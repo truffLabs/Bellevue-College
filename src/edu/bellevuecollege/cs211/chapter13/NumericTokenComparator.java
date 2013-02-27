@@ -3,8 +3,11 @@ import java.util.Scanner;
 import java.util.Comparator;
 
 /**
- * Created with IntelliJ IDEA. User: pakaehua Date: 2/25/13 Time: 5:29 PM To change this template use File | Settings |
- * File Templates.
+ * Compares two Strings according to the integer value at the front of the string. Comparator assumes that
+ * each string has an integer value as the first token in the string. A string without an integer as the first
+ * token will always be less than a String with an integer as the first token.
+ *
+ * @author Pat Kaehuaea 2/22/13 10:35 PM
  */
 public class NumericTokenComparator implements Comparator<String>
 {
@@ -12,25 +15,23 @@ public class NumericTokenComparator implements Comparator<String>
     {
         //find the number of tokens in s1
         Scanner sc1 = new Scanner(s1);
-        int tokenCount1 = 0;
+        int numberS1 = 0;
 
-        while(sc1.hasNext())
+        if(sc1.hasNextInt())
         {
-            sc1.next();
-            tokenCount1++;
+            numberS1 = sc1.nextInt();
         }
 
         //find the number of tokens in s2
         Scanner sc2 = new Scanner(s2);
-        int tokenCount2 = 0;
+        int numberS2 = 0;
 
-        while(sc2.hasNext())
+        if(sc2.hasNextInt())
         {
-            sc2.next();
-            tokenCount2++;
+            numberS2 = sc2.nextInt();
         }
 
-        return tokenCount1 - tokenCount2;
+        return numberS1 - numberS2;
     }
 
 
