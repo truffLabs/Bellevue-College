@@ -353,13 +353,44 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * 
 	 * @param element
 	 *            The element to find and remove.
-	 * @return Return the node that contains the element that was removed.
+	 * @return Return the element that was removed.
 	 * @throws NodeNotFoundException
 	 *             Thrown if the element to be found can't be found.
 	 */
 	public T remove(T element) throws NodeNotFoundException
 	{
-		return null;
+        Node previous = front;
+        Node current = front;
+
+        T elementToReturn = null;
+
+        while(current.next != back)
+        {
+            previous = current;
+
+            current = current.next;
+
+            if(current.data.equals(element))
+            {
+                //set the node before current to the node after current
+                previous.next = current.next;
+
+                //set returnElement = current.data
+                elementToReturn = current.data;
+
+                //set current back to previous.next
+                current = previous;
+
+                return elementToReturn;
+            }
+        }
+
+        if(elementToReturn == null)
+        {
+            throw new NodeNotFoundException(element.toString());
+        }
+
+		return elementToReturn;
 	}
 
 	/**

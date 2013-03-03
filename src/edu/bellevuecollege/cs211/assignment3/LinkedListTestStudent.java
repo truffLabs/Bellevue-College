@@ -210,6 +210,30 @@ public class LinkedListTestStudent
     }
 
     @Test
+    public void testRemove() throws NodeNotFoundException
+    {
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //add to the list
+        //insert a String to the front of the list
+        linkedStrings.insertBack("insertFirst");
+
+        //insert another String to the front of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert another String to the front of the list
+        linkedStrings.insertBack("insertThird");
+
+        String removed = linkedStrings.remove("insertSecond");
+
+        assertTrue(removed.equals("insertSecond"));
+
+        assertEquals("[insertFirst, insertThird]", linkedStrings.toString());
+
+    }
+
+
+    @Test
     public void testContains() throws NodeNotFoundException
     {
         //initialize the list
