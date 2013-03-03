@@ -159,23 +159,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public int getSize()
 	{
-        //begin after the sentinel node
-        Node current = this.front.next;
-
-        //count placeholder
-        int count = 0;
-
-        //terminate if current.next equals back
-        while(current.next != back)
-        {
-            current = current.next;
-            count++;
-        }
-
-        //set 'numElements' equal to count
-        this.size = count;
-
-		return count;
+        return this.size;
 	}
 
 	/**
@@ -185,8 +169,8 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public boolean isEmpty()
 	{
-        //if there is no reference to the front or the back of the array, the list is empty
-		return (front.next == null);
+        //if front.next is a reference to the back node then the list is empty
+		return (front.next == back);
 	}
 
 	/**
@@ -212,9 +196,12 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
             //point sentinel at front to new node
             front.next = current;
-        }
 
-        return true;
+            //increment the size counter with each addition
+            size++;
+
+            return true;
+        }
 	}
 
 	/**
@@ -256,6 +243,9 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
             //set reference for previous.next to the new node
             previous.next = new Node(current, element);
 
+            //increment the size counter with each addition
+            size++;
+
             return true;
         }
 	}
@@ -265,9 +255,9 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * specified by the variable {@code currentNode}. Throws a NodeNotFoundException if it can't found the node given.
 	 * Do not add the Node if it already exists in the list.
 	 * 
-	 * @param currentNode
+	 * @param currentElement
 	 *            The node to look for to add the given node behind.
-	 * @param node
+	 * @param element
 	 *            The element to be inserted into the linked list.
 	 * @throws NodeNotFoundException
 	 *             Thrown if the element given is not found
@@ -278,19 +268,19 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	public boolean insertAfter(T currentElement, T element) throws NodeNotFoundException
 	{
 		//hold reference to front
-        Node current = this.front.next;
+        Node current = front.next;
 
         //iterate through the list
-        while(current != null)
+        while(current != back)
         {
             //check for element value
             if(current.data.equals(currentElement))
             {
-                //hold the tail
-                Node newNode = new Node(current.next, element);
+                //build new node element with a reference to the tail then set current.next to new node
+                current.next = new Node(current.next, element);
 
-                //point head to tail
-                current.next = newNode;
+                //increment the size counter with each addition
+                size++;
             }
             else
             {

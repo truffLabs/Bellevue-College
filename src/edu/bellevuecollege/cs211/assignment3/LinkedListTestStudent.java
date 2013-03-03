@@ -5,12 +5,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
+
 import static junit.framework.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
 public class LinkedListTestStudent
 {
+
+    LinkedList<String> testList;
+
+    @Before
+    public void setUp() throws NodeNotFoundException
+    {
+        testList = new LinkedList<String>();
+    }
+
     @Test
     public void testLinkedList() throws NodeNotFoundException
     {
@@ -58,6 +69,18 @@ public class LinkedListTestStudent
     public void testGetSize() throws NodeNotFoundException
     {
         LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //add to the list
+        //insert a String to the front of the list
+        linkedStrings.insertBack("insertFirst");
+
+        //insert another String to the front of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert another String to the front of the list
+        linkedStrings.insertBack("insertThird");
+
+        assertEquals(3, linkedStrings.getSize());
     }
 
     @Test
@@ -96,6 +119,31 @@ public class LinkedListTestStudent
 
         assertEquals("[insertFirst, insertSecond, insertThird]", linkedStrings.toString());
 
+    }
+
+    @Test
+    public void testInsertAfter() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the front of the list
+        linkedStrings.insertAfter("insertFirst", "bolo");
+
+        assertEquals("[insertFirst, bolo]", linkedStrings.toString());
+
+        //insert another String to the front of the list
+        linkedStrings.insertBack("insertThird");
+
+        assertEquals("[insertFirst, bolo, insertThird]", linkedStrings.toString());
+
+        //insert another String to the front of the list
+        linkedStrings.insertAfter("insertFirst", "happy");
+
+        assertEquals("[insertFirst, happy, bolo, insertThird]", linkedStrings.toString());
     }
 
     @Test
