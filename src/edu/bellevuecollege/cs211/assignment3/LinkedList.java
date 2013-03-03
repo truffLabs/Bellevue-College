@@ -3,15 +3,22 @@ import edu.bellevuecollege.cs211.assignment3.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class LinkedList<T> implements Iterable<T>, Iterator<T>
 {
 	public class Node
 	{
+        //data element the node stores
+        public T data;
 
-		public Node(Node next, T value)
+        //pointer to next Node object
+        public Node next;
+
+        public Node(Node next, T value)
 		{
-
+            this.data = value;
+            this.next = next;
 		}
 
 		/**
@@ -21,7 +28,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 		 */
 		public Node getNext()
 		{
-			return null;
+			return this.next;
 		}
 
 		/**
@@ -32,7 +39,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 		 */
 		public void setNext(Node next)
 		{
-
+          this.next = next;
 		}
 
 		/**
@@ -42,7 +49,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 		 */
 		public T getValue()
 		{
-			return null;
+			return this.data;
 		}
 
 		/**
@@ -53,18 +60,96 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 		 */
 		public void setValue(T value)
 		{
-
+          this.data = value;
 		}
 
 		public String toString()
 		{
-			return null;
+			return (String)this.data;
 		}
 	}
 
+    private class LinkedListIterator<T> implements Iterator<T>
+    {
+        private Node previous;
+        private Node current;
+
+        //flag for whether it is ok to remove now
+        private boolean removeOK;
+
+        public LinkedListIterator()
+        {
+            previous = front;
+            current = front;
+            removeOK = false;
+        }
+
+        @Override
+        public boolean hasNext()
+        {
+            return current.next != back;
+        }
+
+        @Override
+
+        public T next()
+        {
+            if(!hasNext())
+            {
+                throw new NoSuchElementException();
+            }
+
+            //T result = current.data;
+
+            //set previous reference
+            previous = current;
+
+            //advance the current reference
+            current = current.next;
+
+            //set remove to true
+            removeOK = true;
+
+            //return the node at the reference
+            //TODO: Be certain what you're returning here
+            return (T) current;
+        }
+
+        @Override
+        public void remove()
+        {
+            if(!removeOK)
+            {
+                throw new IllegalStateException();
+            }
+
+            //set the node before current to the node after current
+            previous.next = current.next;
+
+            //set current back to previous.next
+            current = previous;
+
+            removeOK = false;
+        }
+    }
+
+
+    //define which node is at the front
+    private Node front;
+
+    //define which node is in the back of the list
+    private Node back;
+
+    //number of elements in the list
+    private int numElements;
+
+
 	public LinkedList()
 	{
-
+        //define sentinel node at head and tail
+        this.back = new Node (null, null);
+        this.front = new Node(back, null);
+        this.numElements = 0;
 	}
 
 	/**
@@ -74,7 +159,23 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public int getSize()
 	{
-		return 0;
+        //begin after the sentinel node
+        Node current = this.front.next;
+
+        //count placeholder
+        int count = 0;
+
+        //terminate if current.next equals back
+        while(current.next != back)
+        {
+            current = current.next;
+            count++;
+        }
+
+        //set 'numElements' equal to count
+        this.numElements = count;
+
+		return count;
 	}
 
 	/**
@@ -84,7 +185,8 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public boolean isEmpty()
 	{
-		return false;
+        //if there is no reference to the front or the back of the array, the list is empty
+		return (front.next == null);
 	}
 
 	/**
@@ -97,7 +199,22 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public boolean insertFront(T element)
 	{
-		return false;
+        //TODO: define the contains method so I can use as
+        if(false)
+        {
+
+            return false;
+        }
+        else
+        {
+            //point the new node at the tail
+            Node current = new Node(front.next, element);
+
+            //point sentinel at front to new node
+            front.next = current;
+        }
+
+        return true;
 	}
 
 	/**
@@ -111,7 +228,36 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
 	public boolean insertBack(T element)
 	{
-		return false;
+        //TODO: define the contains method so I can use as
+        //TODO: make sure I can handle an empty list
+        if(false)
+        {
+
+            return false;
+        }
+        else
+        {
+            //create previous reference
+            Node previous = front;
+
+            //hold reference to front of list
+            Node current = front.next;
+
+            //iterate through list until at the back
+            while(current != back)
+            {
+                //set previous equal to current before advancing
+                previous = current;
+
+                //advance current to next node
+                current = current.next;
+            }
+
+            //set reference for previous.next to the new node
+            previous.next = new Node(current, element);
+
+            return true;
+        }
 	}
 
 	/**
@@ -128,9 +274,36 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * @return true if inserted, false if already in list and cannot be inserted.
 	 */
 
+    //TODO: find out if he's talking about a node, or element
 	public boolean insertAfter(T currentElement, T element) throws NodeNotFoundException
 	{
-		return false;
+		//hold reference to front
+        Node current = this.front.next;
+
+        //iterate through the list
+        while(current != null)
+        {
+            //check for element value
+            if(current.data.equals(currentElement))
+            {
+                //hold the tail
+                Node newNode = new Node(current.next, element);
+
+                //point head to tail
+                current.next = newNode;
+            }
+            else
+            {
+                //throw new NodeNotFoundException(currentElement.toString());
+            }
+
+            //move reference
+            current = current.next;
+
+        }
+
+
+        return false;
 	}
 
 	/**
@@ -177,7 +350,11 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
 	public ArrayList<T> removeAll() throws NodeNotFoundException
 	{
-		return null;
+		//start from the front of the list and process
+
+        //add each element to an ArrayList
+
+        return null;
 	}
 
 	/**
@@ -235,7 +412,25 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public String toString()
 	{
-		return null;
+		if(front.next == back)
+        {
+            return "[]";
+        }
+        else
+        {
+            String result = "[" + front.next.data;
+            Node current = front.next.next;
+
+            while(current != back)
+            {
+                result += ", " + current.data;
+                current = current.next;
+            }
+
+            result += "]";
+
+            return result;
+        }
 	}
 
 	/*
@@ -246,7 +441,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public Iterator<T> iterator()
 	{
-		return null;
+        return new LinkedListIterator<T>();
 	}
 
 	/*
@@ -257,7 +452,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public boolean hasNext()
 	{
-		return false;
+		return iterator().hasNext();
 	}
 
 	/*
@@ -268,7 +463,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public T next()
 	{
-		return null;
+		return iterator().next();
 	}
 
 	/*
@@ -279,7 +474,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public void remove()
 	{
-
+        iterator().remove();
 	}
 
 }
