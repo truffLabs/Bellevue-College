@@ -266,6 +266,8 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
             return false;
         }
 
+        boolean currentElementFound = false;
+
 		//hold reference to front
         Node current = front;
 
@@ -284,9 +286,16 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
                 //increment the size counter with each addition
                 size++;
 
+                //set boolean to true
+                currentElementFound = true;
+
                 return true;
             }
-            else throw new NodeNotFoundException(currentElement.toString());
+        }
+
+        if(currentElementFound == false)
+        {
+            throw new NodeNotFoundException(currentElement.toString());
         }
 
         return false;
@@ -321,6 +330,8 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
         //hold reference to front
         Node current = front;
 
+        boolean currentElementFound = false;
+
         //iterate through the list
         while(current.next != back)
         {
@@ -338,9 +349,16 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
                 //increment the size counter with each addition
                 size++;
 
+                //set boolean to true
+                currentElementFound = true;
+
                 return true;
             }
-            else throw new NodeNotFoundException(currentElement.toString());
+        }
+
+        if(currentElementFound == false)
+        {
+            throw new NodeNotFoundException(currentElement.toString());
         }
 
         return false;
