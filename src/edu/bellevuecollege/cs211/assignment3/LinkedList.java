@@ -109,8 +109,7 @@ public class LinkedList<T> implements Iterable<T>
             //set remove to true
             removeOK = true;
 
-            //return the node at the reference
-            //TODO: Be certain what you're returning here
+            //return the data at the referenced node
             return (T) current.data;
         }
 
@@ -131,7 +130,6 @@ public class LinkedList<T> implements Iterable<T>
             removeOK = false;
         }
     }
-
 
     //define which node is at the front
     private Node front;
@@ -446,21 +444,16 @@ public class LinkedList<T> implements Iterable<T>
 	 */
 	public boolean contains(T element)
 	{
-        Node current = front;
-
-        //iterate through a non-empty list
-        while(current.next != back)
+        for(T someData : this)
         {
-            //advance reference for current
-            current = current.next;
-
-            if(current.data.equals(element))
+            if(someData.equals(element))
             {
                 return true;
             }
         }
 
         return false;
+
 	}
 
 	/**
