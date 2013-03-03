@@ -141,7 +141,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
     private Node back;
 
     //number of elements in the list
-    private int numElements;
+    private int size;
 
 
 	public LinkedList()
@@ -149,7 +149,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
         //define sentinel node at head and tail
         this.back = new Node (null, null);
         this.front = new Node(back, null);
-        this.numElements = 0;
+        this.size = 0;
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
         }
 
         //set 'numElements' equal to count
-        this.numElements = count;
+        this.size = count;
 
 		return count;
 	}
