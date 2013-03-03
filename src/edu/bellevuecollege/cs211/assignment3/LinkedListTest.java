@@ -40,7 +40,7 @@ public class LinkedListTest
      insertAll(testList);
      assertTrue("Next/HasNext failed", compareListToStrings(testList, FIRST, SECOND, THIRD, FOURTH));
      }
-     /**
+
      @Test
      public void testIsEmpty() throws NodeNotFoundException
      {
@@ -163,7 +163,7 @@ public class LinkedListTest
      testList.insertFront(FIRST);
      assertEquals(4, testList.getSize());
      }
-      **/
+
      private static <T> boolean compareListToStrings(LinkedList<T> list, T... values)
      {
      int index = 0;
