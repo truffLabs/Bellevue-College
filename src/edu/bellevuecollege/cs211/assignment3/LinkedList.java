@@ -536,6 +536,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public String toString()
 	{
+
 		if(front.next == back)
         {
             return "[]";
@@ -555,6 +556,31 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
             return result;
         }
+
+
+        /**
+        if(this.isEmpty())
+        {
+            return "";
+        }
+        else
+        {
+            String result = "";
+
+            Node current = front.next;
+
+            while(current.next.next != back )
+            {
+                result += current.data + "->";
+                current = current.next;
+            }
+
+            result += current.data;
+
+            return result;
+
+        }
+        **/
 	}
 
 	/*
