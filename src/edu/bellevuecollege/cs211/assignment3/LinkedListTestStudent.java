@@ -4,6 +4,7 @@ import edu.bellevuecollege.cs211.assignment3.exceptions.NodeNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import static junit.framework.Assert.*;
@@ -229,7 +230,29 @@ public class LinkedListTestStudent
         assertTrue(removed.equals("insertSecond"));
 
         assertEquals("[insertFirst, insertThird]", linkedStrings.toString());
+    }
 
+    @Test
+    public void testRemoveAll() throws NodeNotFoundException
+    {
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //add to the list
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertThird");
+
+        ArrayList<String> checkList = linkedStrings.removeAll();
+
+        assertEquals("[insertFirst, insertSecond, insertThird]", checkList.toString());
+
+        //verify size of linkedString is 0
+        assertEquals(0, linkedStrings.getSize());
     }
 
 
@@ -256,9 +279,8 @@ public class LinkedListTestStudent
         assertEquals(true, linkedStrings.contains("insertThird"));
     }
 
-    /**
-    @Test (expected = NodeNotFoundException.class)
-    public void testInsertAfterBad() throws NodeNotFoundException
+    @Test
+    public void testFindElement() throws NodeNotFoundException
     {
         //initialize the list
         LinkedList<String> linkedStrings = new LinkedList<String>();
@@ -266,22 +288,63 @@ public class LinkedListTestStudent
         //insert a String to the front of the list
         linkedStrings.insertFront("insertFirst");
 
-        //insert another String to the front of the list
-        linkedStrings.insertAfter("insertFirst", "bolo");
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertSecond");
 
-        assertEquals("[insertFirst, bolo]", linkedStrings.toString());
-
-        //insert another String to the front of the list
+        //insert another String to the back of the list
         linkedStrings.insertBack("insertThird");
 
-        assertEquals("[insertFirst, bolo, insertThird]", linkedStrings.toString());
+        String elementReturned = linkedStrings.findElement("insertThird");
 
-        //insert another String to the front of the list
-        linkedStrings.insertAfter("insertFirst", "happy");
+        assertEquals("insertThird", elementReturned);
 
-        assertEquals("[insertFirst, happy, bolo, insertThird]", linkedStrings.toString());
+        //expect not to find "poop"
+        String elementNull = linkedStrings.findElement("poop");
+
+        //string should be null
+        assertEquals(null, elementNull);
     }
-     **/
+
+    @Test
+    public void testFindNode() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertThird");
+
+        assertEquals("insertThird", linkedStrings.findNode("insertThird").toString());
+    }
+
+    @Test
+    public void testConvert() throws NodeNotFoundException
+    {
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //add to the list
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertThird");
+
+        ArrayList<String> checkList = linkedStrings.convert();
+
+        assertEquals("[insertFirst, insertSecond, insertThird]", checkList.toString());
+
+        //verify size of linkedString is still 3
+        assertEquals(3, linkedStrings.getSize());
+    }
 
     @Test
     public void testToString() throws NodeNotFoundException

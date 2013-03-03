@@ -1,6 +1,5 @@
 package edu.bellevuecollege.cs211.assignment3;
 import edu.bellevuecollege.cs211.assignment3.exceptions.*;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -112,7 +111,7 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
             //return the node at the reference
             //TODO: Be certain what you're returning here
-            return (T) current;
+            return (T) current.data;
         }
 
         @Override
@@ -381,6 +380,9 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
                 //set current back to previous.next
                 current = previous;
 
+                //decrement size of list
+                size--;
+
                 return elementToReturn;
             }
         }
@@ -402,11 +404,19 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
 	public ArrayList<T> removeAll() throws NodeNotFoundException
 	{
-		//start from the front of the list and process
+		//initialize ArrayList
+        ArrayList<T> listToReturn = new ArrayList<T>();
 
-        //add each element to an ArrayList
+        for(T someData : this)
+        {
+            listToReturn.add(someData);
+        }
 
-        return null;
+        //clear contents of list and set size to 0
+        this.front.next = back;
+        this.size = 0;
+
+        return listToReturn;
 	}
 
 	/**
@@ -444,6 +454,14 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public T findElement(T element)
 	{
+        for(T someData : this)
+        {
+            if(someData.equals(element))
+            {
+                return element;
+            }
+        }
+
 		return null;
 	}
 
@@ -456,7 +474,21 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public Node findNode(T element)
 	{
-		return null;
+        Node current = front;
+
+        //iterate through a non-empty list
+        while(current.next != back)
+        {
+            //advance reference for current
+            current = current.next;
+
+            if(current.data.equals(element))
+            {
+                return current;
+            }
+        }
+
+        return null;
 	}
 
 	/**
@@ -466,7 +498,15 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public ArrayList<T> convert()
 	{
-		return null;
+        //initialize ArrayList
+        ArrayList<T> listToReturn = new ArrayList<T>();
+
+        for(T someData : this)
+        {
+            listToReturn.add(someData);
+        }
+
+        return listToReturn;
 	}
 
 	/**
