@@ -44,7 +44,7 @@ public class LinkedListTestStudent
         //insert another String to the front of the list
         linkedStrings.insertBack("insertThird");
 
-        assertEquals("[insertFirst, insertSecond, insertThird]", linkedStrings.toString());
+        assertEquals("insertFirst->insertSecond->insertThird", linkedStrings.toString());
 
         //get iterator for the list
         Iterator itr = linkedStrings.iterator();
@@ -52,17 +52,17 @@ public class LinkedListTestStudent
         itr.next();
         itr.remove();
 
-        assertEquals("[insertSecond, insertThird]", linkedStrings.toString());
+        assertEquals("insertSecond->insertThird", linkedStrings.toString());
 
         itr.next();
         itr.remove();
 
-        assertEquals("[insertThird]", linkedStrings.toString());
+        assertEquals("insertThird", linkedStrings.toString());
 
         itr.next();
         itr.remove();
 
-        assertEquals("[]", linkedStrings.toString());
+        assertEquals("", linkedStrings.toString());
     }
 
 
@@ -99,7 +99,7 @@ public class LinkedListTestStudent
         //insert another String to the front of the list
         linkedStrings.insertFront("insertThird");
 
-        assertEquals("[insertThird, insertSecond, insertFirst]", linkedStrings.toString());
+        assertEquals("insertThird->insertSecond->insertFirst", linkedStrings.toString());
 
         //test inserting an existing element
         assertEquals(false, linkedStrings.insertFront("insertFirst"));
@@ -120,7 +120,7 @@ public class LinkedListTestStudent
         //insert another String to the front of the list
         linkedStrings.insertBack("insertThird");
 
-        assertEquals("[insertFirst, insertSecond, insertThird]", linkedStrings.toString());
+        assertEquals("insertFirst->insertSecond->insertThird", linkedStrings.toString());
 
         //test inserting an existing element
         assertEquals(false, linkedStrings.insertBack("insertThird"));
@@ -139,17 +139,17 @@ public class LinkedListTestStudent
         //insert another String to the front of the list
         linkedStrings.insertAfter("insertFirst", "bolo");
 
-        assertEquals("[insertFirst, bolo]", linkedStrings.toString());
+        assertEquals("insertFirst->bolo", linkedStrings.toString());
 
         //insert another String to the front of the list
         linkedStrings.insertBack("insertThird");
 
-        assertEquals("[insertFirst, bolo, insertThird]", linkedStrings.toString());
+        assertEquals("insertFirst->bolo->insertThird", linkedStrings.toString());
 
         //insert another String to the front of the list
         linkedStrings.insertAfter("insertFirst", "happy");
 
-        assertEquals("[insertFirst, happy, bolo, insertThird]", linkedStrings.toString());
+        assertEquals("insertFirst->happy->bolo->insertThird", linkedStrings.toString());
 
         //try inserting something thats already in the list
         assertEquals(false, linkedStrings.insertAfter("happy", "bolo"));
@@ -186,12 +186,12 @@ public class LinkedListTestStudent
         //insert another String to the front of the list
         linkedStrings.insertBefore("insertFirst", "happy");
 
-        assertEquals("[happy, insertFirst]", linkedStrings.toString());
+        assertEquals("happy->insertFirst", linkedStrings.toString());
 
         //insert another String to the front of the list
         linkedStrings.insertBefore("happy", "sad");
 
-        assertEquals("[sad, happy, insertFirst]", linkedStrings.toString());
+        assertEquals("sad->happy->insertFirst", linkedStrings.toString());
 
         //try inserting something thats already in the list
         assertEquals(false, linkedStrings.insertBefore("sad", "happy"));
@@ -229,7 +229,7 @@ public class LinkedListTestStudent
 
         assertTrue(removed.equals("insertSecond"));
 
-        assertEquals("[insertFirst, insertThird]", linkedStrings.toString());
+        assertEquals("insertFirst->insertThird", linkedStrings.toString());
     }
 
     @Test
@@ -352,7 +352,7 @@ public class LinkedListTestStudent
         //initialize the list
         LinkedList<String> linkedStrings = new LinkedList<String>();
 
-        assertEquals("[]", linkedStrings.toString());
+        assertEquals("", linkedStrings.toString());
 
         //insert a String to the front of the list
         linkedStrings.insertFront("insertFirst");
@@ -363,6 +363,6 @@ public class LinkedListTestStudent
         //insert another String to the front of the list
         linkedStrings.insertFront("insertThird");
 
-        assertEquals("[insertThird, insertSecond, insertFirst]", linkedStrings.toString());
+        assertEquals("insertThird->insertSecond->insertFirst", linkedStrings.toString());
     }
 }
