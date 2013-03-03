@@ -100,6 +100,8 @@ public class LinkedListTestStudent
 
         assertEquals("[insertThird, insertSecond, insertFirst]", linkedStrings.toString());
 
+        //test inserting an existing element
+        assertEquals(false, linkedStrings.insertFront("insertFirst"));
     }
 
     @Test
@@ -118,6 +120,9 @@ public class LinkedListTestStudent
         linkedStrings.insertBack("insertThird");
 
         assertEquals("[insertFirst, insertSecond, insertThird]", linkedStrings.toString());
+
+        //test inserting an existing element
+        assertEquals(false, linkedStrings.insertBack("insertThird"));
 
     }
 
@@ -144,7 +149,115 @@ public class LinkedListTestStudent
         linkedStrings.insertAfter("insertFirst", "happy");
 
         assertEquals("[insertFirst, happy, bolo, insertThird]", linkedStrings.toString());
+
+        //try inserting something thats already in the list
+        assertEquals(false, linkedStrings.insertAfter("happy", "bolo"));
     }
+
+    @Test (expected = NodeNotFoundException.class)
+    public void testInsertAfterBad() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert a String to the front of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert a String to the front of the list
+        linkedStrings.insertBack("insertThird");
+
+        //insert another String to the front of the list
+        linkedStrings.insertAfter("fail", "bolo");
+    }
+
+    @Test
+    public void testInsertBefore() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the front of the list
+        linkedStrings.insertBefore("insertFirst", "happy");
+
+        assertEquals("[happy, insertFirst]", linkedStrings.toString());
+
+        //insert another String to the front of the list
+        linkedStrings.insertBefore("happy", "sad");
+
+        assertEquals("[sad, happy, insertFirst]", linkedStrings.toString());
+
+        //try inserting something thats already in the list
+        assertEquals(false, linkedStrings.insertBefore("sad", "happy"));
+    }
+
+    @Test (expected = NodeNotFoundException.class)
+    public void testInsertBeforeBad() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the front of the list
+        linkedStrings.insertBefore("fail", "happy");
+    }
+
+    @Test
+    public void testContains() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        assertEquals(false, linkedStrings.contains("poop"));
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        assertEquals(true, linkedStrings.contains("insertFirst"));
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertSecond");
+
+        //insert another String to the back of the list
+        linkedStrings.insertBack("insertThird");
+
+        assertEquals(true, linkedStrings.contains("insertSecond"));
+        assertEquals(true, linkedStrings.contains("insertThird"));
+    }
+
+    /**
+    @Test (expected = NodeNotFoundException.class)
+    public void testInsertAfterBad() throws NodeNotFoundException
+    {
+        //initialize the list
+        LinkedList<String> linkedStrings = new LinkedList<String>();
+
+        //insert a String to the front of the list
+        linkedStrings.insertFront("insertFirst");
+
+        //insert another String to the front of the list
+        linkedStrings.insertAfter("insertFirst", "bolo");
+
+        assertEquals("[insertFirst, bolo]", linkedStrings.toString());
+
+        //insert another String to the front of the list
+        linkedStrings.insertBack("insertThird");
+
+        assertEquals("[insertFirst, bolo, insertThird]", linkedStrings.toString());
+
+        //insert another String to the front of the list
+        linkedStrings.insertAfter("insertFirst", "happy");
+
+        assertEquals("[insertFirst, happy, bolo, insertThird]", linkedStrings.toString());
+    }
+     **/
 
     @Test
     public void testToString() throws NodeNotFoundException

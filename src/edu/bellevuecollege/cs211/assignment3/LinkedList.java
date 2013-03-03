@@ -177,16 +177,14 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * Insert a node at the front of the linked list. The first variable should now point to this node. Wrap it in a
 	 * node and add it to the list. Do not add the Node if it already exists in the list.
 	 * 
-	 * @param node
+	 * @param element
 	 *            The node to be inserted into the linked list.
 	 * @return true if inserted, false if already in list and cannot be inserted.
 	 */
 	public boolean insertFront(T element)
 	{
-        //TODO: define the contains method so I can use as
-        if(false)
+        if(this.contains(element))
         {
-
             return false;
         }
         else
@@ -208,18 +206,15 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * Insert a node at the back of the linked list. Wrap it in a node and add it to the list. Do not add the Node if it
 	 * already exists in the list.
 	 * 
-	 * @param node
+	 * @param element
 	 *            The node to be inserted into the linked list.
 	 * @return true if inserted, false if already in list and cannot be inserted.
 	 */
 
 	public boolean insertBack(T element)
 	{
-        //TODO: define the contains method so I can use as
-        //TODO: make sure I can handle an empty list
-        if(false)
+        if(this.contains(element))
         {
-
             return false;
         }
         else
@@ -264,15 +259,23 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * @return true if inserted, false if already in list and cannot be inserted.
 	 */
 
-    //TODO: find out if he's talking about a node, or element
 	public boolean insertAfter(T currentElement, T element) throws NodeNotFoundException
 	{
+        //check if the element already exists in the list
+        if(this.contains(element))
+        {
+            return false;
+        }
+
 		//hold reference to front
-        Node current = front.next;
+        Node current = front;
 
         //iterate through the list
-        while(current != back)
+        while(current.next != back)
         {
+            //move reference
+            current = current.next;
+
             //check for element value
             if(current.data.equals(currentElement))
             {
@@ -281,17 +284,11 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
                 //increment the size counter with each addition
                 size++;
-            }
-            else
-            {
-                //throw new NodeNotFoundException(currentElement.toString());
-            }
 
-            //move reference
-            current = current.next;
-
+                return true;
+            }
+            else throw new NodeNotFoundException(currentElement.toString());
         }
-
 
         return false;
 	}
@@ -301,9 +298,9 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 * specified by the variable {@code currentNode}. Throws a NodeNotFoundException if it can't found the node given.
 	 * Do not add the Node if it already exists in the list.
 	 * 
-	 * @param currentNode
+	 * @param currentElement
 	 *            The node to look for to add the given node in front of.
-	 * @param node
+	 * @param element
 	 *            The element to be inserted into the linked list.
 	 * 
 	 * @throws NodeNotFoundException
@@ -313,7 +310,41 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 
 	public boolean insertBefore(T currentElement, T element) throws NodeNotFoundException
 	{
-		return false;
+        //check if the element already exists in the list
+        if(this.contains(element))
+        {
+            return false;
+        }
+
+        //create previous reference
+        Node previous = front;
+
+        //hold reference to front
+        Node current = front;
+
+        //iterate through the list
+        while(current.next != back)
+        {
+            //set previous equal to current before advancing
+            previous = current;
+
+            //advance current to next node
+            current = current.next;
+
+            if(current.data.equals(currentElement))
+            {
+                //create new node and point it to the current node then set previous.next to the new node
+                previous.next = new Node(current, element);
+
+                //increment the size counter with each addition
+                size++;
+
+                return true;
+            }
+            else throw new NodeNotFoundException(currentElement.toString());
+        }
+
+        return false;
 	}
 
 	/**
@@ -356,7 +387,21 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	 */
 	public boolean contains(T element)
 	{
-		return false;
+        Node current = front;
+
+        //iterate through a non-empty list
+        while(current.next != back)
+        {
+            //advance reference for current
+            current = current.next;
+
+            if(current.data.equals(element))
+            {
+                return true;
+            }
+        }
+
+        return false;
 	}
 
 	/**
