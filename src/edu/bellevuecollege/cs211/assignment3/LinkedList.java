@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedList<T> implements Iterable<T>, Iterator<T>
+public class LinkedList<T> implements Iterable<T>
 {
 	public class Node
 	{
@@ -536,56 +536,28 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
 	@Override
 	public String toString()
 	{
-
-		if(front.next == back)
-        {
-            return "[]";
-        }
-        else
-        {
-            String result = "[" + front.next.data;
-            Node current = front.next.next;
-
-            while(current != back)
-            {
-                result += ", " + current.data;
-                current = current.next;
-            }
-
-            result += "]";
-
-            return result;
-        }
-
-
-        /**
-        if(this.isEmpty())
+        if(front.next == back)
         {
             return "";
         }
         else
         {
-            String result = "";
+            String result = (String) front.next.data;
+            Node current = front.next.next;
 
-            Node current = front.next;
-
-            while(current.next.next != back )
+            while(current != back)
             {
-                result += current.data + "->";
+                result += "->" + current.data;
                 current = current.next;
             }
 
-            result += current.data;
-
             return result;
-
         }
-        **/
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Iterable#iterator()
 	 */
 	@Override
@@ -594,37 +566,5 @@ public class LinkedList<T> implements Iterable<T>, Iterator<T>
         return new LinkedListIterator<T>();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext()
-	{
-		return iterator().hasNext();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next()
-	{
-		return iterator().next();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Iterator#remove()
-	 */
-	@Override
-	public void remove()
-	{
-        iterator().remove();
-	}
 
 }
