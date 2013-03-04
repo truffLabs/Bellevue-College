@@ -98,8 +98,6 @@ public class LinkedList<T> implements Iterable<T>
                 throw new NoSuchElementException();
             }
 
-            //T result = current.data;
-
             //set previous reference
             previous = current;
 
@@ -453,7 +451,6 @@ public class LinkedList<T> implements Iterable<T>
         }
 
         return false;
-
 	}
 
 	/**
