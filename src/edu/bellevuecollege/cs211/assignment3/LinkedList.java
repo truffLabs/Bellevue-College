@@ -90,7 +90,6 @@ public class LinkedList<T> implements Iterable<T>
         }
 
         @Override
-
         public T next()
         {
             if(!hasNext())
@@ -137,7 +136,6 @@ public class LinkedList<T> implements Iterable<T>
 
     //number of elements in the list
     private int size;
-
 
 	public LinkedList()
 	{
@@ -555,6 +553,4 @@ public class LinkedList<T> implements Iterable<T>
 	{
         return new LinkedListIterator<T>();
 	}
-
-
 }
