@@ -4,8 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Satisfies requirements for Programming Assignment #3 CS211.
+ * @param <T> A generic type defined by calling code.
+ */
 public class LinkedList<T> implements Iterable<T>
 {
+    /**
+     * Class represents a node object with a data field, and pointer to next referenced object.
+     * To be used in outer LinkedList class.
+     */
 	public class Node
 	{
         //data element the node stores
