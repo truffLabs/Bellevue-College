@@ -102,11 +102,11 @@ public class IntTreeTest
         //ref3.printSideways();
 
         //ref3.printSideways();
-        ref3.removeLeaves();
+        ref1.removeLeaves();
 
         //System.out.println("\n\n\n");
 
-        ref3.printSideways();
+        ref1.printSideways();
 
         //System.out.println("\n\n\n");
 

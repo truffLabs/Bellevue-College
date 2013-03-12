@@ -173,31 +173,10 @@ public class IntTree {
 
     private void removeLeaves(IntTreeNode someRoot)
     {
-        /**
-        //TODO: this doesn't work
         //empty list
         if(someRoot == null)
         {
             //do nothing
-        }
-        //leaves
-        else if(someRoot.left == null && someRoot.right == null)
-        {
-            somePrevRoot.left = null;
-            somePrevRoot.right = null;
-        }
-        else
-        {
-            somePrevRoot = someRoot;
-            removeLeaves(somePrevRoot, someRoot.left);
-            removeLeaves(somePrevRoot, someRoot.right);
-        }
-         **/
-
-        //empty list
-        if(someRoot == null)
-        {
-            return;
         }
 
         if (someRoot.left != null && someRoot.left.left == null && someRoot.left.right == null)
@@ -217,7 +196,6 @@ public class IntTree {
         {
             removeLeaves(someRoot.right);
         }
-
     }
 
     // post: prints the tree contents using a preorder traversal
