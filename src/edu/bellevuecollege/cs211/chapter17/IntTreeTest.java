@@ -99,14 +99,16 @@ public class IntTreeTest
     @Test
     public void testRemoveLeaves() throws Exception
     {
-        ref3.printSideways();
+        //ref3.printSideways();
+
+        //ref3.printSideways();
         ref3.removeLeaves();
 
-        System.out.println("\n\n\n");
+        //System.out.println("\n\n\n");
 
         ref3.printSideways();
 
-        System.out.println("\n\n\n");
+        //System.out.println("\n\n\n");
 
     }
 

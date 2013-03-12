@@ -167,12 +167,13 @@ public class IntTree {
 
     public void removeLeaves()
     {
-        IntTreeNode prevRoot = overallRoot;
-        removeLeaves(prevRoot, overallRoot);
+        //IntTreeNode prevRoot = overallRoot;
+        removeLeaves(overallRoot);
     }
 
-    private void removeLeaves(IntTreeNode somePrevRoot, IntTreeNode someRoot)
+    private void removeLeaves(IntTreeNode someRoot)
     {
+        /**
         //TODO: this doesn't work
         //empty list
         if(someRoot == null)
@@ -191,26 +192,32 @@ public class IntTree {
             removeLeaves(somePrevRoot, someRoot.left);
             removeLeaves(somePrevRoot, someRoot.right);
         }
+         **/
 
-        /**
         //empty list
         if(someRoot == null)
         {
-            //do nothing
+            return;
         }
-        //leaves
-        //TODO: Why does this generate a nullPointerException?
-        else if(someRoot.left.left == null && someRoot.right.right == null)
+
+        if (someRoot.left != null && someRoot.left.left == null && someRoot.left.right == null)
         {
             someRoot.left = null;
-            someRoot.right = null;
         }
         else
         {
             removeLeaves(someRoot.left);
+        }
+
+        if (someRoot.right != null && someRoot.right.left == null && someRoot.right.right == null)
+        {
+            someRoot.right = null;
+        }
+        else
+        {
             removeLeaves(someRoot.right);
         }
-        **/
+
     }
 
     // post: prints the tree contents using a preorder traversal
