@@ -1,18 +1,11 @@
 package edu.bellevuecollege.cs211.chapter17;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import com.sun.source.tree.BinaryTree;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created with IntelliJ IDEA. User: pakaehua Date: 3/9/13 Time: 9:39 PM To change this template use File | Settings |
- * File Templates.
+ * Not exhaustive at all, but sets up each of the reference trees and tests basic functionality.
  */
 public class IntTreeTest
 {
@@ -99,18 +92,21 @@ public class IntTreeTest
     @Test
     public void testRemoveLeaves() throws Exception
     {
-        //ref3.printSideways();
-
-        //ref3.printSideways();
         ref1.removeLeaves();
+        ref2.removeLeaves();
+        ref3.removeLeaves();
+        //shouldn't throw an exception
+        refNull.removeLeaves();
 
-        //System.out.println("\n\n\n");
-
+        System.out.println("R1: \n");
         ref1.printSideways();
-
-        //System.out.println("\n\n\n");
-
+        System.out.println("\n");
+        System.out.println("R2: ");
+        System.out.println("\n");
+        ref2.printSideways();
+        System.out.println("\n");
+        System.out.println("R3: ");
+        System.out.println("\n");
+        ref3.printSideways();
     }
-
-
 }
