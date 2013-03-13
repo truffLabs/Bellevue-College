@@ -176,7 +176,7 @@ public class IntTree {
         //empty list
         if(someRoot == null)
         {
-            //do nothing
+            return;
         }
 
         if (someRoot.left != null && someRoot.left.left == null && someRoot.left.right == null)
