@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.assignment4.model;
+package edu.bellevuecollege.cs211.assignment4.model.dice;
 
 import edu.bellevuecollege.cs211.assignment2.exceptions.MaxDiceException;
 

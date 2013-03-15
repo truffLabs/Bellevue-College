@@ -1,4 +1,4 @@
-package edu.bellevuecollege.cs211.assignment4.model;
+package edu.bellevuecollege.cs211.assignment4.model.score;
 
 /**
  * Used by Room objects and controller to orient "things" on the "game map".

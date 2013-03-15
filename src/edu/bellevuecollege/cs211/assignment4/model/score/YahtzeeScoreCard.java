@@ -1,5 +1,5 @@
-package edu.bellevuecollege.cs211.assignment4.model;
-import edu.bellevuecollege.cs211.assignment2.dice.DiceCollection;
+package edu.bellevuecollege.cs211.assignment4.model.score;
+import edu.bellevuecollege.cs211.assignment4.model.dice.DiceCollection;
 
 import java.util.*;
 

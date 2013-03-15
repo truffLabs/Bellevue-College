@@ -1,8 +1,9 @@
-package edu.bellevuecollege.cs211.assignment4.model;
+package edu.bellevuecollege.cs211.assignment4.model.score;
 
-import edu.bellevuecollege.cs211.assignment2.yahtzee.Yahtzee;
+import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
+import edu.bellevuecollege.cs211.assignment4.model.score.YahtzeeScoreCard;
+import edu.bellevuecollege.cs211.assignment4.model.score.YahtzeeScoreTypes;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /**
@@ -15,7 +16,7 @@ public class YahtzeeScoreCardTest
     public void testRunScoringScenario() throws Exception
     {
         //*** Game 1: 0 Bonus, 1 Yahtzee ***
-        Yahtzee y1 = new Yahtzee();
+        YahtzeeModel y1 = new YahtzeeModel();
 
         //Turn 1
         y1.getDiceCollection().setValues(1, 1, 3, 3, 3);
@@ -69,7 +70,7 @@ public class YahtzeeScoreCardTest
 
 
         //*** Game 2: 0 Bonus, 2 Yahtzee ***
-        Yahtzee y2 = new Yahtzee();
+        YahtzeeModel y2 = new YahtzeeModel();
 
         //Turn 1
         y2.getDiceCollection().setValues(1, 1, 1, 1, 1);
@@ -124,7 +125,7 @@ public class YahtzeeScoreCardTest
         assertEquals(249, y2.getScoreCard().getScore());
 
         //*** Game 3: 1 Bonus, 0 Yahtzee ***
-        Yahtzee y3 = new Yahtzee();
+        YahtzeeModel y3 = new YahtzeeModel();
 
         //Turn 1
         y3.getDiceCollection().setValues(1, 1, 1, 1, 1);
@@ -180,7 +181,7 @@ public class YahtzeeScoreCardTest
     public void testAddToUpperScore() throws Exception
     {
         //ONES
-        Yahtzee y1 = new Yahtzee();
+        YahtzeeModel y1 = new YahtzeeModel();
         y1.getDiceCollection().setValues(1, 2, 3, 3, 3);
 
         //score the set using ONES
@@ -196,7 +197,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.ONES));
 
         //TWOS
-        Yahtzee y2 = new Yahtzee();
+        YahtzeeModel y2 = new YahtzeeModel();
         y2.getDiceCollection().setValues(1, 2, 3, 3, 2);
 
         //score the set using TWOS
@@ -212,7 +213,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.TWOS));
 
         //THREES
-        Yahtzee y3 = new Yahtzee();
+        YahtzeeModel y3 = new YahtzeeModel();
         y3.getDiceCollection().setValues(1, 2, 3, 3, 2);
 
         //score the set using THREES
@@ -228,7 +229,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y3.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREES));
 
         //FOURS
-        Yahtzee y4 = new Yahtzee();
+        YahtzeeModel y4 = new YahtzeeModel();
         y4.getDiceCollection().setValues(1, 2, 4, 3, 2);
 
         //score the set using FOURS
@@ -244,7 +245,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y4.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOURS));
 
         //FIVES
-        Yahtzee y5 = new Yahtzee();
+        YahtzeeModel y5 = new YahtzeeModel();
         y5.getDiceCollection().setValues(1, 2, 5, 3, 2);
 
         //score the set using FIVES
@@ -260,7 +261,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y5.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FIVES));
 
         //SIXES
-        Yahtzee y6 = new Yahtzee();
+        YahtzeeModel y6 = new YahtzeeModel();
         y6.getDiceCollection().setValues(6, 6, 6, 6, 6);
 
         //score the set using SIXES
@@ -276,7 +277,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y6.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SIXES));
 
         //BONUS
-        Yahtzee y7 = new Yahtzee();
+        YahtzeeModel y7 = new YahtzeeModel();
 
         //set the upperScore to 65
         y7.getScoreCard().setUpperScore(65);
@@ -294,7 +295,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y7.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.BONUS));
 
         //BONUS EXPECT 0
-        Yahtzee y8 = new Yahtzee();
+        YahtzeeModel y8 = new YahtzeeModel();
 
         //set the upperScore to 65
         y8.getScoreCard().setUpperScore(5);
@@ -318,7 +319,7 @@ public class YahtzeeScoreCardTest
     {
 
         //THREEOFAKIND
-        Yahtzee y1 = new Yahtzee();
+        YahtzeeModel y1 = new YahtzeeModel();
         y1.getDiceCollection().setValues(1, 2, 3, 3, 3);
 
         //score the set using THREEOFAKIND
@@ -334,7 +335,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y1.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.THREEOFAKIND));
 
         //FOUROFAKIND
-        Yahtzee y2 = new Yahtzee();
+        YahtzeeModel y2 = new YahtzeeModel();
         y2.getDiceCollection().setValues(1, 3, 3, 3, 3);
 
         //score the set using FOUROFAKIND
@@ -350,7 +351,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y2.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FOUROFAKIND));
 
         //FULLHOUSE
-        Yahtzee y3 = new Yahtzee();
+        YahtzeeModel y3 = new YahtzeeModel();
         y3.getDiceCollection().setValues(2, 2, 3, 3, 3);
 
         //score the set using FULLHOUSE
@@ -366,7 +367,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y3.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.FULLHOUSE));
 
         //SMALL STRAIGHT
-        Yahtzee y4 = new Yahtzee();
+        YahtzeeModel y4 = new YahtzeeModel();
         y4.getDiceCollection().setValues(2, 3, 4, 4, 5);
 
         assertEquals(30, y4.getScoreCard().addToLowerScore(YahtzeeScoreTypes.SMALLSTRAIGHT, y4.getDiceCollection()));
@@ -381,7 +382,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y4.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.SMALLSTRAIGHT));
 
         //LARGE STRAIGHT
-        Yahtzee y5 = new Yahtzee();
+        YahtzeeModel y5 = new YahtzeeModel();
         y5.getDiceCollection().setValues(2, 3, 5, 4, 6);
 
         assertEquals(40, y5.getScoreCard().addToLowerScore(YahtzeeScoreTypes.LARGESTRAIGHT, y5.getDiceCollection()));
@@ -396,7 +397,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y5.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.LARGESTRAIGHT));
 
         //YAHTZEE
-        Yahtzee y6 = new Yahtzee();
+        YahtzeeModel y6 = new YahtzeeModel();
         y6.getDiceCollection().setValues(5, 5, 5, 5, 5);
 
         y6.getScoreCard().addToLowerScore(YahtzeeScoreTypes.YAHTZEE, y6.getDiceCollection());
@@ -426,7 +427,7 @@ public class YahtzeeScoreCardTest
         assertFalse(y6.getScoreCard().getAvailableScoreTypes().contains(YahtzeeScoreTypes.YAHTZEE));
 
         //CHANCE
-        Yahtzee y7 = new Yahtzee();
+        YahtzeeModel y7 = new YahtzeeModel();
         y7.getDiceCollection().setValues(2, 3, 5, 4, 6);
 
         assertEquals(20, y7.getScoreCard().addToLowerScore(YahtzeeScoreTypes.CHANCE, y7.getDiceCollection()));
@@ -446,7 +447,7 @@ public class YahtzeeScoreCardTest
     public void testCalcScore() throws Exception
     {
 
-        Yahtzee y1 = new Yahtzee();
+        YahtzeeModel y1 = new YahtzeeModel();
         y1.getScoreCard().setUpperScore(99);
         y1.getScoreCard().setLowerScore(33);
 
@@ -468,7 +469,7 @@ public class YahtzeeScoreCardTest
         assertEquals(122, y1.getScoreCard().getScore());
         
         //EXPECT 0 for BONUS
-        Yahtzee y2 = new Yahtzee();
+        YahtzeeModel y2 = new YahtzeeModel();
         y2.getScoreCard().setUpperScore(11);
         y2.getScoreCard().setLowerScore(33);
 
