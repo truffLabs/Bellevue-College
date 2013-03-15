@@ -29,10 +29,10 @@ public class YahtzeeView
     //...fields for data
 
     //west panel
-    private JTextField playerText;
-    private JTextField turnText;
-    private JTextField rollText;
-    private JTextField scoreText;
+    private JLabel playerText;
+    private JLabel turnText;
+    private JLabel rollText;
+    private JLabel scoreText;
 
     //center panel
     private JCheckBox checkDieOne;
@@ -65,21 +65,21 @@ public class YahtzeeView
     private JRadioButton selectYahtzee;
     private JRadioButton selectChance;
     private ButtonGroup selectRadialButtonGroup;
-    
+
     //text fields
-    private JTextField textOnes;
-    private JTextField textTwos;
-    private JTextField textThrees;
-    private JTextField textFours;
-    private JTextField textFives;
-    private JTextField textSixes;
-    private JTextField textThreeOfAKind;
-    private JTextField textFourOfAKind;
-    private JTextField textFullHouse;
-    private JTextField textSmallStraight;
-    private JTextField textLargeStraight;
-    private JTextField textYahtzee;
-    private JTextField textChance;
+    private JLabel textOnes;
+    private JLabel textTwos;
+    private JLabel textThrees;
+    private JLabel textFours;
+    private JLabel textFives;
+    private JLabel textSixes;
+    private JLabel textThreeOfAKind;
+    private JLabel textFourOfAKind;
+    private JLabel textFullHouse;
+    private JLabel textSmallStraight;
+    private JLabel textLargeStraight;
+    private JLabel textYahtzee;
+    private JLabel textChance;
 
     //button
     private JButton scoreDice;
@@ -102,10 +102,11 @@ public class YahtzeeView
         //...initialize fields for data
 
         //mainWest
-        playerText = new JTextField(5);
-        turnText = new JTextField(5);
-        rollText = new JTextField(5);
-        scoreText = new JTextField(5);
+        playerText = new JLabel("1");
+        turnText = new JLabel("1");
+        rollText = new JLabel("1");
+        //TODO: set to getScore from YahtzeeModel
+        scoreText = new JLabel("0");
 
         //mainCenter
         checkDieOne = new JCheckBox();
@@ -138,19 +139,19 @@ public class YahtzeeView
 
         selectRadialButtonGroup = new ButtonGroup();
 
-        textOnes = new JTextField(5);
-        textTwos = new JTextField(5);
-        textThrees = new JTextField(5);
-        textFours = new JTextField(5);
-        textFives = new JTextField(5);
-        textSixes = new JTextField(5);
-        textThreeOfAKind = new JTextField(5);
-        textFourOfAKind = new JTextField(5);
-        textFullHouse = new JTextField(5);
-        textSmallStraight = new JTextField(5);
-        textLargeStraight = new JTextField(5);
-        textYahtzee = new JTextField(5);
-        textChance = new JTextField(5);
+        textOnes = new JLabel("0");
+        textTwos = new JLabel("0");
+        textThrees = new JLabel("0");
+        textFours = new JLabel("0");
+        textFives = new JLabel("0");
+        textSixes = new JLabel("0");
+        textThreeOfAKind = new JLabel("0");
+        textFourOfAKind = new JLabel("0");
+        textFullHouse = new JLabel("0");
+        textSmallStraight = new JLabel("0");
+        textLargeStraight = new JLabel("0");
+        textYahtzee = new JLabel("0");
+        textChance = new JLabel("0");
 
         scoreDice = new JButton("Score");
 
@@ -168,7 +169,7 @@ public class YahtzeeView
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //set the size of the frame
-        frame.setSize(new Dimension(500, 200));
+        frame.setSize(new Dimension(800, 400));
 
         //set layout
         frame.setLayout(new BorderLayout());
@@ -207,12 +208,6 @@ public class YahtzeeView
         labelWest.add(new JLabel("Turn #: "));
         labelWest.add(new JLabel("Roll #: "));
         labelWest.add(new JLabel("Score: "));
-
-        //make sure the text fields aren't editable
-        playerText.setEditable(false);
-        turnText.setEditable(false);
-        rollText.setEditable(false);
-        scoreText.setEditable(false);
 
         //add them to the panel
         textEast.add(playerText);
@@ -287,8 +282,8 @@ public class YahtzeeView
         JPanel radialWest = new JPanel();
         radialWest.setLayout(new GridLayout(13, 1));
         
-        JPanel textEast = new JPanel();
-        textEast.setLayout(new GridLayout(13, 1));
+        JPanel labelEast = new JPanel();
+        labelEast.setLayout(new GridLayout(13, 1));
 
         //add radial buttons to group
         selectRadialButtonGroup.add(selectOnes);
@@ -319,40 +314,25 @@ public class YahtzeeView
         radialWest.add(selectLargeStraight);
         radialWest.add(selectYahtzee);
         radialWest.add(selectChance);
-        
-        //set text field to not editable
-        textOnes.setEditable(false);
-        textTwos.setEditable(false);
-        textThrees.setEditable(false);
-        textFours.setEditable(false);
-        textFives.setEditable(false);
-        textSixes.setEditable(false);
-        textThreeOfAKind.setEditable(false);
-        textFourOfAKind.setEditable(false);
-        textFullHouse.setEditable(false);
-        textSmallStraight.setEditable(false);
-        textLargeStraight.setEditable(false);
-        textYahtzee.setEditable(false);
-        textChance.setEditable(false);
-        
+
         //add the text fields to the panel
-        textEast.add(textOnes);
-        textEast.add(textTwos);
-        textEast.add(textThrees);
-        textEast.add(textFours);
-        textEast.add(textFives);
-        textEast.add(textSixes);
-        textEast.add(textThreeOfAKind);
-        textEast.add(textFourOfAKind);
-        textEast.add(textFullHouse);
-        textEast.add(textSmallStraight);
-        textEast.add(textLargeStraight);
-        textEast.add(textYahtzee);
-        textEast.add(textChance);
+        labelEast.add(textOnes);
+        labelEast.add(textTwos);
+        labelEast.add(textThrees);
+        labelEast.add(textFours);
+        labelEast.add(textFives);
+        labelEast.add(textSixes);
+        labelEast.add(textThreeOfAKind);
+        labelEast.add(textFourOfAKind);
+        labelEast.add(textFullHouse);
+        labelEast.add(textSmallStraight);
+        labelEast.add(textLargeStraight);
+        labelEast.add(textYahtzee);
+        labelEast.add(textChance);
 
         //add to main panel
         mainEast.add(radialWest, BorderLayout.WEST);
-        mainEast.add(textEast, BorderLayout.EAST);
+        mainEast.add(labelEast, BorderLayout.EAST);
         mainEast.add(scoreDice, BorderLayout.SOUTH);
 
         return mainEast;
@@ -377,6 +357,71 @@ public class YahtzeeView
     public void setScoreText(int someScore)
     {
         scoreText.setText(Integer.toString(someScore));
+    }
+
+    public void setTextOnes(JLabel textOnes)
+    {
+        this.textOnes = textOnes;
+    }
+
+    public void setTextTwos(JLabel textTwos)
+    {
+        this.textTwos = textTwos;
+    }
+
+    public void setTextThrees(JLabel textThrees)
+    {
+        this.textThrees = textThrees;
+    }
+
+    public void setTextFours(JLabel textFours)
+    {
+        this.textFours = textFours;
+    }
+
+    public void setTextFives(JLabel textFives)
+    {
+        this.textFives = textFives;
+    }
+
+    public void setTextSixes(JLabel textSixes)
+    {
+        this.textSixes = textSixes;
+    }
+
+    public void setTextThreeOfAKind(JLabel textThreeOfAKind)
+    {
+        this.textThreeOfAKind = textThreeOfAKind;
+    }
+
+    public void setTextFourOfAKind(JLabel textFourOfAKind)
+    {
+        this.textFourOfAKind = textFourOfAKind;
+    }
+
+    public void setTextFullHouse(JLabel textFullHouse)
+    {
+        this.textFullHouse = textFullHouse;
+    }
+
+    public void setTextSmallStraight(JLabel textSmallStraight)
+    {
+        this.textSmallStraight = textSmallStraight;
+    }
+
+    public void setTextLargeStraight(JLabel textLargeStraight)
+    {
+        this.textLargeStraight = textLargeStraight;
+    }
+
+    public void setTextYahtzee(JLabel textYahtzee)
+    {
+        this.textYahtzee = textYahtzee;
+    }
+
+    public void setTextChance(JLabel textChance)
+    {
+        this.textChance = textChance;
     }
 
 }
