@@ -167,9 +167,6 @@ public class YahtzeeView
 
         //build the main frame with all panels
         buildFrame();
-
-        //make frame visible
-        frame.setVisible(true);
     }
 
     private void buildFrame()
@@ -353,6 +350,11 @@ public class YahtzeeView
     //score button
     public void addScoreDiceListener(ActionListener someListener) {
         scoreDice.addActionListener(someListener);
+    }
+
+    public JFrame getFrame()
+    {
+        return frame;
     }
 
     public JCheckBox getCheckDieOne()
