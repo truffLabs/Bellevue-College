@@ -1,4 +1,5 @@
 package edu.bellevuecollege.cs211.assignment4.model.score;
+import edu.bellevuecollege.cs211.assignment4.exceptions.IllegalScoringException;
 import edu.bellevuecollege.cs211.assignment4.model.dice.DiceCollection;
 
 import java.util.*;
@@ -64,12 +65,7 @@ public class YahtzeeScoreCard
     {
         if(!availableYahtzeeScoreTypes.contains(someType))
         {
-            //TODO: Clean this up and use an exception to pass to calling code.
-            System.out.println();
-            System.out.println("Scoring method " + someType + " has already been used.");
-            System.out.println();
-
-            return 0;
+            throw new IllegalScoringException();
         }
         else
         {
