@@ -1,4 +1,6 @@
 package edu.bellevuecollege.cs211.assignment4;
+import edu.bellevuecollege.cs211.assignment4.controller.YahtzeeController;
+import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
 import edu.bellevuecollege.cs211.assignment4.view.YahtzeeView;
 
 import javax.swing.*;
@@ -13,12 +15,12 @@ public class YahtzeeClient
 {
     public static void main(String[] args)
     {
-        //YahtzeeModel model = new YahtzeeModel();
-        YahtzeeView view = new YahtzeeView();
-        //YahtzeeView view = new YahtzeeView(model);
-        //YahtzeeController controller = new YahtzeeController(model, view);
+        YahtzeeModel model = new YahtzeeModel();
+        YahtzeeView view = new YahtzeeView(model);
+        YahtzeeController controller = new YahtzeeController(model, view);
 
-        //view.setVisible(true);
+        //make frame visible
+        view.getFrame().setVisible(true);
     }
 
 
