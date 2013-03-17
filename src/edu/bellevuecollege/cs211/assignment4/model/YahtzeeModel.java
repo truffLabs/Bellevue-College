@@ -118,7 +118,8 @@ public class YahtzeeModel
     }
 
     /**
-     * Scores the bonus for all the single rolls
+     * Scores the bonus for all the single rolls. This class assumes client code
+     * will call this method at the conclusion of any Yahtzee game.
      *
      * @return 35 if scores of 1's-6's is greater than or equal to 63, 0 otherwise
      */
