@@ -92,7 +92,8 @@ public class YahtzeeController
     {
         public void actionPerformed(ActionEvent event)
         {
-            if(true)
+            //TODO: do something if not scoring method is selected
+            if(false)
             {
 
             }
@@ -102,66 +103,79 @@ public class YahtzeeController
 
                 if(c_view.getSelectOnes().isSelected())
                 {
+                   c_view.getSelectOnes().setEnabled(false);
                    c_view.setTextOnes(c_model.scoreOnes());
                 }
 
                 else if(c_view.getSelectTwos().isSelected())
                 {
+                    c_view.getSelectTwos().setEnabled(false);
                     c_view.setTextTwos(c_model.scoreTwos());
                 }
 
                 else if(c_view.getSelectThrees().isSelected())
                 {
+                    c_view.getSelectThrees().setEnabled(false);
                     c_view.setTextThrees(c_model.scoreThrees());
                 }
 
                 else if(c_view.getSelectFours().isSelected())
                 {
+                    c_view.getSelectFours().setEnabled(false);
                     c_view.setTextFours(c_model.scoreFours());
                 }
 
                 else if(c_view.getSelectFives().isSelected())
                 {
+                    c_view.getSelectFives().setEnabled(false);
                     c_view.setTextFives(c_model.scoreFives());
                 }
 
                 else if(c_view.getSelectSixes().isSelected())
                 {
+                    c_view.getSelectSixes().setEnabled(false);
                     c_view.setTextSixes(c_model.scoreSixes());
                 }
 
                 else if(c_view.getSelectThreeOfAKind().isSelected())
                 {
+                    c_view.getSelectThreeOfAKind().setEnabled(false);
                     c_view.setTextThreeOfAKind(c_model.scoreThreeOfAKind());
                 }
 
                 else if(c_view.getSelectFourOfAKind().isSelected())
                 {
+                    c_view.getSelectFourOfAKind().setEnabled(false);
                     c_view.setTextFourOfAKind(c_model.scoreFourOfAKind());
                 }
 
                 else if(c_view.getSelectFullHouse().isSelected())
                 {
+                    c_view.getSelectFullHouse().setEnabled(false);
                     c_view.setTextFullHouse(c_model.scoreFullHouse());
                 }
 
                 else if(c_view.getSelectSmallStraight().isSelected())
                 {
+                    c_view.getSelectSmallStraight().setEnabled(false);
                     c_view.setTextSmallStraight(c_model.scoreSmallStraight());
                 }
 
                 else if(c_view.getSelectLargeStraight().isSelected())
                 {
+                    c_view.getSelectLargeStraight().setEnabled(false);
                     c_view.setTextLargeStraight(c_model.scoreLargeStraight());
                 }
 
                 else if(c_view.getSelectYahtzee().isSelected())
                 {
+                    c_view.getSelectYahtzee().setEnabled(false);
                     c_view.setTextYahtzee(c_model.scoreYahtzee());
                 }
 
                 else if(c_view.getSelectChance().isSelected())
                 {
+                    c_view.getSelectChance().setEnabled(false);
                     c_view.setTextChance(c_model.scoreChance());
                 }
                 else
@@ -190,20 +204,32 @@ public class YahtzeeController
                 //increment turnNumber
                 turnNumber++;
 
-                //set Turn field in view
-                c_view.setTurnText(turnNumber);
+                //TODO: check for and handle game over condition where turnNumber > 13
+                if(turnNumber <= 13)
+                {
+                    //...keep going
 
-                //execute next roll for player
-                c_model.getDiceCollection().rollDice(true,true,true,true,true);
+                    //set Turn field in view
+                    c_view.setTurnText(turnNumber);
 
-                //set die value fields
-                c_view.setDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
-                c_view.setDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
-                c_view.setDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
-                c_view.setDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
-                c_view.setDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
+                    //execute next roll for player
+                    c_model.getDiceCollection().rollDice(true,true,true,true,true);
 
-                //JOptionPane.showMessageDialog(null, c_model.scoreOnes());
+                    //set die value fields
+                    c_view.setDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
+                    c_view.setDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
+                    c_view.setDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
+                    c_view.setDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
+                    c_view.setDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
+                }
+                else
+                {
+                    //...stop the game
+                    System.out.println("Game over.");
+                }
+
+
+
             }
         }
 
