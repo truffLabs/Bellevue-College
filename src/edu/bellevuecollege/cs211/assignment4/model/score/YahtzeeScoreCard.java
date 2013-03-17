@@ -441,9 +441,11 @@ public class YahtzeeScoreCard
 
                         return 100;
                     }
-
-                    //remove from list of available types
-                    availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.YAHTZEE);
+                    else
+                    {
+                        //remove from list of available types
+                        availableYahtzeeScoreTypes.remove(YahtzeeScoreTypes.YAHTZEE);
+                    }
 
                     return 0;
 
