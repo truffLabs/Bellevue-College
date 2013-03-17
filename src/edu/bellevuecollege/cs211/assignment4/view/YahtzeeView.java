@@ -392,9 +392,19 @@ public class YahtzeeView
         turnText.setText(Integer.toString(someTurnNumber));
     }
 
+    public void setTurnText(String someText)
+    {
+        turnText.setText(someText);
+    }
+
     public void setRollText(int someRollNumber)
     {
         rollText.setText(Integer.toString(someRollNumber));
+    }
+
+    public void setRollText(String someText)
+    {
+        rollText.setText(someText);
     }
 
     public void setScoreText(int someScore)
@@ -425,6 +435,11 @@ public class YahtzeeView
     public void setDieFive(int someInt)
     {
         dieFive.setText(Integer.toString(someInt));
+    }
+
+    public JButton getRollDice()
+    {
+        return rollDice;
     }
 
     public JRadioButton getSelectOnes()
@@ -495,6 +510,11 @@ public class YahtzeeView
     public ButtonGroup getSelectRadialButtonGroup()
     {
         return selectRadialButtonGroup;
+    }
+
+    public JButton getScoreDice()
+    {
+        return scoreDice;
     }
 
     public void setTextOnes(int someInt)

@@ -2,11 +2,10 @@ package edu.bellevuecollege.cs211.assignment4.controller;
 
 import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
 import edu.bellevuecollege.cs211.assignment4.view.YahtzeeView;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+
 
 /**
  * Satisfies the requirements for Exercise #X, page XX of "Building Java Programs" second edition.
@@ -93,9 +92,9 @@ public class YahtzeeController
         public void actionPerformed(ActionEvent event)
         {
             //TODO: do something if not scoring method is selected
-            if(false)
+            if(c_view.getSelectRadialButtonGroup().getSelection() == null)
             {
-
+                JOptionPane.showMessageDialog(null, "Please select a scoring method.");
             }
             else
             {
@@ -169,6 +168,7 @@ public class YahtzeeController
 
                 else if(c_view.getSelectYahtzee().isSelected())
                 {
+                    //TODO: figure out how to deal with multiple yahtzees
                     c_view.getSelectYahtzee().setEnabled(false);
                     c_view.setTextYahtzee(c_model.scoreYahtzee());
                 }
@@ -204,6 +204,9 @@ public class YahtzeeController
                 //increment turnNumber
                 turnNumber++;
 
+                //set overall score
+                c_view.setScoreText(c_model.getCurrentScore());
+
                 //TODO: check for and handle game over condition where turnNumber > 13
                 if(turnNumber <= 13)
                 {
@@ -225,7 +228,27 @@ public class YahtzeeController
                 else
                 {
                     //...stop the game
-                    System.out.println("Game over.");
+
+                    //score the bonus
+                    c_model.scoreBonus();
+
+                    //set overall score
+                    c_view.setScoreText(c_model.getCurrentScore());
+
+                    //disable the roll and score buttons
+                    c_view.getRollDice().setEnabled(false);
+                    c_view.getScoreDice().setEnabled(false);
+
+                    //disable the check boxes
+                    c_view.getCheckDieOne().setEnabled(false);
+                    c_view.getCheckDieTwo().setEnabled(false);
+                    c_view.getCheckDieThree().setEnabled(false);
+                    c_view.getCheckDieFour().setEnabled(false);
+                    c_view.getCheckDieFive().setEnabled(false);
+
+                    //set Turn and roll text
+                    c_view.setTurnText("Game over");
+                    c_view.setRollText("Game over");
                 }
 
 
