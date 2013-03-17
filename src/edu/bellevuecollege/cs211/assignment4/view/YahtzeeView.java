@@ -34,26 +34,20 @@ public class YahtzeeView
 
     //...fields for data
 
-    //west panel
+    //...west panel
+
     private JLabel playerText;
     private JLabel turnText;
     private JLabel rollText;
     private JLabel scoreText;
 
-    //center panel
-    private JCheckBox checkDieOne;
+    //...center panel
 
-    private JCheckBox checkDieTwo;
-    private JCheckBox checkDieThree;
-    private JCheckBox checkDieFour;
-    private JCheckBox checkDieFive;
-
-    private JLabel dieOne;
-    private JLabel dieTwo;
-
-    private JLabel dieThree;
-    private JLabel dieFour;
-    private JLabel dieFive;
+    private JToggleButton tDieOne;
+    private JToggleButton tDieTwo;
+    private JToggleButton tDieThree;
+    private JToggleButton tDieFour;
+    private JToggleButton tDieFive;
     
     //...east panel
     
@@ -119,18 +113,11 @@ public class YahtzeeView
         scoreText = new JLabel(Integer.toString(v_model.getCurrentScore()));
 
         //mainCenter
-        checkDieOne = new JCheckBox();
-        checkDieTwo = new JCheckBox();
-        checkDieThree = new JCheckBox();
-        checkDieFour = new JCheckBox();
-        checkDieFive = new JCheckBox();
-        //checkDieAll = new JCheckBox();
-
-        dieOne = new JLabel("0");
-        dieTwo = new JLabel("0");
-        dieThree = new JLabel("0");
-        dieFour = new JLabel("0");
-        dieFive = new JLabel("0");
+        tDieOne = new JToggleButton("0");
+        tDieTwo = new JToggleButton("0");
+        tDieThree = new JToggleButton("0");
+        tDieFour = new JToggleButton("0");
+        tDieFive = new JToggleButton("0");
         
         //mainEast
         selectOnes = new JRadioButton("Ones");
@@ -238,37 +225,23 @@ public class YahtzeeView
         //set padding (top, left, bottom, right)
         mainCenter.setBorder(new EmptyBorder(10,10,10,10));
 
-        //create west sub panel as grid of six check boxes
-        JPanel checkWest = new JPanel();
-        checkWest.setLayout(new GridLayout(5,1));
+        //create east sub panel
+        JPanel toggleEast = new JPanel();
+        toggleEast.setLayout(new GridLayout(5,1));
 
-        checkWest.add(checkDieOne);
-        checkWest.add(checkDieTwo);
-        checkWest.add(checkDieThree);
-        checkWest.add(checkDieFour);
-        checkWest.add(checkDieFive);
-        //TODO: Make a check in this box check all of the others
-        //checkWest.add(checkDieAll);
+        toggleEast.add(tDieOne);
+        toggleEast.add(tDieTwo);
+        toggleEast.add(tDieThree);
+        toggleEast.add(tDieFour);
+        toggleEast.add(tDieFive);
 
-        //create east sub panel as grid of five text fields
-        JPanel gridCenter = new JPanel();
-        gridCenter.setLayout(new GridLayout(5,1));
-
-        gridCenter.add(dieOne);
-        gridCenter.add(dieTwo);
-        gridCenter.add(dieThree);
-        gridCenter.add(dieFour);
-        gridCenter.add(dieFive);
-
-        //add to panel
-        mainCenter.add(checkWest, BorderLayout.WEST);
-        mainCenter.add(gridCenter, BorderLayout.CENTER);
+        mainCenter.add(toggleEast, BorderLayout.CENTER);
         mainCenter.add(rollDice, BorderLayout.SOUTH);
 
+        //...make east panel for testing JToggle
 
 
         return mainCenter;
-
     }
 
     private JPanel buildEastPanel()
@@ -357,31 +330,6 @@ public class YahtzeeView
         return frame;
     }
 
-    public JCheckBox getCheckDieOne()
-    {
-        return checkDieOne;
-    }
-
-    public JCheckBox getCheckDieTwo()
-    {
-        return checkDieTwo;
-    }
-
-    public JCheckBox getCheckDieThree()
-    {
-        return checkDieThree;
-    }
-
-    public JCheckBox getCheckDieFour()
-    {
-        return checkDieFour;
-    }
-
-    public JCheckBox getCheckDieFive()
-    {
-        return checkDieFive;
-    }
-
     public void setPlayerText(int somePlayerNumber)
     {
         playerText.setText(Integer.toString(somePlayerNumber));
@@ -412,29 +360,54 @@ public class YahtzeeView
         scoreText.setText(Integer.toString(someScore));
     }
 
-    public void setDieOne(int someInt)
+    public void setTDieOne(int someInt)
     {
-        dieOne.setText(Integer.toString(someInt));
+        tDieOne.setText(Integer.toString(someInt));
     }
 
-    public void setDieTwo(int someInt)
+    public void setTDieTwo(int someInt)
     {
-        dieTwo.setText(Integer.toString(someInt));
+        tDieTwo.setText(Integer.toString(someInt));
     }
 
-    public void setDieThree(int someInt)
+    public void setTDieThree(int someInt)
     {
-        dieThree.setText(Integer.toString(someInt));
+        tDieThree.setText(Integer.toString(someInt));
     }
 
-    public void setDieFour(int someInt)
+    public void setTDieFour(int someInt)
     {
-        dieFour.setText(Integer.toString(someInt));
+        tDieFour.setText(Integer.toString(someInt));
     }
 
-    public void setDieFive(int someInt)
+    public void setTDieFive(int someInt)
     {
-        dieFive.setText(Integer.toString(someInt));
+        tDieFive.setText(Integer.toString(someInt));
+    }
+
+    public JToggleButton getTDieOne()
+    {
+        return tDieOne;
+    }
+
+    public JToggleButton getTDieTwo()
+    {
+        return tDieTwo;
+    }
+
+    public JToggleButton getTDieThree()
+    {
+        return tDieThree;
+    }
+
+    public JToggleButton getTDieFour()
+    {
+        return tDieFour;
+    }
+
+    public JToggleButton getTDieFive()
+    {
+        return tDieFive;
     }
 
     public JButton getRollDice()

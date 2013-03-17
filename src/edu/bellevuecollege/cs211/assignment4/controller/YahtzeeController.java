@@ -36,11 +36,11 @@ public class YahtzeeController
         c_model.getDiceCollection().rollDice(true,true,true,true,true);
 
         //set die value fields for first roll
-        c_view.setDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
-        c_view.setDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
-        c_view.setDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
-        c_view.setDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
-        c_view.setDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
+        c_view.setTDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
+        c_view.setTDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
+        c_view.setTDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
+        c_view.setTDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
+        c_view.setTDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
 
         //...add listeners to the view
         c_view.addRollDiceListener(new RollDiceListener());
@@ -55,30 +55,29 @@ public class YahtzeeController
             if(turnNumber <= 13 && rollInTurn < 3)
             {
                 //roll dice but keep die values that are checked
-                c_model.getDiceCollection().rollDice(!c_view.getCheckDieOne().isSelected(),
-                        !c_view.getCheckDieTwo().isSelected(), !c_view.getCheckDieThree().isSelected(),
-                        !c_view.getCheckDieFour().isSelected(), !c_view.getCheckDieFive().isSelected());
+                c_model.getDiceCollection().rollDice(!c_view.getTDieOne().isSelected(),
+                        !c_view.getTDieTwo().isSelected(), !c_view.getTDieThree().isSelected(),
+                        !c_view.getTDieFour().isSelected(), !c_view.getTDieFive().isSelected());
 
-                //clear all checkboxes after a roll
-                c_view.getCheckDieOne().setSelected(false);
-                c_view.getCheckDieTwo().setSelected(false);
-                c_view.getCheckDieThree().setSelected(false);
-                c_view.getCheckDieFour().setSelected(false);
-                c_view.getCheckDieFive().setSelected(false);
+                //set die value fields
+                c_view.setTDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
+                c_view.setTDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
+                c_view.setTDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
+                c_view.setTDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
+                c_view.setTDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
+
+                //clear all toggles after a roll
+                c_view.getTDieOne().setSelected(false);
+                c_view.getTDieTwo().setSelected(false);
+                c_view.getTDieThree().setSelected(false);
+                c_view.getTDieFour().setSelected(false);
+                c_view.getTDieFive().setSelected(false);
 
                 //increment number of rolls in this turn
                 rollInTurn++;
 
                 //set roll field in view
                 c_view.setRollText(rollInTurn);
-
-                //set die value fields
-                c_view.setDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
-                c_view.setDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
-                c_view.setDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
-                c_view.setDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
-                c_view.setDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
-
             }
             else
             {
@@ -178,19 +177,15 @@ public class YahtzeeController
                     c_view.getSelectChance().setEnabled(false);
                     c_view.setTextChance(c_model.scoreChance());
                 }
-                else
-                {
-                    //TODO: do I need to do something here?
-                }
 
                 //...process ancillary tasks
 
-                //clear all checkboxes after scoring
-                c_view.getCheckDieOne().setSelected(false);
-                c_view.getCheckDieTwo().setSelected(false);
-                c_view.getCheckDieThree().setSelected(false);
-                c_view.getCheckDieFour().setSelected(false);
-                c_view.getCheckDieFive().setSelected(false);
+                //clear all toggles after a roll
+                c_view.getTDieOne().setSelected(false);
+                c_view.getTDieTwo().setSelected(false);
+                c_view.getTDieThree().setSelected(false);
+                c_view.getTDieFour().setSelected(false);
+                c_view.getTDieFive().setSelected(false);
 
                 //clear all radio buttons after scoring
                 c_view.getSelectRadialButtonGroup().clearSelection();
@@ -207,7 +202,6 @@ public class YahtzeeController
                 //set overall score
                 c_view.setScoreText(c_model.getCurrentScore());
 
-                //TODO: check for and handle game over condition where turnNumber > 13
                 if(turnNumber <= 13)
                 {
                     //...keep going
@@ -219,11 +213,12 @@ public class YahtzeeController
                     c_model.getDiceCollection().rollDice(true,true,true,true,true);
 
                     //set die value fields
-                    c_view.setDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
-                    c_view.setDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
-                    c_view.setDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
-                    c_view.setDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
-                    c_view.setDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
+
+                    c_view.setTDieOne(c_model.getDiceCollection().getDie(1).getDieValue());
+                    c_view.setTDieTwo(c_model.getDiceCollection().getDie(2).getDieValue());
+                    c_view.setTDieThree(c_model.getDiceCollection().getDie(3).getDieValue());
+                    c_view.setTDieFour(c_model.getDiceCollection().getDie(4).getDieValue());
+                    c_view.setTDieFive(c_model.getDiceCollection().getDie(5).getDieValue());
                 }
                 else
                 {
@@ -239,20 +234,17 @@ public class YahtzeeController
                     c_view.getRollDice().setEnabled(false);
                     c_view.getScoreDice().setEnabled(false);
 
-                    //disable the check boxes
-                    c_view.getCheckDieOne().setEnabled(false);
-                    c_view.getCheckDieTwo().setEnabled(false);
-                    c_view.getCheckDieThree().setEnabled(false);
-                    c_view.getCheckDieFour().setEnabled(false);
-                    c_view.getCheckDieFive().setEnabled(false);
+                    //disable the toggles
+                    c_view.getTDieOne().setEnabled(false);
+                    c_view.getTDieTwo().setEnabled(false);
+                    c_view.getTDieThree().setEnabled(false);
+                    c_view.getTDieFour().setEnabled(false);
+                    c_view.getTDieFive().setEnabled(false);
 
                     //set Turn and roll text
                     c_view.setTurnText("Game over");
                     c_view.setRollText("Game over");
                 }
-
-
-
             }
         }
 
