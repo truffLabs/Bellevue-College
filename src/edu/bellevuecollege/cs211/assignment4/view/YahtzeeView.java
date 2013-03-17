@@ -20,28 +20,22 @@ public class YahtzeeView
     //...components
 
     //main
+
     private JFrame frame;
 
     //west panel
+
     private JPanel mainWest;
-
-    //center panel
-    private JPanel mainCenter;
-    private JButton rollDice;
-
-    //east panel
-    private JPanel mainEast;
-
-    //...fields for data
-
-    //...west panel
 
     private JLabel playerText;
     private JLabel turnText;
     private JLabel rollText;
     private JLabel scoreText;
 
-    //...center panel
+    //center panel
+
+    private JPanel mainCenter;
+    private JButton rollDice;
 
     private JToggleButton tDieOne;
     private JToggleButton tDieTwo;
@@ -49,7 +43,9 @@ public class YahtzeeView
     private JToggleButton tDieFour;
     private JToggleButton tDieFive;
     
-    //...east panel
+    //east panel
+
+    private JPanel mainEast;
     
     //radial buttons
     private JRadioButton selectOnes;
@@ -65,7 +61,6 @@ public class YahtzeeView
     private JRadioButton selectLargeStraight;
     private JRadioButton selectYahtzee;
     private JRadioButton selectChance;
-
     private ButtonGroup selectRadialButtonGroup;
 
     //text fields
@@ -91,20 +86,15 @@ public class YahtzeeView
         //...external classes
         v_model = someModel;
 
-        //...initialize components for view
+        //...components
 
-        //main
+        //main frame
         frame = new JFrame();
 
-        //mainWest
+        //panels
         mainWest = new JPanel();
         mainCenter = new JPanel();
         mainEast = new JPanel();
-
-        //mainCenter
-        rollDice = new JButton("Roll");
-
-        //...initialize fields for data
 
         //mainWest
         playerText = new JLabel("1");
@@ -113,6 +103,7 @@ public class YahtzeeView
         scoreText = new JLabel(Integer.toString(v_model.getCurrentScore()));
 
         //mainCenter
+        rollDice = new JButton("Roll");
         tDieOne = new JToggleButton("0");
         tDieTwo = new JToggleButton("0");
         tDieThree = new JToggleButton("0");

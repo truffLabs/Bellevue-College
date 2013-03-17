@@ -54,7 +54,7 @@ public class YahtzeeController
             //check if turns is less than 13 and rolls is less than 3
             if(turnNumber <= 13 && rollInTurn < 3)
             {
-                //roll dice but keep die values that are checked
+                //roll dice but keep die values that are selected
                 c_model.getDiceCollection().rollDice(!c_view.getTDieOne().isSelected(),
                         !c_view.getTDieTwo().isSelected(), !c_view.getTDieThree().isSelected(),
                         !c_view.getTDieFour().isSelected(), !c_view.getTDieFive().isSelected());
@@ -164,12 +164,21 @@ public class YahtzeeController
                     c_view.getSelectLargeStraight().setEnabled(false);
                     c_view.setTextLargeStraight(c_model.scoreLargeStraight());
                 }
-
+                //TODO: verify this actually deals with multiple yahtzees
                 else if(c_view.getSelectYahtzee().isSelected())
                 {
-                    //TODO: figure out how to deal with multiple yahtzees
-                    c_view.getSelectYahtzee().setEnabled(false);
-                    c_view.setTextYahtzee(c_model.scoreYahtzee());
+
+                    int yahtzeePointsScored =  c_model.scoreYahtzee();
+
+                    if(yahtzeePointsScored != 0)
+                    {
+                        c_view.setTextYahtzee(yahtzeePointsScored);
+                    }
+                    else
+                    {
+                        c_view.getSelectYahtzee().setEnabled(false);
+                        c_view.setTextYahtzee(yahtzeePointsScored);
+                    }
                 }
 
                 else if(c_view.getSelectChance().isSelected())
@@ -180,7 +189,7 @@ public class YahtzeeController
 
                 //...process ancillary tasks
 
-                //clear all toggles after a roll
+                //clear all toggles after scoring
                 c_view.getTDieOne().setSelected(false);
                 c_view.getTDieTwo().setSelected(false);
                 c_view.getTDieThree().setSelected(false);
@@ -196,15 +205,15 @@ public class YahtzeeController
                 //set roll field in view
                 c_view.setRollText(rollInTurn);
 
-                //increment turnNumber
-                turnNumber++;
-
                 //set overall score
                 c_view.setScoreText(c_model.getCurrentScore());
 
-                if(turnNumber <= 13)
+                if(turnNumber < 13)
                 {
                     //...keep going
+
+                    //increment turnNumber
+                    turnNumber++;
 
                     //set Turn field in view
                     c_view.setTurnText(turnNumber);
