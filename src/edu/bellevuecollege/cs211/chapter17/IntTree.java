@@ -47,12 +47,13 @@ public class IntTree {
         }
     }
 
+    //Exercise #1
     public int sum()
     {
-
         return sum(overallRoot);
     }
 
+    //Exercise #1
     private int sum(IntTreeNode someRoot)
     {
         //handle empty Binary Tree
@@ -66,11 +67,13 @@ public class IntTree {
         }
     }
 
+    //Exercise #3
     public int countEmpty()
     {
         return countEmpty(overallRoot);
     }
 
+    //Exercise #3
     private int countEmpty(IntTreeNode someRoot)
     {
         //first base case
@@ -99,11 +102,33 @@ public class IntTree {
         }
     }
 
+    //Exercise #4
+    //TODO: not working yet
+    public int depthSum()
+    {
+        int depth = 1;
+        return depthSum(overallRoot, depth);
+    }
+
+    private int depthSum(IntTreeNode someNode, int someDepth)
+    {
+        if(someNode == null)
+        {
+            return 0;
+        }
+        else
+        {
+            return someDepth * someNode.data + depthSum(someNode.left, someDepth+1) + depthSum(someNode.right, someDepth+1);
+        }
+    }
+
+    //Exercise #5
     public int countEvenBranches()
     {
         return countEvenBranches(overallRoot);
     }
 
+    //Exercise #5
     private int countEvenBranches(IntTreeNode someRoot)
     {
         //null base case
@@ -130,6 +155,7 @@ public class IntTree {
         }
     }
 
+    //Exercise #6
     public void printLevel(int someNum)
     {
         if(someNum < 1)
@@ -142,6 +168,7 @@ public class IntTree {
         printLevel(leftLevel, rightLevel, someNum, this.overallRoot);
     }
 
+    //Exercise #6
     private void printLevel(int leftLevel, int rightLevel, int targetLevel, IntTreeNode someRoot)
     {
         if(someRoot == null)
@@ -165,12 +192,64 @@ public class IntTree {
         }
     }
 
+    //Exercise #7
+    public void printLeaves()
+    {
+        printLeaves(overallRoot);
+    }
+
+    //Exercise #7
+    private void printLeaves(IntTreeNode someNode)
+    {
+        if(someNode == null)
+        {
+            //do nothing
+        }
+        else if(someNode.left == null && someNode.right == null)
+        {
+            System.out.print(someNode.data + " ");
+        }
+        else
+        {
+            printLeaves(someNode.left);
+            printLeaves(someNode.right);
+        }
+    }
+
+    //Exercise #12
+    public void numberNodes()
+    {
+        numberNodes(overallRoot, 1);
+    }
+
+    private void numberNodes(IntTreeNode someNode, int someNum)
+    {
+        if(someNode == null)
+        {
+            //do nothing
+        }
+        else
+        {
+
+            someNode.data = someNum;
+            someNum++;
+            numberNodes(someNode.left, someNum);
+            //someNum++;
+            numberNodes(someNode.right, someNum);
+        }
+
+    }
+
+
+
+    //Exercise #13
     public void removeLeaves()
     {
         //IntTreeNode prevRoot = overallRoot;
         removeLeaves(overallRoot);
     }
 
+    //Exercise #13
     private void removeLeaves(IntTreeNode someRoot)
     {
         //empty list

@@ -60,6 +60,12 @@ public class IntTreeTest
     }
 
     @Test
+    public void testDepthSum() throws Exception
+    {
+        assertEquals(50, ref1.depthSum());
+    }
+
+    @Test
     public void testCountEvenBranches() throws Exception
     {
         assertEquals(1, ref1.countEvenBranches());
@@ -87,6 +93,19 @@ public class IntTreeTest
     {
         //no exception should be thrown here
         refNull.printLevel(1);
+    }
+
+    @Test
+    public void testPrintLeaves() throws Exception
+    {
+        //ref2.printLeaves();
+    }
+
+    @Test
+    public void testNumberNodes() throws Exception
+    {
+        ref1.numberNodes();
+        ref1.printSideways();
     }
 
     @Test
