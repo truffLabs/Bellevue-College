@@ -19,7 +19,7 @@ public class YahtzeeClient
         YahtzeeView view = new YahtzeeView(model);
         YahtzeeController controller = new YahtzeeController(model, view);
 
-        //make frame visible_
+        //make frame visible for client
         view.getFrame().setVisible(true);
     }
 
