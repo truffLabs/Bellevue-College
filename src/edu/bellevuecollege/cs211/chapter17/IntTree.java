@@ -277,6 +277,16 @@ public class IntTree {
         }
     }
 
+    public void add(int someValue)
+    {
+        add(overallRoot, someValue);
+    }
+
+    private IntTreeNode add(IntTreeNode someNode, int someValue)
+    {
+        return someNode;
+    }
+
     // post: prints the tree contents using a preorder traversal
     public void printPreorder() {
         System.out.print("preorder:");
