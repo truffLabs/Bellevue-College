@@ -3,7 +3,7 @@ package edu.bellevuecollege.cs211.chapter17;
 // Simple binary tree class that includes methods to construct a
 // tree of ints, to print the structure, and to print the data
 // using a preorder, inorder or postorder traversal.  The trees
-// built have nodes numbered starting with 1 and numbered
+// built have nodes fnumbered starting with 1 and numbered
 // sequentially level by level with no gaps in the tree.  The
 // documentation refers to these as "sequential trees."
 
@@ -275,6 +275,16 @@ public class IntTree {
         {
             removeLeaves(someRoot.right);
         }
+    }
+
+    public void add(int someValue)
+    {
+        add(overallRoot, someValue);
+    }
+
+    private IntTreeNode add(IntTreeNode someNode, int someValue)
+    {
+        return someNode;
     }
 
     // post: prints the tree contents using a preorder traversal
