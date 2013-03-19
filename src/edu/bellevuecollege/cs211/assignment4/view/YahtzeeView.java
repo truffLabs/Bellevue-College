@@ -145,6 +145,9 @@ public class YahtzeeView
 
         //build the main frame with all panels
         buildFrame();
+
+        //don't allow resizing of frame
+        frame.setResizable(false);
     }
 
     private void buildFrame()
