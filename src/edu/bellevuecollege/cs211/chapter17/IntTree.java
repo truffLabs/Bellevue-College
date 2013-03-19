@@ -287,6 +287,7 @@ public class IntTree {
         completeToLevel(overallRoot, leftLevel, rightLevel, someNum);
     }
 
+    //Exercise 15
     private void completeToLevel(IntTreeNode someNode, int leftLevel, int rightLevel, int targetLevel)
     {
         if(someNode == null)
@@ -314,8 +315,39 @@ public class IntTree {
             rightLevel++;
             completeToLevel(someNode.right, leftLevel, rightLevel, targetLevel);
         }
+    }
 
+    //Exercise 17
+    public void tighten()
+    {
+        tighten(overallRoot);
+    }
 
+    //Exercise 17
+    private void tighten(IntTreeNode someNode)
+    {
+        //null case
+        if(someNode == null || someNode.left == null || someNode.right == null)
+        {
+            return;
+        }
+        //one branch node case
+        if(someNode.left.left != null && (someNode.left.left != null && someNode.left.right == null))
+        {
+            someNode.left = someNode.left.left;
+            tighten(someNode);
+        }
+        //one branch node case
+        else if(someNode.right.right != null && (someNode.right.right != null && someNode.right.left == null))
+        {
+            someNode.right = someNode.right.right;
+            tighten(someNode);
+        }
+        else
+        {
+            tighten(someNode.left);
+            tighten(someNode.right);
+        }
     }
 
     public void add(int someValue)

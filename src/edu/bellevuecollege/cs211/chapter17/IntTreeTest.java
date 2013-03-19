@@ -135,4 +135,11 @@ public class IntTreeTest
         ref2.completeToLevel(4);
         ref2.printSideways();
     }
+
+    @Test
+    public void testTighten() throws Exception
+    {
+        ref1.tighten();
+        ref1.printSideways();
+    }
 }
