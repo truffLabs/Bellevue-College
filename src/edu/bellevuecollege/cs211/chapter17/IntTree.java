@@ -222,22 +222,19 @@ public class IntTree {
         numberNodes(overallRoot, 1);
     }
 
-    private void numberNodes(IntTreeNode someNode, int someNum)
+    private int numberNodes(IntTreeNode someNode, int someNum)
     {
         if(someNode == null)
         {
-            //do nothing
+            return someNum;
         }
         else
         {
-
             someNode.data = someNum;
-            someNum++;
-            numberNodes(someNode.left, someNum);
-            //someNum++;
-            numberNodes(someNode.right, someNum);
+            someNum = numberNodes(someNode.left, someNum+1);
+            someNum =numberNodes(someNode.right, someNum);
         }
-
+        return someNum;
     }
 
 
@@ -275,6 +272,50 @@ public class IntTree {
         {
             removeLeaves(someRoot.right);
         }
+    }
+
+    //Exercise 15
+    public void completeToLevel(int someNum)
+    {
+        if(someNum < 1)
+        {
+            throw new IllegalArgumentException();
+        }
+
+        int leftLevel = 1, rightLevel = 1;
+
+        completeToLevel(overallRoot, leftLevel, rightLevel, someNum);
+    }
+
+    private void completeToLevel(IntTreeNode someNode, int leftLevel, int rightLevel, int targetLevel)
+    {
+        if(someNode == null)
+        {
+            return;
+        }
+        //target level base case
+        else if(leftLevel == targetLevel || rightLevel == targetLevel)
+        {
+            return;
+        }
+        //identify if branch node
+        else if(someNode.left == null && someNode.right != null)
+        {
+            someNode.left = new IntTreeNode(-1);
+        }
+        else if(someNode.right == null && someNode.left != null)
+        {
+            someNode.right = new IntTreeNode(-1);
+        }
+        else
+        {
+            leftLevel++;
+            completeToLevel(someNode.left, leftLevel, rightLevel, targetLevel);
+            rightLevel++;
+            completeToLevel(someNode.right, leftLevel, rightLevel, targetLevel);
+        }
+
+
     }
 
     public void add(int someValue)

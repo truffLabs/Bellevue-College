@@ -128,4 +128,11 @@ public class IntTreeTest
         System.out.println("\n");
         ref3.printSideways();
     }
+
+    @Test
+    public void testCompleteToLevel() throws Exception
+    {
+        ref2.completeToLevel(4);
+        ref2.printSideways();
+    }
 }
