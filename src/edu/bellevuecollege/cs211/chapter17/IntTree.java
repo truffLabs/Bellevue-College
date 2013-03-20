@@ -354,9 +354,24 @@ public class IntTree {
     {
         add(overallRoot, someValue);
     }
-
     private IntTreeNode add(IntTreeNode someNode, int someValue)
     {
+        //if the tree is empty, create root node
+        if(someNode == null)
+        {
+            someNode = new IntTreeNode(someValue);
+        }
+        else if(someValue <= someNode.data)
+        {
+            //add left
+            someNode.left = add(someNode.left, someValue);
+        }
+        else
+        {
+            //add right
+            someNode.right = add(someNode.right, someValue);
+        }
+
         return someNode;
     }
 
