@@ -1,7 +1,5 @@
 package edu.bellevuecollege.cs211.chapter17;
 
-import edu.bellevuecollege.cs211.chapter17.*;
-
 // Simple binary tree class that includes methods to construct a
 // tree of ints, to print the structure, and to print the data
 // using a preorder, inorder or postorder traversal.  The trees
@@ -22,6 +20,8 @@ public class IntSearchTreeClient
             st1.add(i);
         }
 
-        st1.printSideways();
+        //st1.printSideways();
+
+        System.out.println(st1.contains(56));
     }
 }
