@@ -145,9 +145,6 @@ public class YahtzeeView
 
         //build the main frame with all panels
         buildFrame();
-
-        //don't allow resizing of frame
-        frame.setResizable(false);
     }
 
     private void buildFrame()
@@ -162,10 +159,11 @@ public class YahtzeeView
         //set layout
         frame.setLayout(new BorderLayout());
 
+        //don't allow resizing of frame
+        frame.setResizable(false);
+
         //set title
         frame.setTitle("Yahtzee");
-
-        //frame.setBackground(Color.GREEN);
 
         //add stuff to the frame
         frame.add(buildWestPanel(), BorderLayout.WEST);
