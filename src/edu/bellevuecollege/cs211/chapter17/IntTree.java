@@ -242,7 +242,6 @@ public class IntTree {
     //Exercise #13
     public void removeLeaves()
     {
-        //IntTreeNode prevRoot = overallRoot;
         removeLeaves(overallRoot);
     }
 
