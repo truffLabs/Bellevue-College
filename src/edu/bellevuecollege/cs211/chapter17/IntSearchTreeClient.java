@@ -11,7 +11,7 @@ public class IntSearchTreeClient
 {
     public static void main(String[] args)
     {
-        int[] numbers = {18, -1, 73, 59, 100, 16, 2, 33, -100};
+        int[] numbers = {18, 100, -99, 15, 12, 55, 44, 31, -2};
 
         IntSearchTree st1 = new IntSearchTree();
 
@@ -20,8 +20,8 @@ public class IntSearchTreeClient
             st1.add(i);
         }
 
-        //st1.printSideways();
+        st1.printSideways();
 
-        System.out.println(st1.contains(56));
+        //System.out.println(st1.contains(56));
     }
 }
