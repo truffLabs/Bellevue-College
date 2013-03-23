@@ -81,7 +81,11 @@ public class YahtzeeController
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Too many rolls!");
+                //disable roll button
+                c_view.getRollDice().setEnabled(false);
+
+                //prompt user
+                JOptionPane.showMessageDialog(null, "You are only allowed 3 rolls per turn! Score the dice.");
             }
         }
     }
