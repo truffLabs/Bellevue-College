@@ -1,5 +1,6 @@
 package edu.bellevuecollege.cs211.assignment4.exceptions;
 
+//throws exception if scoring method has already been used
 public class IllegalScoringException extends RuntimeException
 {
     /**

@@ -6,9 +6,9 @@ import edu.bellevuecollege.cs211.assignment4.view.YahtzeeView;
 import javax.swing.*;
 
 /**
- * Create model, view, and controller.  They are
- * created once here and passed to the parts that
- * need them so there is only one copy of each.
+ * Creates the model, view and controller in one location. Enables communication
+ * between each of the elements in the Yahtzee game. Meets the requirements of
+ * Programming Assignment #4, CS211.
  */
 
 public class YahtzeeClient

@@ -1,5 +1,4 @@
 package edu.bellevuecollege.cs211.assignment4.controller;
-
 import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
 import edu.bellevuecollege.cs211.assignment4.view.YahtzeeView;
 import javax.swing.*;
@@ -8,7 +7,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * Satisfies the requirements for Exercise #X, page XX of "Building Java Programs" second edition.
+ * Orchestrator for the Yahtzee game. Meets the requirements of
+ * Programming Assignment #4, CS211.
  *
  * @author Pat Kaehuaea 3/14/13 9:37 PM
  */
