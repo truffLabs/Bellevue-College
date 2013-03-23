@@ -1,9 +1,7 @@
 package edu.bellevuecollege.cs211.assignment4.client;
 import edu.bellevuecollege.cs211.assignment4.controller.YahtzeeController;
-import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
+import edu.bellevuecollege.cs211.assignment4.model.yahtzee.YahtzeeModel;
 import edu.bellevuecollege.cs211.assignment4.view.YahtzeeView;
-
-import javax.swing.*;
 
 /**
  * Creates the model, view and controller in one location. Enables communication

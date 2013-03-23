@@ -1,5 +1,5 @@
 package edu.bellevuecollege.cs211.assignment4.controller;
-import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
+import edu.bellevuecollege.cs211.assignment4.model.yahtzee.YahtzeeModel;
 import edu.bellevuecollege.cs211.assignment4.view.YahtzeeView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;

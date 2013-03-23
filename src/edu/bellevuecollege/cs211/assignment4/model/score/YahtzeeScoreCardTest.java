@@ -1,8 +1,6 @@
 package edu.bellevuecollege.cs211.assignment4.model.score;
 
-import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
-import edu.bellevuecollege.cs211.assignment4.model.score.YahtzeeScoreCard;
-import edu.bellevuecollege.cs211.assignment4.model.score.YahtzeeScoreTypes;
+import edu.bellevuecollege.cs211.assignment4.model.yahtzee.YahtzeeModel;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

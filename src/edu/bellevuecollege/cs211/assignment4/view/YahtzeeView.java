@@ -1,5 +1,5 @@
 package edu.bellevuecollege.cs211.assignment4.view;
-import edu.bellevuecollege.cs211.assignment4.model.YahtzeeModel;
+import edu.bellevuecollege.cs211.assignment4.model.yahtzee.YahtzeeModel;
 
 import javax.swing.*; //for UI
 import javax.swing.border.EmptyBorder;
