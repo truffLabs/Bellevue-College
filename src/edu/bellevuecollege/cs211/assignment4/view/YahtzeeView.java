@@ -8,7 +8,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * Satisfies the requirements for Exercise #X, page XX of "Building Java Programs" second edition.
+ * Defines a GUI for a Yahtzee game and meets the requirements for
+ * Programming Assignment #4, CS211.
  *
  * @author Pat Kaehuaea 3/14/13 2:52 PM
  */
@@ -24,19 +25,15 @@ public class YahtzeeView
     private JFrame frame;
 
     //west panel
-
     private JPanel mainWest;
-
     private JLabel playerText;
     private JLabel turnText;
     private JLabel rollText;
     private JLabel scoreText;
 
     //center panel
-
     private JPanel mainCenter;
     private JButton rollDice;
-
     private JToggleButton tDieOne;
     private JToggleButton tDieTwo;
     private JToggleButton tDieThree;
@@ -44,9 +41,8 @@ public class YahtzeeView
     private JToggleButton tDieFive;
     
     //east panel
-
     private JPanel mainEast;
-    
+
     //radial buttons
     private JRadioButton selectOnes;
     private JRadioButton selectTwos;
@@ -250,6 +246,7 @@ public class YahtzeeView
         
         JPanel labelEast = new JPanel();
         labelEast.setLayout(new GridLayout(13, 1));
+        //labelEast.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         //add radial buttons to group
         selectRadialButtonGroup.add(selectOnes);
